@@ -134,3 +134,10 @@ body.motion-off .world-universe *,body.motion-off .world-universe *::before,body
 .world-universe.universe-awake .universe-copy{opacity:0;pointer-events:none;transition:opacity .55s}
 .world-universe.universe-awake .universe-centerpiece{opacity:.4}
 .world-universe.universe-awake .universe-replay{z-index:41}
+
+/* V0.7 — four meaningful finale choices must remain comfortable on phone screens. */
+.universe-replay{flex-wrap:wrap}
+@media(max-width:720px){
+ .universe-replay{bottom:17.8%;row-gap:7px}
+ .universe-replay button{flex:1 1 calc(50% - 7px);min-height:44px;border-radius:15px}
+}
