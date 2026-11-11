@@ -24,6 +24,8 @@ The final form, chapter sequence, and content will be decided **after** reviewin
 - [Photo intake and approvals](docs/PHOTO_INTAKE_AND_APPROVALS.md)
 - [Roadmap and acceptance criteria](docs/ROADMAP_AND_ACCEPTANCE.md)
 - [Decision register](docs/DECISIONS.md)
+- [Scene Plan V1 — public creative architecture](docs/SCENE_PLAN_V1.md)
+- [Scene content contract](docs/SCENE_CONTENT_CONTRACT.md)
 
 ## Planned experience
 
