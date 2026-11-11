@@ -27,7 +27,12 @@
 | D-019 | Keep raw originals unmodified and out of public Git history; publish metadata-stripped public display copies through one app's media delivery | **Locked workflow** | Public display approval does not require uploading raw originals or location metadata; review other people's/children's images before publication |
 | D-020 | V0.9 uses one eight-scene unified frontend and merges the strongest parts of V0.7 public engine and V0.8 private narrative | **Locked direction** | No duplicate frontends, no new product features, no blank photo stages |
 
+| D-021 | Screen 01 V3 opens from darkness with a real diya flame and blooms into a living, colorful celebration within 6.5 seconds; no photo appears during introduction | **Locked — owner 2026-11-11** | Replaces dark, static, center-photo V2 intro; see [Screen 01 V3](ARRIVAL_SCREEN_V3.md) |
+| D-022 | Screen 01's real portrait remains fully veiled on initial load. A softly animated glowing bird on a flowering perch **must be touched** to reveal it; explicit accessible CTA offers equivalent reveal | **Locked — owner 2026-11-11** | No unsolicited early face reveal, no decorative dead controls, and no face edits |
+| D-023 | Screen 01 scenery itself must feel alive and interact: petal drift, swaying floral canopy, lanterns that light on touch, moving water and scattered fireflies | **Locked — owner 2026-11-11** | Separate animated environment layers, not a static flat-color backdrop; reduced-motion support mandatory |
+
 ## Changelog
+- 2026-11-11: **Locked Screen 01 V3 requirement:** vibrant living celebration instead of static blue V2; candle-led 6.5s intro without photo; touch the glowing bird to reveal the first real memory; rest of app unchanged.
 - 2026-11-11: **Latest decision** — owner approved a single **public** THANDU V0.9 photo-led website. D-017 through D-020 supersede incompatible earlier private-only requirements; prior V0.7 and V0.8 work is retained for merging.
 - 2026-11-11: Memory Constellation V0.7 preview uses session-only client-side photo selection and manual thematic grouping.
 - 2026-11-11: Birthday Universe V0.6 connected as sixth public-safe chapter; detailed QA and private photo release outstanding.
