@@ -7,9 +7,9 @@
 | 2. Photo audit | Private inventory, duplicate verification, draft editorial mapping | Private draft complete; approvals outstanding |
 | 3. Narrative / storyboard | [Scene Plan V1](SCENE_PLAN_V1.md), private photo-by-scene plan, approved personal copy | Draft plan complete; awaiting storyboard/copy approval |
 | 4. Look development | Five keyframes; Arrival and Bloom [motion pilots](MOTION_PILOTS_V1.md); private [Memory Sanctuary pilot](MEMORY_SANCTUARY_PILOT_V1.md) | In progress; visual approval and remaining scene tests pending |
-| 5. Application implementation | Public-safe web foundation and [Memory Sanctuary V2](SANCTUARY_V2.md) on [Vercel](https://thandu.vercel.app); remaining Birthday Universe, photo delivery, audio and full flow | Five-scene connected [V0.5](MIDNIGHT_LETTER_V05.md) deployed; full app in progress |
+| 5. Application implementation | Public-safe web foundation and [Memory Sanctuary V2](SANCTUARY_V2.md) on [Vercel](https://thandu.vercel.app); remaining private photo/gallery integration, approved copy, audio and delivery | Six-scene connected [V0.6](BIRTHDAY_UNIVERSE_V06.md) deployed; full app in progress |
 | 6. Photo/content integration | Approved derivatives, captions, letter, finale | Not started |
-| 7. Quality assurance | Cross-device, accessibility, performance, privacy audit | Not started |
+| 7. Quality assurance | Cross-device, accessibility, performance, privacy audit | Source and interaction checks passed; real-device QA not started |
 | 8. Delivery | Verified link or package with correct access restrictions | Not started |
 
 ## Completion criteria
