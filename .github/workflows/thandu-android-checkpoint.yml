@@ -1,0 +1,78 @@
+name: THANDU Android — Five Chapter APK Checkpoint
+
+on:
+  push:
+    branches: [android-checkpoint-1]
+    paths:
+      - THANDU_APK_Source.zip
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  apk:
+    name: Build & verify real installable debug APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout checkpoint branch
+        uses: actions/checkout@v4
+
+      - name: Verify exact approved source is attached
+        shell: bash
+        run: |
+          test -s THANDU_APK_Source.zip || {
+            echo "::error::Upload THANDU_APK_Source.zip to this branch first."
+            exit 1
+          }
+          unzip -tq THANDU_APK_Source.zip
+          mkdir -p "$RUNNER_TEMP/thandu-checkpoint"
+          unzip -q THANDU_APK_Source.zip -d "$RUNNER_TEMP/thandu-checkpoint"
+          test -s "$RUNNER_TEMP/thandu-checkpoint/app/src/main/assets/index.html"
+          echo "40166a234e0143c777a5db6ade16788879d3879ce8688fd971f1b4186fdee97c  $RUNNER_TEMP/thandu-checkpoint/app/src/main/assets/index.html" | sha256sum -c -
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android platform and build tools
+        run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+
+      - name: Set up Gradle 8.9
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Compile THANDU debug APK
+        working-directory: ${{ runner.temp }}/thandu-checkpoint
+        run: gradle --no-daemon --stacktrace :app:assembleDebug
+
+      - name: Verify real Android binary and source provenance
+        shell: bash
+        run: |
+          APK="$RUNNER_TEMP/thandu-checkpoint/app/build/outputs/apk/debug/app-debug.apk"
+          test -s "$APK"
+          unzip -tq "$APK"
+          unzip -Z1 "$APK" | grep -qx 'AndroidManifest.xml'
+          unzip -Z1 "$APK" | grep -qx 'classes.dex'
+          unzip -Z1 "$APK" | grep -qx 'assets/index.html'
+          unzip -p "$APK" assets/index.html | sha256sum | grep -q '^40166a234e0143c777a5db6ade16788879d3879ce8688fd971f1b4186fdee97c'
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
+          cp "$APK" "$GITHUB_WORKSPACE/THANDU-Five-Chapters-Review.apk"
+          sha256sum "$GITHUB_WORKSPACE/THANDU-Five-Chapters-Review.apk" > "$GITHUB_WORKSPACE/THANDU-Five-Chapters-Review.apk.sha256"
+
+      - name: Upload installable THANDU APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: THANDU-Five-Chapters-Android-APK
+          path: |
+            THANDU-Five-Chapters-Review.apk
+            THANDU-Five-Chapters-Review.apk.sha256
+          retention-days: 7
+          if-no-files-found: error
