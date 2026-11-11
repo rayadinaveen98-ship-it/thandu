@@ -1,0 +1,40 @@
+# THANDU — The World She Brings to Life
+
+**Status:** Pre-production. Visual explorations completed; final experience and art direction pending photo/story review. No application code or private photographs committed.
+
+An interactive, visually immersive birthday keepsake crafted as a cinematic journey rather than a conventional greeting page or slideshow.
+
+## Creative premise
+
+The world begins in stillness. As the recipient explores moments, memories, and messages, the environment becomes more luminous, colorful, and alive.
+
+Three visual explorations are being kept available as a potential unified experience:
+
+- **Light of Stillness** — pearlescent celestial sanctuary, reflective and luminous
+- **A World in Bloom** — responsive magical garden, energy and growth
+- **The Midnight Letter** — rich astronomical nightscape, memory and personal wishes
+
+The final form, chapter sequence, and content will be decided **after** reviewing the photographs and receiving editorial approval.
+
+## Pre-production documents
+
+- [Product and story](docs/PRODUCT_AND_STORY.md)
+- [Art, motion and interaction](docs/ART_AND_INTERACTION.md)
+- [Technical architecture and delivery](docs/TECH_AND_PRIVACY.md)
+- [Photo intake and approvals](docs/PHOTO_INTAKE_AND_APPROVALS.md)
+- [Roadmap and acceptance criteria](docs/ROADMAP_AND_ACCEPTANCE.md)
+- [Decision register](docs/DECISIONS.md)
+
+## Planned experience
+
+A short, guided, mobile-first cinematic journey (target 5–8 minutes for the initial visit), followed by an optional explorable keepsake gallery. No login, ads, analytics, or account creation required for the initial experience.
+
+## Public repository policy
+
+This repository is **public** by choice. It is for non-sensitive code, architecture, and approved generic artwork. **Never commit originals, personal portraits, childhood photos, contact sheets, personal messages, location metadata, or private drafts.** `.gitignore` is a safeguard, not a privacy guarantee. Do not upload such materials in GitHub issues, PRs, Actions artifacts, or releases either.
+
+Public repository visibility does not determine the privacy of the eventual birthday site. Delivery and access control will be decided separately.
+
+## Next step
+
+Review photographs privately in batches; map each approved image to a scene; then lock the editorial sequence, visuals, and distribution policy before implementing the app.
