@@ -276,8 +276,8 @@
         </div>
         <div class="gallery-tools">
           <div class="gallery-local-import">
-            <label for="galleryFileInput" class="gallery-choose"><span aria-hidden="true">✧</span> Choose photos from this device</label>
-            <input id="galleryFileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple aria-describedby="galleryPrivacy" />
+            <button type="button" id="galleryChoose" class="gallery-choose"><span aria-hidden="true">✧</span> Choose photos from this device</button>
+            <input id="galleryFileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden aria-describedby="galleryPrivacy" />
             <button type="button" id="galleryClear" class="gallery-clear" disabled>Clear selected photos</button>
           </div>
           <p id="galleryPrivacy" class="gallery-privacy"><span aria-hidden="true">◈</span> Private preview: selected photos stay in this browser tab only. Nothing is uploaded or saved by THANDU. Closing or refreshing clears them.</p>
