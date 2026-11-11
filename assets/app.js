@@ -5,7 +5,7 @@
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-  const order = ['arrival', 'sanctuary', 'bloom', 'celebration', 'letter'];
+  const order = ['arrival', 'sanctuary', 'bloom', 'celebration', 'letter', 'universe'];
   const sceneHost = $('#journey');
   const canvas = $('#particleCanvas');
   const ctx = canvas?.getContext('2d', { alpha: true });
@@ -179,20 +179,30 @@
       element.toggleAttribute('inert', !active);
       element.setAttribute('aria-hidden', active ? 'false' : 'true');
     });
-    $$('.chapter-pill').forEach(tab => {
+    $('.chapter-pill').forEach(tab => {
       const selected = tab.dataset.to === scene;
       tab.classList.toggle('active', selected);
       tab.setAttribute('aria-selected', String(selected));
       tab.tabIndex = selected ? 0 : -1;
     });
+    // Keep the selected chapter visible when the mobile tab strip overflows.
+    if (window.innerWidth < 721) {
+      const selectedTab = $('.chapter-pill').find(tab => tab.dataset.to === scene);
+      const strip = selectedTab?.parentElement;
+      if (strip && typeof strip.scrollTo === 'function') {
+        const x = selectedTab.offsetLeft - strip.offsetLeft - (strip.clientWidth - selectedTab.clientWidth) / 2;
+        strip.scrollTo({ left: Math.max(0, x), behavior: motionEnabled ? 'smooth' : 'auto' });
+      }
+    }
     $('#prev').disabled = current === 0;
     $('#next').disabled = current === order.length - 1;
     if (announce) $('#sceneAnnounce').textContent = 'Now visiting ' +
-      (scene === 'arrival' ? 'The Arrival' : scene === 'sanctuary' ? 'Little Beginnings' : scene === 'bloom' ? 'A World in Bloom' : scene === 'celebration' ? 'The Joy She Brings' : 'The Quiet Letter');
+      (scene === 'arrival' ? 'The Arrival' : scene === 'sanctuary' ? 'Little Beginnings' : scene === 'bloom' ? 'A World in Bloom' : scene === 'celebration' ? 'The Joy She Brings' : scene === 'letter' ? 'The Quiet Letter' : 'The Birthday Universe');
     document.body.classList.toggle('in-sanctuary', scene === 'sanctuary');
     document.body.classList.toggle('in-bloom', scene === 'bloom');
     document.body.classList.toggle('in-celebration', scene === 'celebration');
     document.body.classList.toggle('in-letter', scene === 'letter');
+    document.body.classList.toggle('in-universe', scene === 'universe');
   }
 
   // The travelling star never serves as a hidden navigation mechanism:
@@ -212,9 +222,9 @@
     transitioning = true;
     sceneHost.dataset.transitioning = 'true';
     const startX = width * .5;
-    const startY = current === 0 ? height * .59 : current === 1 ? height * .56 : current === 4 ? height * .53 : height * .64;
+    const startY = current === 0 ? height * .59 : current === 1 ? height * .56 : current === 4 ? height * .53 : current === 5 ? height * .53 : height * .64;
     const endX = width * .5;
-    const endY = target === 0 ? height * .59 : target === 1 ? height * .53 : target === 4 ? height * .53 : height * .60;
+    const endY = target === 0 ? height * .59 : target === 1 ? height * .53 : target >= 4 ? height * .53 : height * .60;
     traveler.style.left = startX + 'px';
     traveler.style.top = startY + 'px';
     traveler.classList.add('visible');
