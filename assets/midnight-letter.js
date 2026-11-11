@@ -26,6 +26,7 @@
       panel.hidden = false;
       nav?.setAttribute('inert', '');
       header?.setAttribute('inert', '');
+      seal.setAttribute('inert', '');
       paper.scrollTop = 0;
       closeButton.focus({ preventScroll: true });
     }, reduced ? 0 : 420);
@@ -41,6 +42,7 @@
     scene.classList.remove('letter-open');
     nav?.removeAttribute('inert');
     header?.removeAttribute('inert');
+    seal.removeAttribute('inert');
     if (restoreFocus && scene.classList.contains('current')) {
       seal.focus({ preventScroll: true });
     }
@@ -70,7 +72,7 @@
     // Constrain focus even when an inert-compatible fallback browser is used.
     const first = closeButton;
     const last = restartButton;
-    if (event.shiftKey && document.activeElement === first) {
+    if (event.shiftKey && document.activeElement !== last) {
       event.preventDefault();
       last.focus({ preventScroll: true });
     } else if (!event.shiftKey && document.activeElement === last) {
