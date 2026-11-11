@@ -7,7 +7,7 @@
 | 2. Photo audit | Private inventory, duplicate verification, draft editorial mapping | Private draft complete; approvals outstanding |
 | 3. Narrative / storyboard | [Scene Plan V1](SCENE_PLAN_V1.md), private photo-by-scene plan, approved personal copy | Draft plan complete; awaiting storyboard/copy approval |
 | 4. Look development | Five keyframes; Arrival and Bloom [motion pilots](MOTION_PILOTS_V1.md); private [Memory Sanctuary pilot](MEMORY_SANCTUARY_PILOT_V1.md) | In progress; visual approval and remaining scene tests pending |
-| 5. Application implementation | Scene engine, responsive interaction, navigation, audio opt-in | Not started |
+| 5. Application implementation | Public-safe live scene foundation on [Vercel](https://thandu.vercel.app); remaining scene engine, audio and full flow | Foundation deployed; full app in progress |
 | 6. Photo/content integration | Approved derivatives, captions, letter, finale | Not started |
 | 7. Quality assurance | Cross-device, accessibility, performance, privacy audit | Not started |
 | 8. Delivery | Verified link or package with correct access restrictions | Not started |
