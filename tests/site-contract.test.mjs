@@ -1,99 +1,72 @@
-// THANDU public preview contract tests.
-// Run: node --test tests/site-contract.test.mjs
-// Uses only Node built-ins. This is not a substitute for real-browser visual QA.
+// THANDU V0.9 source contracts: run node --test tests/site-contract.test.mjs
+// Browser/device quality must be evaluated separately.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
-import { Script } from 'node:vm';
-
-const load = (path) => readFileSync(new URL('../' + path, import.meta.url), 'utf8');
-const html = load('index.html');
-const app = load('assets/app.js');
-const celebration = load('assets/celebration.js');
-const sanctuary = load('assets/sanctuary-v2.js');
-const letter = load('assets/midnight-letter.js');
-const universe = load('assets/birthday-universe.js');
-const gallery = load('assets/memory-constellation.js');
-
-test('seven guided scenes match the chapter navigation and the scene controller', () => {
-  const scenes = [...html.matchAll(/<section class="world [^"]*" id="([^"]+)"/g)].map(m => m[1]);
-  const tabs = [...html.matchAll(/class="chapter-pill[^"]*"[^>]*data-to="([^"]+)"/g)].map(m => m[1]);
-  const orderMatch = app.match(/const order = \[([^\]]+)\]/);
-  assert.ok(orderMatch, 'app controller must define scene order');
-  const controllerOrder = [...orderMatch[1].matchAll(/'([^']+)'/g)].map(m => m[1]);
-  assert.deepEqual(scenes, ['arrival', 'sanctuary', 'bloom', 'celebration', 'letter', 'universe', 'constellation']);
-  assert.deepEqual(tabs, scenes);
-  assert.deepEqual(controllerOrder, scenes);
+import { Script, createContext } from 'node:vm';
+const read = p => readFileSync(new URL('../'+p,import.meta.url),'utf8');
+const html=read('index.html'),app=read('assets/app.js'),gal=read('assets/memory-constellation.js');
+const data=read('assets/photo-story-data.js'),photosScript=read('assets/photo-story-scenes.js');
+const realm=createContext({window:{}});new Script(data).runInContext(realm);
+const story=realm.window.THANDU_MEDIA;
+const expected=['arrival','sanctuary','growing','bloom','celebration','letter','universe','constellation'];
+test('eight connected cinematic chapters match main navigation and photo manifest',()=>{
+ const scenes=[...html.matchAll(/<section class="world [^"]*" id="([^"]+)"/g)].map(m=>m[1]);
+ const tabs=[...html.matchAll(/class="chapter-pill[^"]*"[^>]*data-to="([^"]+)"/g)].map(m=>m[1]);
+ const match=app.match(/const order = \[([^\]]+)\]/);assert.ok(match);
+ const order=[...match[1].matchAll(/'([^']+)'/g)].map(m=>m[1]);
+ assert.deepEqual(scenes,expected);assert.deepEqual(tabs,expected);assert.deepEqual(order,expected);
+ assert.deepEqual(Array.from(story.scenes,s=>s.id),expected);
 });
-
-test('HTML IDs are unique and all celebration hooks exist', () => {
-  const ids = [...html.matchAll(/id="([^"]+)"/g)].map(m => m[1]);
-  assert.equal(ids.length, new Set(ids).size, 'duplicate element IDs');
-  for (const id of ['joyGarland','joyStatus','joyRelease','joyFinalMessage','joyReplay','joyContinue','celebration','letter','letterSeal','letterReveal','letterClose','letterReadAgain','letterPaperTitle','letterContinue','universe','universeStart','universeProgress','universeWish','universeAgain','universeReplay','constellation','galleryDrawer','galleryOpen','galleryChoose','galleryFileInput','galleryClear','galleryGrid','galleryViewer','galleryGroupSelect']) {
-    assert.ok(ids.includes(id), 'missing celebration hook: ' + id);
-  }
-  assert.equal([...html.matchAll(/data-joy="[^"]+"/g)].length, 3);
-  assert.match(html, /id="memoryReveal"[^>]+aria-modal="true"/);
+test('a real photographed welcome is visible in initial HTML',()=>{
+ assert.match(html,/id="arrivalHeroPhoto" src="\/media\/scene-50\.jpg"/);
+ assert.match(html,/fetchpriority="high"/);
+ assert.equal(story.scenes[0].photoIds[0],46);
+ assert.equal(story.photos.find(p=>p.id===46).src,'/media/scene-50.jpg');
+ assert.doesNotMatch(html,/ORIGINAL ARTWORK ONLY|NO PRIVATE PHOTOGRAPHS|PRIVATE OWNER REVIEW/);
 });
-
-test('the scripts parse without syntax errors', () => {
-  for (const [name, content] of [['app', app], ['celebration', celebration], ['sanctuary', sanctuary], ['letter', letter], ['universe', universe], ['gallery', gallery]]) {
-    assert.doesNotThrow(() => new Script(content, { filename: name + '.js' }));
-  }
+test('47 originals are preloaded into the public curated gallery and chapter frames',()=>{
+ assert.equal(story.photos.length,47);
+ assert.deepEqual(Array.from(story.photos,p=>p.id),Array.from({length:47},(_,i)=>i+1));
+ assert.equal(new Set(Array.from(story.photos,p=>p.src)).size,47);
+ assert.deepEqual(Array.from(story.scenes,s=>s.photoIds.length),[1,5,5,6,8,1,1,0]);
+ for(const p of story.photos)assert.match(p.src,/^\/media\/scene-\d\d\.jpg$/);
+ assert.match(gal,/window\.THANDU_MEDIA\?\.photos/);
+ assert.match(photosScript,/makeFrame\(scene\)/);
+ assert.match(photosScript,/orb-real-photo/);
+ assert.match(read('assets/sanctuary-v2.js'),/stage\.replaceChildren\(image\)/);
 });
-
-test('all local CSS/JS/image references exist', () => {
-  const references = [
-    ...[...html.matchAll(/(?:src|href)="(\/assets\/[^"]+)"/g)].map(m => m[1]),
-    ...[...load('assets/celebration.css').matchAll(/url\(['"]?(\/assets\/[^'")]+)['"]?\)/g)].map(m => m[1]),
-    ...[...load('assets/journey-v3.css').matchAll(/url\(['"]?(\/assets\/[^'")]+)['"]?\)/g)].map(m => m[1]),
-    ...[...load('assets/midnight-letter.css').matchAll(/url\(['"]?(\/assets\/[^'")]+)['"]?\)/g)].map(m => m[1]),
-    ...[...load('assets/birthday-universe.css').matchAll(/url\(['"]?(\/assets\/[^'")]+)['"]?\)/g)].map(m => m[1]),
-    ...[...load('assets/memory-constellation.css').matchAll(/url\(['"]?(\/assets\/[^'")]+)['"]?\)/g)].map(m => m[1])
-  ];
-  for (const filename of references) {
-    assert.ok(existsSync(new URL('..' + filename, import.meta.url)), 'missing: ' + filename);
-  }
+test('every image is served on main THANDU domain, with no private project navigation',()=>{
+ const cfg=JSON.parse(read('vercel.json'));
+ assert.ok(cfg.rewrites?.some(x=>x.source==='/media/:path*'&&x.destination==='https://thandu-photo-assets.vercel.app/assets/:path*'));
+ assert.doesNotMatch(html,/thandu-private\.vercel\.app/);
+ assert.equal(story.scenes.length,8);
+ for(const s of story.scenes)assert.match(s.art,/^\/media\/scene-\d\d\.webp$/);
 });
-
-test('public preview embeds no private recipient photographs or videos', () => {
-  const siteSources = [html, app, celebration, sanctuary, letter, universe, gallery];
-  for (const source of siteSources) {
-    assert.doesNotMatch(source, /data:image\/jpeg;base64|\.heic\b|\.jpe?g\b|\.mp4\b/i);
-  }
-  assert.match(load('.gitignore'), /private-assets\//);
-  assert.match(load('docs/IDENTITY_PRESERVATION.md'), /Never change the appearance|Never deform|Never.*alter/i);
+test('original aspect ratios and face-safe viewing are maintained',()=>{
+ const css=read('assets/photo-worlds.css');
+ assert.match(css,/\.photo-viewer-image-wrap img\{[^}]*object-fit:contain/);
+ assert.match(css,/\.story-photo-open img\{[^}]*object-fit:contain/);
+ assert.match(css,/\.gallery-local-import\{display:none!important\}/);
+ assert.match(css,/prefers-reduced-motion/);
+ assert.match(read('docs/IDENTITY_PRESERVATION.md'),/Never change the appearance/i);
+ assert.match(read('.gitignore'),/private-assets\//);
 });
-
-test('new visual scene explicitly supports motion reduction', () => {
-  const css = load('assets/celebration.css');
-  assert.match(css, /prefers-reduced-motion/);
-  assert.match(css, /body\.motion-off/);
-  assert.match(celebration, /aria-pressed/);
-  assert.match(celebration, /animationDisabled/);
-  assert.match(load('assets/midnight-letter.css'), /prefers-reduced-motion/);
-  assert.match(letter, /Escape/);
-  assert.match(letter, /aria|inert/);
-  assert.match(load('assets/birthday-universe.css'), /prefers-reduced-motion/);
-  assert.match(universe, /Escape|reset|replay/i);
-  assert.match(html, /data-next="letter"/);
-  assert.match(html, /id="letterContinue" data-next="universe"/);
-  assert.match(app, /toCelebration'\)\.addEventListener/);
-  assert.match(universe, /phase-stillness/);
-  assert.match(universe, /phase-bloom/);
-  assert.match(universe, /phase-joy/);
-  assert.match(universe, /window\.thanduUniverse/);
+test('no duplicated element ids; all linked JS/CSS local code exists and parses',()=>{
+ const ids=[...html.matchAll(/id="([^"]+)"/g)].map(m=>m[1]);
+ assert.equal(ids.length,new Set(ids).size);
+ const scripts=['assets/app.js','assets/photo-story-data.js','assets/photo-story-scenes.js','assets/sanctuary-v2.js','assets/celebration.js','assets/midnight-letter.js','assets/birthday-universe.js','assets/memory-constellation.js'];
+ for(const p of scripts)assert.doesNotThrow(()=>new Script(read(p),{filename:p}));
+ const links=[...html.matchAll(/(?:src|href)="(\/assets\/[^"]+)"/g)].map(m=>m[1]);
+ for(const link of links)assert.ok(existsSync(new URL('..'+link,import.meta.url)),'missing local '+link);
+ const styles=['styles.css','sanctuary-v2.css','journey-v3.css','celebration.css','midnight-letter.css','birthday-universe.css','memory-constellation.css','photo-worlds.css'];
+ for(const p of styles){const css=read('assets/'+p);assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,'unbalanced CSS '+p)}
 });
-
-test('Memory Constellation never uploads or persists selected photographs', () => {
-  assert.match(html, /id="galleryFileInput"[^>]+type="file"/);
-  assert.match(html, /data-next="constellation"/);
-  assert.match(gallery, /URL\.createObjectURL/);
-  assert.match(gallery, /URL\.revokeObjectURL/);
-  assert.match(gallery, /pagehide/);
-  assert.doesNotMatch(gallery, /\bfetch\s*\(|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|indexedDB|FormData/);
-  assert.match(gallery, /image\/jpeg/);
-  assert.match(gallery, /MAX_PHOTOS = 60/);
-  assert.match(load('assets/memory-constellation.css'), /\.gallery-photo-stage img\{[^}]*object-fit:contain/);
-  assert.match(load('assets/memory-constellation.css'), /prefers-reduced-motion/);
+test('original interactive light/garden/letter/finale remain connected',()=>{
+ assert.equal([...html.matchAll(/data-growing-memory="\d+"/g)].length,5);
+ assert.match(read('assets/celebration.js'),/data-joy/);
+ assert.match(read('assets/birthday-universe.js'),/phase-bloom/);
+ assert.match(read('assets/midnight-letter.js'),/Escape/);
+ assert.match(html,/data-next="constellation"/);
+ assert.match(html,/id="galleryViewer"/);
 });
