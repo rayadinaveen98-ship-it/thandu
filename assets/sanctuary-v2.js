@@ -43,6 +43,7 @@ function showMemory(index){
  modal.hidden=false;
  document.body.classList.add('memory-dialog-open');
  document.querySelector('.lower-nav')?.setAttribute('inert','');
+ document.querySelector('.topbar')?.setAttribute('inert','');
  close.focus({preventScroll:true});
 }
 portals.forEach((button,index)=>button.addEventListener('click',()=>showMemory(index)));
@@ -51,6 +52,7 @@ function dismiss(){
  modal.hidden=true;
  document.body.classList.remove('memory-dialog-open');
  document.querySelector('.lower-nav')?.removeAttribute('inert');
+ document.querySelector('.topbar')?.removeAttribute('inert');
  if(activeOrigin&&area.classList.contains('current'))activeOrigin.focus({preventScroll:true});
 }
 close.addEventListener('click',dismiss);
