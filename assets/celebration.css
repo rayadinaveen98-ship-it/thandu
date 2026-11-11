@@ -102,3 +102,8 @@ radial-gradient(circle at 33% 51%,#fff9df 0 1.5px,transparent 3px)}
 }
 body.motion-off .world-celebration *,body.motion-off .world-celebration *::before,body.motion-off .world-celebration *::after{animation:none!important;transition:none!important}
 @media(prefers-reduced-motion:reduce){.world-celebration *, .world-celebration *::before,.world-celebration *::after{animation:none!important;transition:none!important}}
+
+/* V0.5: the celebration now flows into the contemplative letter chapter. */
+.joy-final-message #joyContinue{background:linear-gradient(110deg,#fff1cd,#f2c7a6);color:#4d3957;border-color:#fff3d0;margin-left:9px}
+.joy-final-message #joyContinue:hover{filter:brightness(1.08)}
+@media(max-width:720px){.joy-final-message #joyContinue{margin-left:0;margin-top:9px;max-width:100%}}
