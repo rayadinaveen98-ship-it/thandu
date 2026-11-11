@@ -20,4 +20,4 @@ jobs:
         with:
           node-version: '22'
       - name: Verify eight-scene story contracts
-        run: node --test tests/site-contract.test.mjs
+        run: node --test tests/*.test.mjs
