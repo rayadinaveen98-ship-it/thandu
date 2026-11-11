@@ -11,10 +11,12 @@
   <link rel="stylesheet" href="/assets/journey-v3.css">
   <link rel="stylesheet" href="/assets/celebration.css">
   <link rel="stylesheet" href="/assets/midnight-letter.css">
+  <link rel="stylesheet" href="/assets/birthday-universe.css">
   <script src="/assets/app.js" defer></script>
   <script src="/assets/sanctuary-v2.js" defer></script>
   <script src="/assets/celebration.js" defer></script>
   <script src="/assets/midnight-letter.js" defer></script>
+  <script src="/assets/birthday-universe.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#journey">Skip to experience</a>
@@ -183,10 +185,55 @@
           <div class="letter-actions">
             <button type="button" id="letterClose">Fold the letter</button>
             <button type="button" id="letterReadAgain">Read from the beginning</button>
+            <button type="button" id="letterContinue" data-next="universe">Continue to the birthday universe ✦</button>
           </div>
         </article>
       </div>
       <p class="ambient-hint">Touch the seal to unfold a quiet message.</p>
+    </section>
+
+
+    <section class="world world-universe" id="universe" aria-labelledby="universeTitle" inert>
+      <div class="universe-sky" aria-hidden="true"></div>
+      <div class="universe-aura" aria-hidden="true"></div>
+      <div class="universe-architecture" aria-hidden="true"></div>
+      <div class="universe-orbit-field" aria-hidden="true">
+        <span class="universe-orbit one"></span>
+        <span class="universe-orbit two"></span>
+        <span class="universe-orbit three"></span>
+        <span class="universe-orbit four"></span>
+      </div>
+      <div class="universe-relic sanctuary" aria-hidden="true"><span>✧</span></div>
+      <div class="universe-relic garden" aria-hidden="true"><span>❀</span></div>
+      <div class="universe-relic joy" aria-hidden="true"><span>✦</span></div>
+      <div class="universe-horizon" aria-hidden="true"></div>
+      <div class="world-copy universe-copy" id="universeIntro">
+        <p class="eyebrow">CHAPTER V · A UNIVERSE OF LIGHT</p>
+        <h2 id="universeTitle">Every little light<br>was leading <em>here.</em></h2>
+        <p class="lead">Stillness, wonder and joy. One more moment to bring them all together.</p>
+      </div>
+      <div class="universe-centerpiece" aria-hidden="true">
+        <span class="universe-prism"></span>
+        <span class="universe-symbol">✧</span>
+      </div>
+      <button type="button" id="universeStart" class="universe-start">
+        <span aria-hidden="true">✧</span> Bring the worlds together
+      </button>
+      <p class="universe-progress" id="universeProgress" role="status" aria-live="polite" hidden>
+        Gathering the light…
+      </p>
+      <div class="universe-wish" id="universeWish" role="status" hidden>
+        <div class="wish-emblem" aria-hidden="true">✧ ✦ ❀ ✦ ✧</div>
+        <h3>Happy Birthday, <em>Thandu.</em></h3>
+        <p>May this new chapter bring you peaceful days, beautiful discoveries and all the joy your heart can hold.</p>
+        <p class="wish-foot">A little universe made just to celebrate you</p>
+      </div>
+      <div class="universe-replay" id="universeReplay" hidden>
+        <button type="button" id="universeAgain">Watch the magic again</button>
+        <button type="button" data-next="letter">Read the letter</button>
+        <button type="button" data-next="arrival">Start from the beginning</button>
+      </div>
+      <p class="ambient-hint">One last touch, one beautiful beginning.</p>
     </section>
 
     <div class="lower-nav" aria-label="Journey controls">
@@ -197,10 +244,11 @@
         <button class="chapter-pill" role="tab" data-to="bloom" aria-selected="false">03<span>Bloom</span></button>
         <button class="chapter-pill" role="tab" data-to="celebration" aria-selected="false">04<span>Joy</span></button>
         <button class="chapter-pill" role="tab" data-to="letter" aria-selected="false">05<span>Letter</span></button>
+        <button class="chapter-pill" role="tab" data-to="universe" aria-selected="false">06<span>Finale</span></button>
       </div>
       <button id="next" class="nav-arrow" aria-label="Next chapter">→</button>
     </div>
-    <aside class="preview-note">DESIGN BUILD 0.5 <span>•</span> ORIGINAL ARTWORK ONLY <span>•</span> NO PRIVATE PHOTOGRAPHS</aside>
+    <aside class="preview-note">DESIGN BUILD 0.6 <span>•</span> ORIGINAL ARTWORK ONLY <span>•</span> NO PRIVATE PHOTOGRAPHS</aside>
     <div class="sr-only" id="sceneAnnounce" aria-live="polite"></div>
   </main>
 </body>
