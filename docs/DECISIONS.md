@@ -11,8 +11,9 @@
 | D-007 | Pause app implementation until photo review and key storyboard sign-off | Confirmed workflow | Avoid rework and preserve creative direction |
 | D-008 | Delivery access mode | Open | Public repository ≠ consent for publicly displaying personal photographs |
 
-## Changelog
-- 2026-11-11: Architecture foundation prepared for public repository. Privacy and content safeguards established. Awaiting photograph intake.
-
 | D-009 | **No facial alteration or deformation of any kind without explicit per-operation approval** | **Locked — owner instruction, 2026-11-11** | Original faces and identities must be preserved in every scene, animation, export, and prototype. See [Identity Preservation](IDENTITY_PRESERVATION.md). |
 | D-010 | Keep detailed photo-by-photo analysis, contact sheets, video and personal image identifiers outside public Git | Confirmed safeguard | Images and contextual identifiers are private; public storyboard contains only generic structure. |
+
+
+## Changelog
+- 2026-11-11: Architecture foundation prepared for public repository. Privacy and content safeguards established. Photographs received and private curation draft begun; identity-preservation requirement locked.
