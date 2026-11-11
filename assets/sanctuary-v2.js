@@ -1,5 +1,4 @@
-/* THANDU — Memory Sanctuary V2 presentation controller.
-   Public-safe placeholder content only. Never includes private media. */
+/* THANDU — Little Beginnings, authentic photo-led memory sanctuary. */
 (()=>{
 'use strict';
 const area=document.getElementById('sanctuary');
@@ -16,12 +15,14 @@ const next=document.getElementById('memoryNext');
 const titles=['FIRST LIGHT','LITTLE JOYS','GROWING YEARS','WARM MOMENTS','BRIGHT DAYS'];
 const symbols=['✧','✺','❈','❀','✦'];
 const descriptions=[
-'A glimpse into the earliest pages of the journey. In the protected gift, a genuine unaltered photograph will take this place.',
-'A little place for those happy, everyday beginnings — revealed with the original photograph exactly as captured.',
-'A chapter to discover the passage of time. The selected photograph will keep its natural shape and original appearance.',
-'An intimate memory stage where the real picture becomes the hero, surrounded by this living world rather than altered by it.',
-'One more light in the constellation — waiting for the final approved photograph to bring the memory to life.'
+'A little photograph, kept just as it was captured.',
+'A gentle glimpse from the very beginning.',
+'Another moment from the growing collection of memories.',
+'A familiar image, held in a world of soft light.',
+'One more authentic moment in the constellation.'
 ];
+const photoIds=window.THANDU_MEDIA?.scenes.find(scene=>scene.id==='sanctuary')?.photoIds || [];
+const photoMap=new Map((window.THANDU_MEDIA?.photos||[]).map(photo=>[photo.id,photo]));
 let chosen=0;
 let activeOrigin=null;
 const seen=new Set();
@@ -34,11 +35,18 @@ function showMemory(index){
  button.setAttribute('aria-pressed','true');
  title.textContent=titles[chosen];
  desc.textContent=descriptions[chosen];
- const art=stage.querySelector('.memory-stage-art');
- if(art)art.textContent=symbols[chosen];
+ const photo=photoMap.get(photoIds[chosen]);
+ if(photo) {
+  const image=document.createElement('img');
+  image.src=photo.src;
+  image.alt='Original photograph from Little Beginnings, memory '+(chosen+1)+' of five';
+  image.decoding='async';
+  image.style.objectFit='contain';
+  stage.replaceChildren(image);
+ }
  status.textContent=seen.size+' OF '+portals.length+' MEMORIES DISCOVERED';
  if(seen.size===portals.length){
-  status.textContent='ALL FIVE MEMORIES FOUND · CONTINUE TO BLOOM';
+  status.textContent='ALL FIVE MEMORIES FOUND · CONTINUE TO GROWING YEARS';
  }
  modal.hidden=false;
  document.body.classList.add('memory-dialog-open');
