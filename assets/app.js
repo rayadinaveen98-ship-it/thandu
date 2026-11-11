@@ -20,6 +20,7 @@
   let height = 0;
   let last = 0;
   let blooms = new Set();
+  let animationActive = false;
 
   const traveler = document.createElement('div');
   traveler.className = 'traveling-light';
@@ -72,6 +73,7 @@
   }
 
   function frame(time) {
+    animationActive = true;
     const frameDelta = Math.min(2.2, (time - last) / 16.667 || 1);
     last = time;
     ctx.clearRect(0, 0, width, height);
@@ -100,7 +102,8 @@
         ctx.fill();
       }
     }
-    requestAnimationFrame(frame);
+    if (motionEnabled && !document.hidden) requestAnimationFrame(frame);
+    else animationActive = false;
   }
 
   const flowerField = $('#flowerField');
@@ -207,6 +210,14 @@
     traveler.classList.add('visible');
     const direction = target > current ? 1 : -1;
     const offset = Math.min(width * .18, 110) * direction;
+    if (typeof traveler.animate !== 'function') {
+      applyScene(target);
+      traveler.classList.remove('visible');
+      wash.classList.remove('lit');
+      sceneHost.dataset.transitioning = 'false';
+      transitioning = false;
+      return;
+    }
     const animation = traveler.animate([
       { transform: 'translate(-50%,-50%) scale(.35)', opacity: 0, offset: 0 },
       { transform: 'translate(calc(-50% + ' + offset + 'px),-70%) scale(1.25)', opacity: 1, offset: .39 },
@@ -237,8 +248,18 @@
     };
   }
 
-  $$('.chapter-pill').forEach(tab => tab.addEventListener('click', () =>
-    navigate(order.indexOf(tab.dataset.to))));
+  $('.chapter-pill').forEach(tab => {
+    tab.addEventListener('click', () => navigate(order.indexOf(tab.dataset.to)));
+    tab.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+      event.preventDefault();
+      const direction = event.key === 'ArrowRight' ? 1 : -1;
+      const target = Math.max(0, Math.min(order.length - 1, order.indexOf(tab.dataset.to) + direction));
+      navigate(target);
+      const nextTab = $('.chapter-pill')[target];
+      if (nextTab) nextTab.focus({ preventScroll: true });
+    });
+  });
   $$('[data-next]').forEach(button => button.addEventListener('click', () =>
     navigate(order.indexOf(button.dataset.next))));
   $('#prev').addEventListener('click', () => navigate(current - 1));
@@ -259,6 +280,7 @@
     motionToggle.setAttribute('aria-label', enabled ? 'Reduce motion' : 'Enable motion');
     motionToggle.title = enabled ? 'Reduce motion' : 'Enable motion';
     if (!enabled) particles = [];
+    if (enabled && !animationActive) requestAnimationFrame(frame);
   };
   motionToggle.addEventListener('click', () => setMotion(!motionEnabled));
   setMotion(motionEnabled);
@@ -280,10 +302,13 @@
   });
 
   window.addEventListener('resize', measure, { passive: true });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && motionEnabled && !animationActive) requestAnimationFrame(frame);
+  });
   reducedPreference.addEventListener?.('change', event => {
     if (event.matches) setMotion(false);
   });
   measure();
   applyScene(0, false);
-  requestAnimationFrame(frame);
+  if (motionEnabled && !animationActive) requestAnimationFrame(frame);
 })();
