@@ -8,21 +8,21 @@ One public website — **https://thandu.vercel.app** — with **real photos from
 
 | Deliverable | Verified status |
 | --- | --- |
-| Main public seven-scene frontend | **Live V0.7** at https://thandu.vercel.app, still artwork-only |
+| Main public eight-scene frontend | **V0.9 integration deployed** at https://thandu.vercel.app with eight worlds, original opening photo and chapter-photo stages |
 | Personalized eight-scene V0.8 | Completed for owner review, with 47 original photos; currently **separate**, protected Vercel project + offline bundle |
-| Single eight-scene **unified** frontend with photos throughout | **Not yet implemented** |
-| Public display-safe media pipeline | **Not yet created** |
+| Single eight-scene **unified** frontend with photos throughout | **Implemented and deployed**. Eight scene routes, photo manifest, authentic opening image, five memory portals, guided chapter frames and 47-photo public Keepsake |
+| Public display-safe media pipeline | **Implemented**. 47 already-prepared JPEGs without EXIF plus five original WebP environments served via same-domain `/media/` rewrite to independent static image service; public image returned HTTP 200 |
 | Approved sender letter and full recipient review | Pending |
-| Public merged V0.9 release | **Not yet deployed** |
+| Public merged V0.9 release | **Deployed for owner review**; release approval and real phone visual QA not complete |
 
 ## Current fixed work — one integration sprint
 
 | Gate | Work | State |
 | --- | --- | --- |
-| **A** | Merge seven public worlds and eight private chapters into one app shell / manifest; create Growing Years; preserve motion, accessibility and navigation | **Not started** |
-| **B** | Show first real hero photograph **immediately on landing**, then selected real-photo scenes and all 47 in final Keepsake | **Not started** |
-| **C** | Unify cinematic layers, face-safe framing, letter/finale, transitions and recipient copy | **Not started** |
-| **D** | Publish approved sanitized display assets through public CDN; run anonymous access, phone/desktop, image-loading, accessibility and performance tests | **Not started** |
+| **A** | Merge seven public worlds and eight private chapters into one app shell / manifest; create Growing Years; preserve motion, accessibility and navigation | **Implemented** |
+| **B** | Show first real hero photograph **immediately on landing**, then selected real-photo scenes and all 47 in final Keepsake | **Implemented**; first photo URL checked 200, gallery smoke test passed 47 thumbnails |
+| **C** | Unify cinematic layers, face-safe framing, letter/finale, transitions and recipient copy | **Partially implemented**; CSS/art integrated; final personal letter and design sign-off pending |
+| **D** | Publish approved sanitized display assets through public CDN; run anonymous access, phone/desktop, image-loading, accessibility and performance tests | **Partially verified**; 47 JPEGs have no EXIF, public first-photo and artwork URLs returned HTTP 200, 29/29 structural checks and 7/7 gallery smoke tests passed; real-device QA pending |
 | **E** | Final content/third-party photo approval, recipient copy, rollback check, release on **existing** https://thandu.vercel.app | **Not started** |
 
 **No additional feature or new app scope is authorized for V0.9.** The seven prior worlds, V0.8 private editorial photo manifest and already-built effects remain assets to reuse, not implementations to throw away.
