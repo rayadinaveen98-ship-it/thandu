@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="/assets/birthday-universe.css">
   <link rel="stylesheet" href="/assets/memory-constellation.css">
   <link rel="stylesheet" href="/assets/photo-worlds.css">
+  <link rel="stylesheet" href="/assets/arrival-v2.css">
   <script src="/assets/photo-story-data.js" defer></script>
   <script src="/assets/app.js" defer></script>
   <script src="/assets/sanctuary-v2.js" defer></script>
@@ -27,8 +28,30 @@
   <script src="/assets/birthday-universe.js" defer></script>
   <script src="/assets/photo-story-scenes.js" defer></script>
   <script src="/assets/memory-constellation.js" defer></script>
+  <script src="/assets/arrival-v2.js" defer></script>
 </head>
-<body>
+<body class="welcome-active">
+  <div class="welcome-overlay" id="welcomeOverlay" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-describedby="welcomeSubtitle">
+    <div class="welcome-cosmos" aria-hidden="true">
+      <div class="welcome-starfield"></div>
+      <div class="welcome-orbit welcome-orbit-outer"></div>
+      <div class="welcome-orbit welcome-orbit-inner"></div>
+      <div class="welcome-pulse"></div>
+      <div class="welcome-arch"></div>
+      <div class="welcome-portrait">
+        <img src="/media/scene-50.jpg" alt="" fetchpriority="high" decoding="async">
+      </div>
+      <div class="welcome-flame">✧</div>
+    </div>
+    <div class="welcome-copy">
+      <p class="welcome-kicker">ONE LITTLE LIGHT · A BEAUTIFUL JOURNEY</p>
+      <h2 id="welcomeTitle">For <em>Thandu.</em></h2>
+      <p id="welcomeSubtitle">A journey through light, memory and wonder.</p>
+    </div>
+    <div class="welcome-footnote" aria-hidden="true">✧ &nbsp; A JOURNEY THROUGH LIGHT &nbsp; ✧</div>
+    <button class="welcome-skip" type="button" id="skipWelcome">Skip introduction <span aria-hidden="true">→</span></button>
+  </div>
+  <noscript><style>.welcome-overlay{display:none!important}</style></noscript>
   <a class="skip-link" href="#journey">Skip to experience</a>
   <canvas id="particleCanvas" aria-hidden="true"></canvas>
   <div class="grain" aria-hidden="true"></div>
@@ -58,10 +81,12 @@
       <div class="world-copy arrival-copy">
         <p class="eyebrow">AN INVITATION INTO WONDER</p>
         <h1 id="arrivalTitle">Every beautiful journey<br>begins with a <em>little light.</em></h1>
-        <p class="lead">For Thandu — a world waiting to come alive.</p>
-        <button class="cta" data-next="sanctuary"><span>Enter the journey</span><span class="cta-icon">✧</span></button>
+        <p class="lead">For Thandu — a story of little moments, bright days, and everything yet to come.</p>
       </div>
-      <p class="ambient-hint">Touch the stars. Watch the world respond.</p>
+      <div class="arrival-actions">
+        <button class="cta" data-next="sanctuary"><span>Begin the journey</span><span class="cta-icon" aria-hidden="true">✧</span></button>
+        <span class="arrival-actions-caption">EIGHT CHAPTERS · ONE BEAUTIFUL JOURNEY</span>
+      </div>
     </section>
 
     <section class="world world-sanctuary sanctuary-v2" id="sanctuary" aria-labelledby="sanctuaryTitle" inert>
