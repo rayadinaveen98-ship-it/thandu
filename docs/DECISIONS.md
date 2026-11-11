@@ -18,7 +18,10 @@
 
 | D-014 | Artistic crops, reframing, masks and non-facial compositing are allowed; source faces must remain faithfully unchanged | **Locked — owner instruction, 2026-11-11** | Creative presentation is flexible, but facial appearance and originals remain protected; see [Identity Preservation](IDENTITY_PRESERVATION.md) |
 
+| D-015 | Use one deliberate progressive reveal in Birthday Universe, then allow replay and revisiting chapters | Implemented in V0.6 preview | Emotional climax without forcing multiple interactions or blocking reduced-motion users |
+
 ## Changelog
+- 2026-11-11: Birthday Universe V0.6 connected as sixth public-safe chapter; detailed QA and private photo release outstanding.
 - 2026-11-11: Owner approved face-safe cropping and non-facial compositing; Midnight Letter V0.5 connected as fifth scene.
 - 2026-11-11: Scene Plan V1 drafted with public scene interface and private photo-to-scene mapping; still awaiting approval.
 - 2026-11-11: Architecture foundation prepared for public repository. Privacy and content safeguards established. Photographs received, duplicate verified, private media manifest and Scene Plan V1 prepared; identity-preservation requirement locked.
