@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" fill="none" aria-hidden="true">
+<defs>
+  <linearGradient id="gilt" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF8DA"/><stop offset=".28" stop-color="#D4A66F"/><stop offset=".58" stop-color="#FFEDC2"/><stop offset="1" stop-color="#966D91"/></linearGradient>
+  <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#B1D6BE"/><stop offset=".53" stop-color="#6B9D9A"/><stop offset="1" stop-color="#406E8D"/></linearGradient>
+  <radialGradient id="flower"><stop stop-color="#FFF6E2"/><stop offset=".55" stop-color="#F9C5DC"/><stop offset="1" stop-color="#B978B1"/></radialGradient>
+  <radialGradient id="haze"><stop stop-color="#FFE9BD" stop-opacity=".35"/><stop offset=".5" stop-color="#D0ABCE" stop-opacity=".10"/><stop offset="1" stop-color="#16143D" stop-opacity="0"/></radialGradient>
+  <g id="petal-flower">
+    <ellipse rx="13" ry="30" cy="-22" fill="url(#flower)"/>
+    <ellipse rx="13" ry="30" cy="-22" fill="url(#flower)" transform="rotate(60)"/>
+    <ellipse rx="13" ry="30" cy="-22" fill="url(#flower)" transform="rotate(120)"/>
+    <ellipse rx="13" ry="30" cy="-22" fill="url(#flower)" transform="rotate(180)"/>
+    <ellipse rx="13" ry="30" cy="-22" fill="url(#flower)" transform="rotate(240)"/>
+    <ellipse rx="13" ry="30" cy="-22" fill="url(#flower)" transform="rotate(300)"/>
+    <circle r="11" fill="#FEE9C1"/><circle r="4" fill="#FFF9DE"/>
+  </g>
+  <g id="twin-leaf" fill="url(#leaf)">
+    <path d="M0 0Q-80-24-59-93Q-6-74 0 0Z"/>
+    <path d="M0 0Q75-30 61-95Q8-72 0 0Z"/>
+  </g>
+  <g id="vine">
+    <path d="M-20 1120C-54 850 6 707 152 532C235 411 219 290 173 104" stroke="#365F75" stroke-width="16" stroke-linecap="round"/>
+    <path d="M-20 1120C-54 850 6 707 152 532C235 411 219 290 173 104" stroke="#CEE2B6" stroke-width="3" opacity=".8"/>
+    <use href="#twin-leaf" transform="translate(5 913) rotate(-20) scale(1.10)"/>
+    <use href="#twin-leaf" transform="translate(31 798) rotate(17) scale(.9)"/>
+    <use href="#twin-leaf" transform="translate(72 681) rotate(-24) scale(1.07)"/>
+    <use href="#twin-leaf" transform="translate(132 585) rotate(25) scale(.93)"/>
+    <use href="#twin-leaf" transform="translate(192 483) rotate(-15) scale(.92)"/>
+    <use href="#twin-leaf" transform="translate(216 379) rotate(17) scale(.82)"/>
+    <use href="#twin-leaf" transform="translate(215 273) rotate(-18) scale(.83)"/>
+    <use href="#twin-leaf" transform="translate(192 164) rotate(24) scale(.70)"/>
+    <use href="#petal-flower" transform="translate(44 769) scale(.87)"/>
+    <use href="#petal-flower" transform="translate(136 558) scale(.68)"/>
+    <use href="#petal-flower" transform="translate(214 378) scale(.72)"/>
+    <use href="#petal-flower" transform="translate(174 108) scale(.57)"/>
+  </g>
+</defs>
+<ellipse cx="800" cy="495" rx="640" ry="430" fill="url(#haze)"/>
+<g stroke="#FFF1C2" opacity=".43">
+  <circle cx="800" cy="483" r="357" stroke-width="2" stroke-dasharray="2 23"/>
+  <circle cx="800" cy="483" r="321" stroke-width="4"/>
+  <circle cx="800" cy="483" r="286" stroke-width="1.5" stroke-dasharray="3 12"/>
+  <circle cx="800" cy="483" r="249" stroke-width="2"/>
+  <ellipse cx="800" cy="483" rx="372" ry="138" stroke-width="3" transform="rotate(-23 800 483)"/>
+  <ellipse cx="800" cy="483" rx="372" ry="138" stroke-width="2" transform="rotate(27 800 483)"/>
+</g>
+<path d="M115 965V470C129 260 358 160 529 133Q800 64 1071 133C1242 160 1471 260 1485 470V965" stroke="url(#gilt)" stroke-width="29" stroke-opacity=".7"/>
+<path d="M147 965V478C159 291 384 192 543 164Q800 102 1057 164C1216 192 1441 291 1453 478V965" stroke="#FEE5B5" stroke-width="4" stroke-opacity=".7"/>
+<path d="M235 969V532Q250 328 453 268" stroke="#CFA9C7" stroke-width="5" stroke-opacity=".33"/>
+<path d="M1365 969V532Q1350 328 1147 268" stroke="#CFA9C7" stroke-width="5" stroke-opacity=".33"/>
+<g opacity=".82"><use href="#vine" transform="translate(2 25)"/><use href="#vine" transform="translate(1598 25) scale(-1 1)"/></g>
+<g opacity=".36"><use href="#vine" transform="translate(205 470) scale(.57)"/><use href="#vine" transform="translate(1395 470) scale(-.57 .57)"/></g>
+<path d="M185 344C420 463 625 259 803 336S1190 448 1415 339" stroke="#F9DEB4" stroke-width="2" stroke-opacity=".4"/>
+<path d="M220 382C450 497 644 308 806 388S1160 472 1379 383" stroke="#F9DEB4" stroke-width="1" stroke-opacity=".4"/>
+<path d="M250 1000Q800 820 1350 1000" stroke="#FFDCA8" stroke-width="3" opacity=".34"/>
+<g fill="#FFF5CF" opacity=".82">
+ <circle cx="280" cy="110" r="3"/><circle cx="415" cy="201" r="2"/><circle cx="616" cy="76" r="2"/><circle cx="813" cy="40" r="3"/><circle cx="1025" cy="76" r="2"/><circle cx="1203" cy="197" r="3"/><circle cx="1425" cy="123" r="2"/>
+ <circle cx="339" cy="507" r="1.6"/><circle cx="1230" cy="491" r="1.8"/><circle cx="505" cy="678" r="2"/><circle cx="1109" cy="686" r="2"/>
+</g>
+</svg>
