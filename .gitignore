@@ -26,6 +26,11 @@ media-private/
 draft-letters/
 *.heic
 
+# Additional defensive patterns for incoming private media
+photo_*_2026-*
+IMG_*.MP4
+*.HEIC
+
 # Typical temporary / editor files
 .DS_Store
 Thumbs.db
