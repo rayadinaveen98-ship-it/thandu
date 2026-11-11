@@ -81,10 +81,18 @@ The public gallery should **prepopulate** the actual 47 photos. Remove the local
 - The birthday letter is sender-approved, and public media choices have been reviewed where third-party people/children are pictured.
 - One codebase and one Vercel site receive future improvements; the old protected deployment is not part of recipient navigation.
 
-## 7. Honest current status
+## 7. Latest verified implementation status — 2026-11-11
 
-At the time of this plan, **the main public Vercel site is still the old V0.7 artwork-only app**. The personalized V0.8 exists separately in a Vercel-Authentication-protected project and an offline bundle. Merely committing this document does **not** make photographs appear on the main site.
+**Gate A: Implemented.** The main public website now contains eight connected chapters, including Growing Years and the existing cinematic interactions.
 
-**No new app, extra feature, additional chapter or separate URL is approved.** The only task is merging the proven parts into a single usable experience with real photographs throughout.
+**Gate B: Implemented.** A real photo is embedded statically in the initial Arrival HTML, and gallery/scene photo mappings cover **47 photos**. The sanctuary memory orbs show real thumbnails and open real full-size pictures. Growing, Bloom, Joy, Letter and Finale have live original-aspect portrait frames; the Memory Constellation auto-populates all 47 without uploading files.
 
-**Source/owner safety:** Preserve the original uploaded files and face-preservation rule. The owner's explicit public-photo approval replaces the earlier default of private delivery, but does not require posting raw originals or metadata into Git history.
+**Media pipeline: Implemented.** The 47 previously prepared JPEGs (verified no EXIF metadata) and five original environment WebP artworks were reused from the owner-review deployment in an independent *static image origin* \`thandu-photo-assets\`. The main website transparently proxies all of these as \`/media/*\` through the existing \`thandu.vercel.app\` domain. Direct production requests for the opening photo, multiple representative later photos and environment art returned HTTP 200. Images are publicly accessible/copyable as authorized by the owner.
+
+**Quality evidence:** 29/29 structural/source checks and 7/7 gallery interaction smoke checks passed. Node-based source contracts are committed at \`tests/site-contract.test.mjs\`, along with a GitHub Actions quality-gate workflow. Real browser screenshots on an actual iPhone, Android and desktop, visually approved face-safe framing, complete accessibility and performance tests **have not yet been verified**.
+
+**Gates C–E: Still pending:** precise mobile layout refinement, final personal letter approval, full cross-device quality testing, consent/editorial review of images showing others/children, and final recipient-ready sign-off. The website is **live for owner review**, not certified finished.
+
+This update overrides the previous statement that the main website was still V0.7 artwork-only. The original V0.9 requirements above remain valid as release acceptance gates.
+
+**No second visitor app:** \`thandu-photo-assets\` is an unbranded public media origin only. The visitor experience remains on \`https://thandu.vercel.app\`. The V0.8 private project remains as rollback/owner review, not a destination.
