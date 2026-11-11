@@ -5,7 +5,7 @@
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-  const order = ['arrival', 'sanctuary', 'bloom', 'celebration', 'letter', 'universe', 'constellation'];
+  const order = ['arrival', 'sanctuary', 'growing', 'bloom', 'celebration', 'letter', 'universe', 'constellation'];
   const sceneHost = $('#journey');
   const canvas = $('#particleCanvas');
   const ctx = canvas?.getContext('2d', { alpha: true });
@@ -93,7 +93,7 @@
           lifetime: 110 + Math.random() * 110,
           opacity: .1 + Math.random() * .3,
           radius: .35 + Math.random() * 1.35,
-          color: current === 2 ? '255,210,193' : current === 3 ? '255,220,198' : '255,239,195'
+          color: current === 3 ? '255,210,193' : current === 4 ? '255,220,198' : '255,239,195'
         });
       }
       particles = particles.filter(particle => particle.lifetime > 0);
@@ -200,8 +200,9 @@
     $('#prev').disabled = current === 0;
     $('#next').disabled = current === order.length - 1;
     if (announce) $('#sceneAnnounce').textContent = 'Now visiting ' +
-      (scene === 'arrival' ? 'The Arrival' : scene === 'sanctuary' ? 'Little Beginnings' : scene === 'bloom' ? 'A World in Bloom' : scene === 'celebration' ? 'The Joy She Brings' : scene === 'letter' ? 'The Quiet Letter' : scene === 'universe' ? 'The Birthday Universe' : 'The Memory Constellation');
+      (scene === 'arrival' ? 'The Arrival' : scene === 'sanctuary' ? 'Little Beginnings' : scene === 'growing' ? 'Growing Years' : scene === 'bloom' ? 'A World in Bloom' : scene === 'celebration' ? 'The Joy She Brings' : scene === 'letter' ? 'The Quiet Letter' : scene === 'universe' ? 'The Birthday Universe' : 'The Memory Constellation');
     document.body.classList.toggle('in-sanctuary', scene === 'sanctuary');
+    document.body.classList.toggle('in-growing', scene === 'growing');
     document.body.classList.toggle('in-bloom', scene === 'bloom');
     document.body.classList.toggle('in-celebration', scene === 'celebration');
     document.body.classList.toggle('in-letter', scene === 'letter');
@@ -226,9 +227,9 @@
     transitioning = true;
     sceneHost.dataset.transitioning = 'true';
     const startX = width * .5;
-    const startY = current === 0 ? height * .59 : current === 1 ? height * .56 : current >= 4 ? height * .53 : height * .64;
+    const startY = current === 0 ? height * .59 : current === 1 ? height * .56 : current >= 5 ? height * .53 : height * .64;
     const endX = width * .5;
-    const endY = target === 0 ? height * .59 : target === 1 ? height * .53 : target >= 4 ? height * .53 : height * .60;
+    const endY = target === 0 ? height * .59 : target === 1 ? height * .53 : target >= 5 ? height * .53 : height * .60;
     traveler.style.left = startX + 'px';
     traveler.style.top = startY + 'px';
     traveler.classList.add('visible');
@@ -253,7 +254,7 @@
       applyScene(target);
       traveler.style.left = endX + 'px';
       traveler.style.top = endY + 'px';
-      emit(endX, endY, 68, target === 2 ? 'bloom' : target === 3 ? 'joy' : 'light');
+      emit(endX, endY, 68, target === 3 ? 'bloom' : target === 4 ? 'joy' : 'light');
     }, 460);
     animation.onfinish = () => {
       clearTimeout(swap);
@@ -320,7 +321,7 @@
 
   sceneHost.addEventListener('pointerdown', event => {
     if (event.target.closest('button,[role="dialog"]')) return;
-    emit(event.clientX, event.clientY, 27, current === 2 ? 'bloom' : current === 3 ? 'joy' : 'light');
+    emit(event.clientX, event.clientY, 27, current === 3 ? 'bloom' : current === 4 ? 'joy' : 'light');
     if (!motionEnabled) return;
     pointerGlow.style.left = event.clientX + 'px';
     pointerGlow.style.top = event.clientY + 'px';
