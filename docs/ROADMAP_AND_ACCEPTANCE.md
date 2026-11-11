@@ -1,32 +1,45 @@
-# Production Plan and Quality Gates
+# THANDU — Production Roadmap
 
-| Phase | Deliverable | Status |
+**CURRENT LOCKED DIRECTION (2026-11-11): [Unified Public Birthday Experience V0.9](UNIFIED_PUBLIC_V09_PLAN.md).**
+
+One public website — **https://thandu.vercel.app** — with **real photos from the opening scene** and cinematic interactions integrated throughout. The previous split-public/private-delivery plan is superseded. This roadmap records actual implementation status; a completed plan document does not imply a deployed feature.
+
+## Current implementation
+
+| Deliverable | Verified status |
+| --- | --- |
+| Main public seven-scene frontend | **Live V0.7** at https://thandu.vercel.app, still artwork-only |
+| Personalized eight-scene V0.8 | Completed for owner review, with 47 original photos; currently **separate**, protected Vercel project + offline bundle |
+| Single eight-scene **unified** frontend with photos throughout | **Not yet implemented** |
+| Public display-safe media pipeline | **Not yet created** |
+| Approved sender letter and full recipient review | Pending |
+| Public merged V0.9 release | **Not yet deployed** |
+
+## Current fixed work — one integration sprint
+
+| Gate | Work | State |
 | --- | --- | --- |
-| 0. Concept exploration | Three immersive visual approaches | Completed (standalone visual prototypes) |
-| 1. Architecture & repository foundation | Public, documentation-only project foundation | Completed |
-| 2. Photo audit | Private inventory, duplicate verification, draft editorial mapping | Private draft complete; approvals outstanding |
-| 3. Narrative / storyboard | [Scene Plan V1](SCENE_PLAN_V1.md), private photo-by-scene plan, approved personal copy | Draft plan complete; awaiting storyboard/copy approval |
-| 4. Look development | Five keyframes; Arrival and Bloom [motion pilots](MOTION_PILOTS_V1.md); private [Memory Sanctuary pilot](MEMORY_SANCTUARY_PILOT_V1.md) | In progress; visual approval and remaining scene tests pending |
-| 5. Application implementation | Public-safe web foundation and [Memory Sanctuary V2](SANCTUARY_V2.md) on [Vercel](https://thandu.vercel.app); remaining approved private-photo integration, final letter, audio and delivery | Seven-scene connected [V0.7](MEMORY_CONSTELLATION_V07.md) deployed; local-only gallery preview working; full gift still in progress |
-| 6. Photo/content integration | Approved derivatives, captions, letter, finale | [Private V0.8 owner review](PRIVATE_REVIEW_V08.md) now available on separately Vercel-authenticated project; final photo selection/copy/recipient permission pending |
-| 7. Quality assurance | Cross-device, accessibility, performance, privacy audit | Offline Chromium checks at 360×740, 390×844 and 1440×900; protected Vercel deployment READY, real-device and recipient-login QA pending |
-| 8. Delivery | Verified link or package with correct access restrictions | Not started |
+| **A** | Merge seven public worlds and eight private chapters into one app shell / manifest; create Growing Years; preserve motion, accessibility and navigation | **Not started** |
+| **B** | Show first real hero photograph **immediately on landing**, then selected real-photo scenes and all 47 in final Keepsake | **Not started** |
+| **C** | Unify cinematic layers, face-safe framing, letter/finale, transitions and recipient copy | **Not started** |
+| **D** | Publish approved sanitized display assets through public CDN; run anonymous access, phone/desktop, image-loading, accessibility and performance tests | **Not started** |
+| **E** | Final content/third-party photo approval, recipient copy, rollback check, release on **existing** https://thandu.vercel.app | **Not started** |
 
-## Completion criteria
+**No additional feature or new app scope is authorized for V0.9.** The seven prior worlds, V0.8 private editorial photo manifest and already-built effects remain assets to reuse, not implementations to throw away.
 
-**Story:** accurate content and timeline; sincere, non-romantic tone; meaningful reason for every chapter. **Visual:** truly dimensional and immersive rather than repetitive text boxes or slideshow. **Interactions:** tap feedback, intentional navigation, replay, sound, accessibility. **Engineering:** real mobile/desktop testing, no blank screens, all assets present, performance fallback. **Privacy:** no personal originals in public Git, approval for all published content and exact delivery method.
+## Release acceptance (required, not aspirational)
 
-## Scope discipline
+1. First photo appears *on the first screen* on a fresh anonymous phone browser; no file picker, extra link or sign-in.
+2. Eight chronological/poetic thematic scenes flow on the **same website**, with real photos in all suitable scenes.
+3. Gallery includes all approved 47 images; all photos open in original aspect ratio. No face editing.
+4. Real phone and desktop pass for navigation, image resolution, touch targets, text contrast, controls, reduced motion and video/audio default-off.
+5. No factual invention in the personal message, no unapproved sensitive/group photos, no stale "private owner review" labels.
+6. Deployment, URL, anonymous accessibility and asset serving verified independently.
 
-### Required
-Opening; life journey; selected signature worlds; personal message; cinematic finale; keepsake/replay; performant mobile presentation; approved content.
+## Prior milestones and source references
 
-### Optional only after core is stable
-Secret discovery, interactive mini-game, custom music, photo export, PWA.
-
-### Not included in first birthday version
-Accounts, social sharing, monetization, tracking, public uploads, AI voice cloning, complex backend.
-
-## Open decisions
-
-Final title, exact hero and childhood chronology, approved photographs/copy and letter, the source video decision, scene look-development sign-off, audio choice, and recipient delivery/privacy model.
+- [V0.7 Memory Constellation](MEMORY_CONSTELLATION_V07.md) — live photo-free interactive world
+- [V0.8 private owner review](PRIVATE_REVIEW_V08.md) — integrated real photos in a separate owner-review build
+- [Birthday Universe](BIRTHDAY_UNIVERSE_V06.md) and [Midnight Letter](MIDNIGHT_LETTER_V05.md) — prior world interactions
+- [Face-safe photo composition policy](IDENTITY_PRESERVATION.md) — remains binding, even with public approval
+- [Unified V0.9 integration contract](UNIFIED_PUBLIC_V09_PLAN.md) — **current source of truth**
