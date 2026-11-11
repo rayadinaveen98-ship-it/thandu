@@ -1,0 +1,222 @@
+/* THANDU / First Light V2 — isolated Screen 01 styling and 6.5-second welcome.
+   Original-photo pixels stay untouched. Only scenery, framing and ambient light move.
+ */
+:root{--arrival-warm:#f8dfaa;--arrival-ivory:#fff6e9;--welcome-duration:6500ms}
+
+/* Full-screen introduction is present in first HTML paint. JS closes it at 6.5 s. */
+.welcome-overlay{
+ position:fixed;inset:0;z-index:250;isolation:isolate;overflow:hidden;
+ display:block;color:var(--arrival-ivory);background:
+ radial-gradient(ellipse 57% 50% at 50% 50%,#322d59 0,#171b3a 49%,#080d26 85%,#040818 100%);
+ animation:welcome-out var(--welcome-duration) ease-in-out both;
+}
+.welcome-overlay[hidden]{display:none!important}
+.welcome-cosmos{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.welcome-cosmos:before{content:"";position:absolute;inset:-14%;background:
+ radial-gradient(ellipse 35% 35% at 50% 49%,#ffd9a51e,transparent 87%),
+ radial-gradient(ellipse 38% 25% at 66% 27%,#a99ad31f,transparent 86%);
+ filter:blur(28px);animation:welcome-haze 6.5s ease-in-out both}
+.welcome-starfield{position:absolute;inset:0;opacity:0;background-image:
+ radial-gradient(circle at 8% 20%,#fff8d7 0 1px,transparent 2px),
+ radial-gradient(circle at 18% 67%,#fff1d2 0 1px,transparent 2px),
+ radial-gradient(circle at 27% 10%,#fff8d7 0 1px,transparent 2px),
+ radial-gradient(circle at 44% 30%,#fff7d9 0 1px,transparent 2px),
+ radial-gradient(circle at 60% 12%,#fff7d9 0 1px,transparent 2px),
+ radial-gradient(circle at 73% 45%,#fff9d8 0 1px,transparent 2px),
+ radial-gradient(circle at 89% 19%,#fff7d9 0 1px,transparent 2px),
+ radial-gradient(circle at 94% 72%,#fff7d9 0 1px,transparent 2px),
+ radial-gradient(circle at 35% 84%,#fff7d9 0 1px,transparent 2px);
+ animation:welcome-stars 6.5s ease-in-out both}
+.welcome-orbit{position:absolute;left:50%;top:44%;width:clamp(330px,48vw,680px);aspect-ratio:1;
+ border-radius:50%;border:1px solid #ffe2b38c;box-shadow:0 0 39px #ffdaa72a,inset 0 0 35px #eed6b114;
+ opacity:0;pointer-events:none}
+.welcome-orbit-outer{width:clamp(400px,56vw,760px);border-style:dashed;border-color:#ffe2b26e;
+ animation:welcome-ring-outer 6.5s cubic-bezier(.3,.4,.2,1) both}
+.welcome-orbit-inner{border-color:#ffe5bf72;
+ animation:welcome-ring-inner 6.5s cubic-bezier(.3,.4,.2,1) both}
+.welcome-pulse{position:absolute;left:50%;top:44%;width:28px;height:28px;transform:translate(-50%,-50%);border-radius:50%;
+ background:radial-gradient(circle,#fffef4,#ffedbc 42%,#edb97b 78%,transparent 100%);
+ box-shadow:0 0 25px #ffe6ac,0 0 95px #ffdea88c,0 0 180px #f5c99a55;
+ animation:welcome-ignite 6.5s ease-in-out both}
+.welcome-arch{position:absolute;z-index:3;left:50%;top:44%;width:clamp(205px,23vw,304px);height:clamp(260px,37vh,390px);
+ border:9px double #f9dca89c;border-radius:47% 47% 19px 19px/21% 21% 19px 19px;
+ background:linear-gradient(165deg,#ffeac819,#d8b8cd0c 55%,#ffe4b821);
+ box-shadow:0 0 0 8px #ffe7b514,inset 0 0 56px #ffdfa13a,0 0 55px #ffdaa57a;
+ opacity:0;transform:translate(-50%,-50%) scale(.77);animation:welcome-draw-arch 6.5s cubic-bezier(.2,.65,.3,1) both}
+.welcome-arch:before{content:"";position:absolute;inset:8px;border:1px solid #ffe7b380;border-radius:inherit}
+.welcome-portrait{position:absolute;z-index:5;left:50%;top:44%;
+ width:clamp(190px,21vw,279px);height:clamp(205px,32vh,340px);display:grid;place-items:center;
+ padding:10px;border:1px solid #ffe5bcba;border-radius:43% 43% 15px 15px/15% 15% 15px 15px;
+ background:linear-gradient(140deg,#efd2b8,#4c3b63 50%,#debcaa);
+ box-shadow:0 0 0 6px #ffebbe2a,0 14px 63px #050821a8,0 0 70px #f8cdb571;
+ opacity:0;transform:translate(-50%,-48%) scale(.98);animation:welcome-photo 6.5s cubic-bezier(.2,.65,.2,1) both}
+.welcome-portrait img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:none!important;transform:none!important;
+ border-radius:12px;box-shadow:0 0 18px #ffe1be52}
+.welcome-flame{position:absolute;z-index:6;left:50%;top:44%;font-family:Georgia,serif;font-size:50px;line-height:1;
+ color:#fff4cf;text-shadow:0 0 25px #fff6d2,0 0 80px #ffdda4;
+ animation:welcome-flame 6.5s ease-in-out both}
+.welcome-copy{position:absolute;z-index:7;left:50%;top:75%;width:min(90vw,620px);transform:translateX(-50%);
+ text-align:center;opacity:0;animation:welcome-copy-in 6.5s cubic-bezier(.2,.62,.2,1) both}
+.welcome-kicker{font-family:ui-sans-serif,system-ui,sans-serif;color:#edd5a9;font-size:10px;font-weight:750;letter-spacing:.24em;margin:0 0 11px}
+.welcome-copy h2{font-family:Georgia,"Times New Roman",serif;color:#fff8e8;font-size:clamp(43px,5.3vw,73px);font-weight:400;letter-spacing:-.036em;line-height:1.07;margin:0}
+.welcome-copy h2 em{font-weight:400;color:#ffdfa5}
+.welcome-copy p:last-child{font-family:Georgia,serif;color:#f5e5d9;letter-spacing:.025em;font-size:clamp(13px,1.25vw,16px);line-height:1.55;margin:13px 0 0}
+.welcome-footnote{position:absolute;left:0;right:0;bottom:5%;color:#f5dcb1b8;letter-spacing:.25em;font-size:10px;text-align:center;
+ opacity:0;animation:welcome-footnote-in 6.5s ease both}
+.welcome-skip{position:absolute;z-index:20;right:clamp(17px,3vw,44px);top:clamp(17px,3vw,40px);min-height:44px;padding:10px 17px;
+ color:#fff4df;background:#0c1128a4;border:1px solid #ffe3b581;border-radius:99px;
+ display:flex;align-items:center;gap:12px;backdrop-filter:blur(11px);font-size:11px;letter-spacing:.07em;font-weight:700;
+ box-shadow:0 6px 24px #01091f77;cursor:pointer}
+.welcome-skip:hover{background:#4a3c5bdb;border-color:#fff1ce}
+.welcome-skip:focus-visible{outline:3px solid #fff3b8;outline-offset:4px}
+.welcome-skip span{font-size:19px;color:#ffe2a3}
+
+/* Each phase is part of one 6.5 s sequence. Keyframe percentages correspond to the storyboard. */
+@keyframes welcome-out{
+ 0%,91%{opacity:1;visibility:visible;pointer-events:auto}
+ 100%{opacity:0;visibility:hidden;pointer-events:none}}
+@keyframes welcome-haze{
+ 0%,8%{opacity:.02}37%{opacity:.43}72%{opacity:.9}100%{opacity:1}}
+@keyframes welcome-stars{
+ 0%,7%{opacity:0}22%{opacity:.12}45%{opacity:.42}83%,100%{opacity:.67}}
+@keyframes welcome-ignite{
+ 0%,9%{opacity:0;transform:translate(-50%,-50%) scale(.13)}
+ 19%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}
+ 31%{opacity:1;transform:translate(-50%,-50%) scale(2.2)}
+ 44%{opacity:.7;transform:translate(-50%,-50%) scale(3.6)}
+ 60%,100%{opacity:0;transform:translate(-50%,-50%) scale(7)}}
+@keyframes welcome-ring-outer{
+ 0%,24%{opacity:0;transform:translate(-50%,-50%) rotate(0deg) scale(.55)}
+ 43%{opacity:.56;transform:translate(-50%,-50%) rotate(15deg) scale(.84)}
+ 82%,100%{opacity:.28;transform:translate(-50%,-50%) rotate(37deg) scale(1.04)}}
+@keyframes welcome-ring-inner{
+ 0%,25%{opacity:0;transform:translate(-50%,-50%) rotate(0deg) scale(.6)}
+ 47%{opacity:.64;transform:translate(-50%,-50%) rotate(-14deg) scale(.88)}
+ 82%,100%{opacity:.5;transform:translate(-50%,-50%) rotate(-29deg) scale(1)}}
+@keyframes welcome-draw-arch{
+ 0%,25%{opacity:0;transform:translate(-50%,-50%) scale(.77)}
+ 43%{opacity:.74;transform:translate(-50%,-50%) scale(.96)}
+ 77%,100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes welcome-photo{
+ 0%,39%{opacity:0;transform:translate(-50%,-47%) scale(.98)}
+ 58%{opacity:.98;transform:translate(-50%,-50%) scale(1)}
+ 100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes welcome-flame{
+ 0%,10%{opacity:0;transform:translate(-50%,-50%) scale(.1)}
+ 21%{opacity:1;transform:translate(-50%,-50%) scale(.75)}
+ 38%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}
+ 53%,100%{opacity:0;transform:translate(-50%,-50%) scale(2)}}
+@keyframes welcome-copy-in{
+ 0%,61%{opacity:0;transform:translateX(-50%) translateY(15px)}
+ 80%,100%{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes welcome-footnote-in{
+ 0%,80%{opacity:0}95%,100%{opacity:1}}
+
+/* First screen: a purposeful editorial composition instead of centered overlapping layers. */
+#arrival .columns .col-one,#arrival .columns .col-four{opacity:.27}
+#arrival .columns .col-two,#arrival .columns .col-three{opacity:.1}
+#arrival .celestial{border-color:#ffdfad21}
+#arrival .halo-two{border-color:#f8dbac13}
+#arrival .moon{width:clamp(80px,8vw,124px);height:clamp(80px,8vw,124px);right:4%;top:17%;opacity:.24;
+ box-shadow:0 0 76px 12px #dac4d43a}
+#arrival .sky-night{background:radial-gradient(ellipse 63% 60% at 73% 52%,#5c4a71 0,#25294f 42%,#101634 74%,#060b23 100%)}
+#arrival .sky-night:before{opacity:.8}
+#arrival .portal-area{left:72%;top:53%;width:clamp(320px,35vw,475px);height:clamp(350px,57vh,520px);
+ opacity:.74;filter:drop-shadow(0 0 26px #eec89562)}
+#arrival .portal-area .portal{inset:6% 9%;border-color:#edd3a49b;box-shadow:0 0 0 4px #443a575e,0 0 32px #f0d5a56b,inset 0 0 46px #f1d1a354}
+#arrival .arrival-copy{left:clamp(42px,7.5vw,142px);top:28%;transform:none;text-align:left;
+ width:min(44vw,660px);z-index:31}
+#arrival .arrival-copy .eyebrow{color:#f0d09d;letter-spacing:.22em;margin:0 0 21px;font-size:10px}
+#arrival .arrival-copy h1{font-size:clamp(39px,3.45vw,62px);line-height:1.09;letter-spacing:-.037em;
+ font-weight:400;color:#fff8ed;max-width:670px;text-shadow:0 7px 35px #080c2c98}
+#arrival .arrival-copy h1 em{color:#ffdf9f;text-shadow:0 0 30px #fbe4b447}
+#arrival .arrival-copy .lead{max-width:525px;text-align:left;margin:22px 0 0;
+ font-size:clamp(13px,1.04vw,16px);line-height:1.65;color:#f5e7daed;letter-spacing:.012em}
+#arrival .arrival-photo-stage{left:72%;top:53%;width:clamp(288px,29vw,410px);height:clamp(303px,48vh,435px);
+ padding:13px 12px 35px;border-color:#ffedc4db;border-width:2px;
+ box-shadow:0 0 0 6px #ffe9b42c,inset 0 0 30px #fff0c956,0 23px 61px #060e2e9e,0 0 68px #ffdfa287}
+#arrival .arrival-photo-stage #arrivalHeroOpen img{max-width:100%;max-height:100%;object-fit:contain;filter:none;transform:none}
+#arrival .arrival-photo-stage .arrival-photo-inscription{font-size:10px;bottom:10px;letter-spacing:.21em}
+#arrival .arrival-actions{position:absolute;z-index:33;left:clamp(42px,7.5vw,142px);top:66%;display:flex;
+ flex-direction:column;align-items:flex-start;gap:15px;max-width:430px}
+#arrival .arrival-actions .cta{margin:0;min-width:205px;min-height:52px;display:flex;justify-content:space-between;
+ padding:0 23px;border:1px solid #fff5d2;background:linear-gradient(110deg,#fff3d6,#e6ba7b);
+ color:#312842;box-shadow:0 13px 40px #f9cb8d3d,0 0 0 6px #f8dca20f;
+ font-size:12px;font-weight:750;letter-spacing:.05em}
+#arrival .arrival-actions .cta:hover{box-shadow:0 18px 51px #f9cb8d75;transform:translateY(-2px)}
+#arrival .arrival-actions-caption{font-size:9px;color:#f0d5aeac;letter-spacing:.17em;line-height:1.5}
+#arrival .guiding-light{left:91%!important;top:67%!important;width:66px;height:66px;opacity:.81}
+#arrival .guiding-caption{font-size:10px;letter-spacing:.14em;top:calc(100% + 15px)}
+#arrival .ambient-hint{display:none}
+#journey[data-scene="arrival"] .chapter-pill span{font-size:9px;letter-spacing:.04em}
+#journey[data-scene="arrival"] .lower-nav{border-color:#f8ddb44b;backdrop-filter:blur(21px);background:#11162bbb}
+
+@media(max-width:959px){
+ #arrival .sky-night{background:radial-gradient(ellipse at 50% 47%,#4d4069,#1f294d 53%,#090f2a)}
+ #arrival .portal-area{left:50%;top:53%;width:min(76vw,425px);height:min(46vh,440px)}
+ #arrival .arrival-copy{left:50%;top:clamp(92px,12.8vh,153px);width:min(94%,650px);transform:translateX(-50%);text-align:center}
+ #arrival .arrival-copy .eyebrow{font-size:9px;margin:0 0 9px;letter-spacing:.19em}
+ #arrival .arrival-copy h1{font-size:clamp(31px,5.1vw,47px);line-height:1.11;letter-spacing:-.031em}
+ #arrival .arrival-copy .lead{max-width:430px;margin:12px auto 0;text-align:center;font-size:12px;line-height:1.48}
+ #arrival .arrival-photo-stage{left:50%;top:54%;width:clamp(205px,40vw,335px);height:clamp(215px,32vh,310px);padding:9px 8px 29px}
+ #arrival .arrival-photo-stage .arrival-photo-inscription{font-size:8px;bottom:7px}
+ #arrival .arrival-actions{left:50%;top:auto;bottom:clamp(140px,17.6vh,183px);transform:translateX(-50%);
+ align-items:center;width:95%;max-width:none;gap:0}
+ #arrival .arrival-actions .cta{min-width:208px;min-height:49px;padding:0 20px;justify-content:space-between}
+ #arrival .arrival-actions-caption{display:none}
+ #arrival .guiding-light{left:84%!important;top:58%!important;width:clamp(44px,10vw,66px);height:clamp(44px,10vw,66px);opacity:.65}
+ #arrival .guiding-caption{display:none}
+ #arrival .moon{right:4%;top:15%;width:83px;height:83px;opacity:.13}
+ #arrival .columns .col-one,#arrival .columns .col-four{opacity:.14}
+ #arrival .columns .col-two,#arrival .columns .col-three{opacity:.04}
+ #journey[data-scene="arrival"] .chapter-pill span{font-size:9px}
+ .welcome-portrait{width:clamp(176px,33vw,230px);height:clamp(209px,31vh,288px)}
+ .welcome-arch{width:clamp(201px,38vw,270px);height:clamp(238px,37vh,335px)}
+ .welcome-copy{top:72%}
+ .welcome-copy h2{font-size:clamp(43px,6vw,66px)}
+}
+@media(max-width:540px){
+ #arrival .arrival-copy{top:clamp(96px,14vh,133px);width:94%}
+ #arrival .arrival-copy h1{font-size:clamp(30px,7.8vw,38px);line-height:1.10}
+ #arrival .arrival-copy .lead{font-size:11.5px;max-width:335px;line-height:1.45}
+ #arrival .portal-area{top:53%;height:min(40vh,330px);width:85vw}
+ #arrival .arrival-photo-stage{top:54%;width:clamp(189px,62vw,276px);height:clamp(204px,31vh,277px)}
+ #arrival .arrival-actions{bottom:clamp(143px,18vh,174px)}
+ #arrival .guiding-light{left:85%!important;top:60%!important;width:45px;height:45px}
+ #arrival .moon{top:17%;right:4%;width:70px;height:70px;opacity:.10}
+ .welcome-portrait{width:clamp(165px,48vw,213px);height:clamp(205px,31vh,255px)}
+ .welcome-arch{width:clamp(191px,57vw,246px);height:clamp(240px,39vh,312px)}
+ .welcome-orbit{width:clamp(335px,93vw,460px)}
+ .welcome-orbit-outer{width:clamp(420px,125vw,540px)}
+ .welcome-copy{top:70.5%;width:92%}
+ .welcome-copy h2{font-size:clamp(42px,11vw,54px)}
+ .welcome-kicker{font-size:8px;letter-spacing:.18em}
+ .welcome-copy p:last-child{font-size:12px;margin-top:9px}
+ .welcome-footnote{font-size:8px;letter-spacing:.2em;bottom:4.8%}
+ .welcome-skip{top:19px;right:16px;font-size:10px;padding:9px 13px}
+}
+@media(max-height:700px) and (max-width:959px){
+ #arrival .arrival-copy{top:84px}
+ #arrival .arrival-copy .eyebrow{font-size:8px;margin:0 0 6px}
+ #arrival .arrival-copy h1{font-size:clamp(28px,7.1vw,34px);line-height:1.06}
+ #arrival .arrival-copy .lead{font-size:10px;line-height:1.34;margin:8px auto 0;max-width:330px}
+ #arrival .portal-area{top:53%;height:37vh}
+ #arrival .arrival-photo-stage{top:53%;height:clamp(176px,28vh,215px);width:clamp(163px,48vw,209px)}
+ #arrival .arrival-actions{bottom:139px}
+ #arrival .arrival-actions .cta{min-height:44px}
+ .welcome-copy{top:72%}.welcome-portrait{height:clamp(165px,27vh,215px)}
+ .welcome-arch{height:clamp(205px,32vh,255px)}
+}
+@media(max-height:590px) and (max-width:959px){
+ #arrival .arrival-copy{top:72px}
+ #arrival .arrival-copy h1{font-size:27px}
+ #arrival .arrival-copy .lead{display:none}
+ #arrival .arrival-photo-stage{top:50%;height:168px;width:156px}
+ #arrival .arrival-actions{bottom:123px}
+}
+@media(prefers-reduced-motion:reduce){
+ .welcome-overlay{display:none!important;animation:none!important}
+ .welcome-overlay *, .welcome-overlay *::before, .welcome-overlay *::after{animation:none!important}
+ #arrival .arrival-photo-glow,#arrival .portal-ray,#arrival .portal-aura{animation:none!important}
+}
+body.motion-off #arrival .arrival-photo-glow,body.motion-off #arrival .portal-ray{animation:none!important}
