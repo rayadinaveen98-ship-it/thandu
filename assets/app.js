@@ -255,7 +255,7 @@
     };
   }
 
-  $('.chapter-pill').forEach(tab => {
+  $$('.chapter-pill').forEach(tab => {
     tab.addEventListener('click', () => navigate(order.indexOf(tab.dataset.to)));
     tab.addEventListener('keydown', event => {
       if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
@@ -263,7 +263,7 @@
       const direction = event.key === 'ArrowRight' ? 1 : -1;
       const target = Math.max(0, Math.min(order.length - 1, order.indexOf(tab.dataset.to) + direction));
       navigate(target);
-      const nextTab = $('.chapter-pill')[target];
+      const nextTab = $$('.chapter-pill')[target];
       if (nextTab) nextTab.focus({ preventScroll: true });
     });
   });
