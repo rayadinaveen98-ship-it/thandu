@@ -101,6 +101,17 @@
     paintFrame(scene.id,0);
   }
 
+  // Keep the original painterly worlds as scenery behind independently rendered real photos.
+  for (const scene of story.scenes) {
+    const world=$(scene.id);
+    if (!world || !scene.art) continue;
+    const matte=document.createElement('div');
+    matte.className='story-art-matte';
+    matte.setAttribute('aria-hidden','true');
+    matte.style.backgroundImage='url("'+scene.art+'")';
+    world.prepend(matte);
+  }
+
   // Arrival is in the HTML before JS runs: browsers can request the first real photo immediately.
   const arrival=chapters.get('arrival');
   const staticPhoto=$('arrivalHeroPhoto');
