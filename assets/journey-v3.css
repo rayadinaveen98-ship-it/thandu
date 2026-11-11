@@ -106,3 +106,13 @@ body.motion-off #arrival .portal-inner,body.motion-off #arrival .sky-night:after
 @media(prefers-reduced-motion:reduce){
  #arrival .guiding-light,#arrival .portal-inner,#arrival .sky-night:after,#arrival .portal-sigil,#bloom:before{animation:none!important}
 }
+
+/* Garden-to-celebration handoff: preserve legibility when reward has two actions. */
+#bloom .garden-reward{max-width:min(95vw,540px);flex-wrap:wrap;justify-content:center;gap:8px}
+#bloom .garden-reward #toCelebration{background:linear-gradient(110deg,#fff1d0,#f2ca92);color:#294043;border:1px solid #fff5d5}
+#bloom .garden-reward #toCelebration:hover{filter:brightness(1.08)}
+@media(max-width:720px){
+  #bloom .garden-reward{top:36%;padding:9px 10px 10px;max-width:90vw;border-radius:22px}
+  #bloom .garden-reward span{flex-basis:100%;text-align:center;font-size:9px}
+  #bloom .garden-reward button{padding:8px 12px}
+}
