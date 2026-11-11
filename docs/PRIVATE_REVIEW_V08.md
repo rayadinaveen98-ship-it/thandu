@@ -1,6 +1,6 @@
 # THANDU — Private Owner Review V0.8
 
-**Development milestone:** A **private, offline personalized review** was produced on 2026-11-11. It is **not committed here**, not accessible through public Vercel, and not yet the recipient-ready final gift.
+**Development milestone:** A **private, offline personalized review** was produced on 2026-11-11. Its personal images are **not committed here**, and it is not yet the recipient-ready final gift. A separate **Vercel Authentication-protected** deployment now exists for owner review.
 
 ## Private build contents
 
@@ -21,7 +21,7 @@
 
 ## Privacy boundaries
 
-The public GitHub repository and live Vercel development demo remain **artwork-only** with temporary manual device-local image selection. This private bundle has **not** been published or hosted. No source photos, derivatives, private media manifest, personal letter or downloadable personalized HTML are committed.
+The public GitHub repository and live Vercel development demo remain **artwork-only** with temporary manual device-local image selection. The distinct V0.8 personalized build is now hosted in a **separate Vercel project** with `ssoProtection.deploymentType = all`. Its latest deployment reports READY and includes 47 JPEG image assets plus 5 artwork files. No private photo assets, derivatives, private media manifest, or personalized HTML are committed to the public GitHub repo. The separate public THANDU website remains photo-free.
 
 The private HTML is not DRM: anyone receiving it can extract photographs. Final sharing is therefore a separate approval and security decision. A guessed link or browser-side password is not acceptable protection for a hosted personal-gallery version.
 
@@ -30,7 +30,16 @@ The private HTML is not DRM: anyone receiving it can extract photographs. Final 
 1. Owner reviews photo selection, story order, portrait visibility and letter draft.
 2. Remove any other-person or childhood photos not approved for recipient distribution.
 3. Finalize exact message and decide whether to include the optional birthday video.
-4. Choose a truly protected recipient delivery (offline or server-authorized), then perform real-device QA.
+4. Confirm real recipient access to the Vercel-Authentication-protected project (a Vercel account and explicit access rights are required). Test the login flow and the complete personalized journey in a real browser, and finalize whether an offline copy is also shared.
 5. Only after sign-off designate the experience recipient-ready.
 
 See [Identity Preservation](IDENTITY_PRESERVATION.md) for the owner's approved face-safe crop/composition rules.
+
+## Protected Vercel review milestone (2026-11-11)
+
+- A separate Vercel project, `thandu-private`, now exists. The GitHub-linked public `thandu` project is unaffected.
+- The private project's Vercel Authentication is enabled for **all deployments**; this should gate both its production domain and generated deployment URLs.
+- Its production deployment `dpl_DdvBYQqZFqAwDDmnL3UARiSYP5N6` reports **READY**.
+- The deployment source tree contains a private HTML build, 47 JPG files (scene-05 to scene-51), five WebP artwork files, and a static security-headers configuration. Six sample JPG source hashes checked against the owner-review originals matched; full live rendering/network checks remain outstanding.
+- Important limitation: on Vercel's free plan, this protection requires Vercel-account authorization, which makes recipient access a separate setup step. A public/plain URL or secret-looking slug alone is not authorization. Do not share temporary bypass links casually; they are bearer credentials.
+- Owner must still verify the real mobile experience, approve exact photo selection and wording, and decide who receives permission. The protected deployment does **not** mean those approvals have occurred.
