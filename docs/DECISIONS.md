@@ -20,7 +20,10 @@
 
 | D-015 | Use one deliberate progressive reveal in Birthday Universe, then allow replay and revisiting chapters | Implemented in V0.6 preview | Emotional climax without forcing multiple interactions or blocking reduced-motion users |
 
+| D-016 | Gallery accepts only explicit local photo selection; never uploads or persists image bytes on public Vercel | Implemented for V0.7 preview | Validates face-faithful presentation without publishing private childhood photos. Recipient delivery policy still needs approval |
+
 ## Changelog
+- 2026-11-11: Memory Constellation V0.7 preview uses session-only client-side photo selection and manual thematic grouping.
 - 2026-11-11: Birthday Universe V0.6 connected as sixth public-safe chapter; detailed QA and private photo release outstanding.
 - 2026-11-11: Owner approved face-safe cropping and non-facial compositing; Midnight Letter V0.5 connected as fifth scene.
 - 2026-11-11: Scene Plan V1 drafted with public scene interface and private photo-to-scene mapping; still awaiting approval.
