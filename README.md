@@ -6,9 +6,9 @@ An original, interactive cinematic birthday journey for Thandu, designed with re
 
 **ONE public app: https://thandu.vercel.app. Real photographs must appear from the opening scene and throughout the story.**
 
-The owner explicitly approved **public presentation of the personal photo experience**, replacing the earlier split-public/private plan. The final app must merge the rich environmental animation and interactions of public **V0.7** with the actual original-photo storytelling of private **V0.8**, and remain a single experience at the main URL.
+The owner explicitly approved **public presentation of the photo experience**. **V0.9 has merged the cinematic V0.7 world engine with real V0.8 photo content** on the main app, keeping the original image appearance. Final wording and real-device visual acceptance remain outstanding.
 
-**Work status:** the main Vercel site **still serves V0.7 artwork-only**. The separately Vercel-authenticated V0.8 contains 47 photographs but is not yet merged into the public experience. The approved next work is **V0.9 Unified Public Birthday Experience**; do not claim it is deployed until verified.
+**Current status:** the main Vercel site now serves **V0.9 photo-led development build**: a real photo from the first screen, eight connected scenes and 47 ready-to-view memories. Public image delivery and main-site rewrites returned HTTP 200 in live checks. **Full mobile visual/interaction QA and final letter approval are pending**, so it is not yet recipient-ready.
 
 **Read the authoritative plan:** [UNIFIED_PUBLIC_V09_PLAN.md](docs/UNIFIED_PUBLIC_V09_PLAN.md)  
 **Stage-by-stage execution:** [ROADMAP_AND_ACCEPTANCE.md](docs/ROADMAP_AND_ACCEPTANCE.md)
@@ -30,8 +30,8 @@ Real photos are part of the main interactive worlds, not a final slideshow, uplo
 
 - **Code:** public GitHub `rayadinaveen98-ship-it/thandu`, `main` branch.
 - **App:** existing public Vercel project `navin7/thandu`, permanent URL `https://thandu.vercel.app`.
-- **Media:** publish **approved display copies** with unnecessary EXIF/GPS metadata removed and original appearance/faces preserved, preferably via the main project's public Vercel Blob storage. Originals remain archived untouched outside public Git history. The public CDN media can be copied, so consent and sensitivity review still matter.
-- **Legacy staging:** `thandu-private` remains for owner review / rollback, **not** a visitor destination. No auth or cross-site routing in final user experience.
+- **Media:** 47 already-prepared metadata-free JPEG presentation assets and five original WebP environments are published on a separate static asset service and transparently served as `/media/*` from **thandu.vercel.app**. They are public and copyable, while the originals remain archived untouched outside Git history.
+- **Legacy staging:** `thandu-private` remains a separate owner-review rollback and is **not** in the recipient journey. The static image service is solely a CDN origin behind the main domain; it is not another visitor app.
 
 ## Creative and safety rules
 
@@ -51,4 +51,4 @@ Real photos are part of the main interactive worlds, not a final slideshow, uplo
 - [Scene content contract](docs/SCENE_CONTENT_CONTRACT.md)
 - [Photo-composition rules](docs/IDENTITY_PRESERVATION.md)
 
-**Current objective:** integrate, not expand. A publicly accessible site with her real photograph visible on the opening screen is the first release gate.
+**Current objective:** complete real-phone visual QA, fix any photo/framing/interaction issues, approve final birthday letter and photo editorial selection, then sign off the **single public V0.9 recipient release**. Do not add unrelated new features.
