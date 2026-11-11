@@ -49,4 +49,4 @@ See also [Provisional storyboard structure](docs/STORYBOARD_STRUCTURE.md). The p
 
 ## Live development preview
 
-The initial **artwork-only** web foundation is live at **https://thandu.vercel.app**. It is connected to Vercel project `thandu` under `navin7` and deploys new reviewed changes from GitHub `main`. This is a design/development preview, **not the finished private birthday gift**. No recipient photos or private letters may be added to the public build. See [Deployment & Privacy Workflow](docs/DEPLOYMENT.md).
+The **artwork-only Memory Sanctuary V2** web foundation is live at **https://thandu.vercel.app**. It is connected to Vercel project `thandu` under `navin7` and deploys new reviewed changes from GitHub `main`. This is a design/development preview, **not the finished private birthday gift**. No recipient photos or private letters may be added to the public build. See [Deployment & Privacy Workflow](docs/DEPLOYMENT.md) and [Sanctuary V2 update](docs/SANCTUARY_V2.md).
