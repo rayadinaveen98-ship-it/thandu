@@ -1,6 +1,6 @@
 # THANDU — The World She Brings to Life
 
-**Status:** Pre-production. Visual explorations completed; final experience and art direction pending photo/story review. No application code or private photographs committed.
+**Status:** Pre-production plus a live, public-safe web foundation. Visual explorations and initial motion pilots are complete; the final experience remains in development. No private photographs committed.
 
 An interactive, visually immersive birthday keepsake crafted as a cinematic journey rather than a conventional greeting page or slideshow.
 
@@ -39,7 +39,7 @@ Public repository visibility does not determine the privacy of the eventual birt
 
 ## Next step
 
-Review photographs privately in batches; map each approved image to a scene; then lock the editorial sequence, visuals, and distribution policy before implementing the app.
+Refine the live, artwork-only preview against our approved motion pilots and private photo curation. The final photo-bearing experience and delivery controls are separate and still require review and sign-off.
 
 ## Non-negotiable: THANDU Rule 001
 
