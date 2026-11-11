@@ -291,7 +291,11 @@
   guidingLight.addEventListener('click', () => navigate(1));
 
   document.addEventListener('keydown', event => {
-    if (event.target.closest('button,input,textarea,[role="dialog"]')) return;
+    // Gallery and native photo dialogs own their own arrow-key interaction.
+    // A global scene shortcut must never navigate behind a modal overlay.
+    if (document.body.classList.contains('gallery-open') ||
+        document.getElementById('galleryViewer')?.open ||
+        event.target.closest('button,input,textarea,select,[role="dialog"],dialog')) return;
     if (event.key === 'ArrowRight') navigate(current + 1);
     if (event.key === 'ArrowLeft') navigate(current - 1);
   });
