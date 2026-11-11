@@ -7,7 +7,9 @@
   <meta name="description" content="THANDU — A journey through light. Work-in-progress interactive art preview.">
   <title>THANDU — A Journey Through Light</title>
   <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/sanctuary-v2.css">
   <script src="/assets/app.js" defer></script>
+  <script src="/assets/sanctuary-v2.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#journey">Skip to experience</a>
@@ -37,26 +39,43 @@
       <p class="ambient-hint">Touch the stars. Watch the world respond.</p>
     </section>
 
-    <section class="world world-sanctuary" id="sanctuary" aria-labelledby="sanctuaryTitle" inert>
-      <div class="sky sky-mist"><div class="sanctuary-glow"></div></div>
-      <div class="sanctuary-architecture" aria-hidden="true"><span class="sanct-arch a1"></span><span class="sanct-arch a2"></span><span class="sanct-arch a3"></span></div>
+    <section class="world world-sanctuary sanctuary-v2" id="sanctuary" aria-labelledby="sanctuaryTitle" inert>
+      <div class="sky sky-mist" aria-hidden="true"><div class="sanctuary-glow"></div><div class="sanctuary-aurora"></div></div>
+      <div class="sanctuary-beams" aria-hidden="true"></div>
+      <div class="sanctuary-starfield" aria-hidden="true"></div>
+      <div class="atrium-geometry" aria-hidden="true">
+        <div class="side-arch left"></div><div class="side-arch right"></div><div class="atrium-arch"></div>
+      </div>
+      <div class="atrium-floor" aria-hidden="true"></div><div class="atrium-steps" aria-hidden="true"></div>
       <div class="lantern-group" aria-hidden="true"><span class="lantern l1"></span><span class="lantern l2"></span><span class="lantern l3"></span><span class="lantern l4"></span></div>
+      <div class="floating-petal" style="--left:9%;--top:40%;--size:13px;--duration:6s;--delay:-2s" aria-hidden="true"></div>
+      <div class="floating-petal" style="--left:76%;--top:55%;--size:10px;--duration:8s;--delay:-4s" aria-hidden="true"></div>
+      <div class="floating-petal" style="--left:68%;--top:21%;--size:12px;--duration:7s;--delay:-3s" aria-hidden="true"></div>
+      <div class="floating-petal" style="--left:24%;--top:73%;--size:15px;--duration:9s;--delay:-1s" aria-hidden="true"></div>
+      <div class="floating-petal" style="--left:87%;--top:83%;--size:9px;--duration:7s;--delay:-5s" aria-hidden="true"></div>
       <div class="world-copy sanctuary-copy">
-        <p class="eyebrow">CHAPTER I · LITTLE BEGINNINGS</p>
-        <h2 id="sanctuaryTitle">A sanctuary of<br><em>little memories.</em></h2>
-        <p class="lead">Every glowing window holds a moment worth keeping.</p>
+        <p class="eyebrow">CHAPTER I &nbsp; ✧ &nbsp; THE MEMORY ATRIUM</p>
+        <h2 id="sanctuaryTitle">Where little moments<br><em>become forever.</em></h2>
+        <p class="lead">Five gentle lights. Touch one to reveal the memory it holds.</p>
       </div>
-      <div class="memory-constellation" aria-label="Interactive memory preview">
-        <button class="memory-orb" data-memory="1" aria-label="Open memory portal one"><span>01</span></button>
-        <button class="memory-orb" data-memory="2" aria-label="Open memory portal two"><span>02</span></button>
-        <button class="memory-orb large" data-memory="3" aria-label="Open memory portal three"><span>03</span></button>
-        <button class="memory-orb" data-memory="4" aria-label="Open memory portal four"><span>04</span></button>
-        <button class="memory-orb" data-memory="5" aria-label="Open memory portal five"><span>05</span></button>
+      <div class="memory-constellation" aria-label="Five interactive memory portals">
+        <button class="memory-orb" data-memory="1" style="--ml:19%;--mt:29%;--rotate:-8deg;--ft:4.8s;--fd:-1s" aria-label="Open First Light memory" aria-pressed="false"><span class="orb-engraving" aria-hidden="true">✧</span><span class="orb-name">First Light</span><span class="orb-number" aria-hidden="true">01</span></button>
+        <button class="memory-orb" data-memory="2" style="--ml:81%;--mt:29%;--rotate:9deg;--ft:5.5s;--fd:-2s" aria-label="Open Little Joys memory" aria-pressed="false"><span class="orb-engraving" aria-hidden="true">✺</span><span class="orb-name">Little Joys</span><span class="orb-number" aria-hidden="true">02</span></button>
+        <button class="memory-orb large" data-memory="3" style="--ml:50%;--mt:52%;--rotate:0deg;--ft:5.8s;--fd:-2.8s" aria-label="Open Growing Years memory" aria-pressed="false"><span class="orb-engraving" aria-hidden="true">❈</span><span class="orb-name">Growing Years</span><span class="orb-number" aria-hidden="true">03</span></button>
+        <button class="memory-orb" data-memory="4" style="--ml:20%;--mt:80%;--rotate:7deg;--ft:5s;--fd:-3s" aria-label="Open Warm Moments memory" aria-pressed="false"><span class="orb-engraving" aria-hidden="true">❀</span><span class="orb-name">Warm Moments</span><span class="orb-number" aria-hidden="true">04</span></button>
+        <button class="memory-orb" data-memory="5" style="--ml:80%;--mt:80%;--rotate:-9deg;--ft:6s;--fd:-3.7s" aria-label="Open Bright Days memory" aria-pressed="false"><span class="orb-engraving" aria-hidden="true">✦</span><span class="orb-name">Bright Days</span><span class="orb-number" aria-hidden="true">05</span></button>
       </div>
-      <div id="memoryReveal" class="memory-reveal" aria-live="polite" hidden>
-        <div class="memory-reveal-inner"><span class="memory-star">✦</span><span id="memoryTitle">MEMORY 01</span><p>Her real photograph will appear here only in an approved private build. The original remains untouched.</p><button id="memoryClose" class="text-button">Close memory</button></div>
+      <div class="memory-progress" aria-live="polite"><span class="small-stars" aria-hidden="true">✦ ✧</span><span class="memory-status" id="memoryStatus">0 OF 5 MEMORIES DISCOVERED</span></div>
+      <div id="memoryReveal" class="memory-reveal" role="dialog" aria-modal="true" aria-labelledby="memoryTitle" hidden>
+        <div class="memory-reveal-inner">
+          <span class="memory-star" aria-hidden="true">✧</span>
+          <span id="memoryTitle">FIRST LIGHT</span>
+          <div class="memory-stage" id="memoryStage"><span class="memory-stage-art" aria-hidden="true">✧</span><span class="memory-stage-hint">A treasured moment awaits</span></div>
+          <p id="memoryDescription">The original photograph will appear here only in the protected birthday experience, preserved exactly as captured.</p>
+          <div class="reveal-actions"><button id="memoryPrevious" type="button">← Previous</button><button id="memoryClose" type="button">Close ✕</button><button id="memoryNext" type="button">Next →</button></div>
+        </div>
       </div>
-      <p class="ambient-hint">Tap a light to discover a memory portal.</p>
+      <p class="ambient-hint">Tap a glowing memory. Touch the scenery to create light.</p>
     </section>
 
     <section class="world world-bloom" id="bloom" aria-labelledby="bloomTitle" inert>
