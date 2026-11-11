@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="/assets/birthday-universe.css">
   <link rel="stylesheet" href="/assets/memory-constellation.css">
   <link rel="stylesheet" href="/assets/photo-worlds.css">
+  <link rel="stylesheet" href="/assets/arrival-v3.css">
   <script src="/assets/photo-story-data.js" defer></script>
   <script src="/assets/app.js" defer></script>
   <script src="/assets/sanctuary-v2.js" defer></script>
@@ -27,8 +28,41 @@
   <script src="/assets/birthday-universe.js" defer></script>
   <script src="/assets/photo-story-scenes.js" defer></script>
   <script src="/assets/memory-constellation.js" defer></script>
+  <script src="/assets/arrival-v3.js" defer></script>
 </head>
-<body>
+<body class="welcome-active">
+  <div class="welcome-overlay" id="welcomeOverlay" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-describedby="welcomeSubtitle">
+    <div class="welcome-world" aria-hidden="true">
+      <div class="welcome-night"></div>
+      <div class="welcome-garden-art"></div>
+      <div class="welcome-floor"></div>
+      <div class="welcome-garland garland-left"><span>✿</span><span>❀</span><span>✾</span><span>✿</span></div>
+      <div class="welcome-garland garland-right"><span>✿</span><span>❀</span><span>✾</span><span>✿</span></div>
+      <div class="welcome-hanging-lights"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="welcome-lantern lantern-one"><span>✧</span></div>
+      <div class="welcome-lantern lantern-two"><span>✧</span></div>
+      <div class="welcome-lantern lantern-three"><span>✧</span></div>
+      <div class="welcome-light-ribbon ribbon-left"></div>
+      <div class="welcome-light-ribbon ribbon-right"></div>
+      <div class="welcome-diya">
+        <div class="diya-aura"></div>
+        <div class="diya-flame"></div>
+        <div class="diya-wick"></div>
+        <div class="diya-bowl"><span class="diya-engraving">❀ ✧ ❀</span></div>
+        <div class="diya-tray"></div>
+      </div>
+      <div class="welcome-flowers"><span class="bud a">✿</span><span class="bud b">✿</span><span class="bud c">❀</span><span class="bud d">✾</span><span class="bud e">❀</span></div>
+      <div class="welcome-awakening-particles" id="welcomeAwakeningParticles"></div>
+    </div>
+    <div class="welcome-message">
+      <p class="welcome-pretitle">A LITTLE LIGHT BEGINS IT ALL</p>
+      <h2 id="welcomeTitle">A world awakens<br><em>for Thandu.</em></h2>
+      <p id="welcomeSubtitle">Some moments deserve a little magic.</p>
+    </div>
+    <p class="welcome-footer">✧ &nbsp; ONE LIGHT · A THOUSAND BEAUTIFUL MOMENTS &nbsp; ✧</p>
+    <button class="welcome-skip" type="button" id="skipWelcome">Skip introduction <span aria-hidden="true">→</span></button>
+  </div>
+  <noscript><style>.welcome-overlay{display:none!important}</style></noscript>
   <a class="skip-link" href="#journey">Skip to experience</a>
   <canvas id="particleCanvas" aria-hidden="true"></canvas>
   <div class="grain" aria-hidden="true"></div>
@@ -43,25 +77,84 @@
   <main id="journey" class="journey" data-scene="arrival">
     <section class="world world-arrival current" id="arrival" aria-labelledby="arrivalTitle">
       <div class="sky sky-night"><div class="celestial halo-one"></div><div class="celestial halo-two"></div><div class="moon"></div></div>
-      <div class="columns" aria-hidden="true"><span class="column col-one"></span><span class="column col-two"></span><span class="column col-three"></span><span class="column col-four"></span></div>
-      <div class="portal-area" aria-hidden="true"><div class="portal-aura"></div><div class="portal"><div class="portal-inner"></div><div class="portal-ray"></div></div><div class="portal-sigil">✦</div></div>
-      <div class="arrival-photo-stage">
+      <div class="arrival-festival" id="arrivalFestival" aria-label="A magical celebration garden">
+        <div class="arrival-garden-art" aria-hidden="true"></div>
+        <div class="arrival-light-vignette" aria-hidden="true"></div>
+        <div class="arrival-festival-arch" aria-hidden="true"></div>
+        <div class="arrival-canopy canopy-left" aria-hidden="true"><span>✿</span><span>❀</span><span>✾</span><span>✿</span><span>❀</span></div>
+        <div class="arrival-canopy canopy-right" aria-hidden="true"><span>✿</span><span>❀</span><span>✾</span><span>✿</span><span>❀</span></div>
+        <div class="arrival-lights" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="arrival-pool" aria-hidden="true"><div class="arrival-reflection"></div><div class="arrival-ripple one"></div><div class="arrival-ripple two"></div></div>
+        <div class="arrival-lotus first" aria-hidden="true">❀</div>
+        <div class="arrival-lotus second" aria-hidden="true">✿</div>
+        <div class="arrival-lotus third" aria-hidden="true">❀</div>
+        <button type="button" class="arrival-touch-lantern left" data-awaken="lantern" aria-label="Light the left lantern" aria-pressed="false"><span class="lantern-rope" aria-hidden="true"></span><span class="lantern-glass" aria-hidden="true">✧</span></button>
+        <button type="button" class="arrival-touch-lantern right" data-awaken="lantern" aria-label="Light the right lantern" aria-pressed="false"><span class="lantern-rope" aria-hidden="true"></span><span class="lantern-glass" aria-hidden="true">✧</span></button>
+        <div class="arrival-floating-petals" id="arrivalFloatingPetals" aria-hidden="true"></div>
+        <div class="arrival-firefly-field" id="arrivalFireflyField" aria-hidden="true"></div>
+      </div>
+      <div class="arrival-memory-gate" aria-hidden="true">
+        <div class="arrival-memory-arch"></div>
+        <div class="arrival-gate-aura"></div>
+      </div>
+      <div class="arrival-photo-stage" id="arrivalPhotoStage" aria-hidden="true" inert>
         <div class="arrival-photo-glow" aria-hidden="true"></div>
         <div class="arrival-photo-crown" aria-hidden="true">✧</div>
-        <button type="button" id="arrivalHeroOpen" aria-label="Open Thandu's welcome photograph">
-          <img id="arrivalHeroPhoto" src="/media/scene-50.jpg" alt="Thandu — a real photograph welcoming you into her birthday journey" fetchpriority="high" decoding="async" />
+        <button type="button" id="arrivalHeroOpen" aria-label="Open Thandu's revealed photograph" tabindex="-1">
+          <img id="arrivalHeroPhoto" src="/media/scene-50.jpg" alt="Thandu holding a small diya, an original photograph" fetchpriority="high" decoding="async" />
         </button>
         <span class="arrival-photo-inscription">THE FIRST LIGHT</span>
       </div>
-      <div class="reflective-water" aria-hidden="true"></div>
-      <div class="pathway" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="arrival-veil" id="arrivalVeil" aria-hidden="true">
+        <div class="arrival-veil-heart">✧</div>
+        <span class="arrival-veil-line">A LITTLE SURPRISE</span>
+        <span class="arrival-veil-title">A beautiful moment<br>is waiting.</span>
+        <span class="arrival-veil-whisper">The light knows the way.</span>
+      </div>
+      <div class="arrival-bird-perch" id="arrivalBirdPerch">
+        <div class="arrival-perch-branch" aria-hidden="true"><span>✿</span><span>❀</span><span>✾</span></div>
+        <button type="button" class="arrival-bird" id="arrivalBird" aria-label="Touch the glowing bird to reveal Thandu's first memory" aria-describedby="arrivalBirdHint">
+          <span class="arrival-bird-aura" aria-hidden="true"></span>
+          <svg viewBox="0 0 380 310" class="arrival-bird-svg" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="bird-body" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff9e1"/><stop offset=".43" stop-color="#ffdca4"/><stop offset="1" stop-color="#e89c82"/></linearGradient>
+              <linearGradient id="bird-wing" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffbe4"/><stop offset=".48" stop-color="#f6c785"/><stop offset="1" stop-color="#be849a"/></linearGradient>
+              <linearGradient id="bird-tail" x1="0" y1="0" x2=".5" y2="1"><stop stop-color="#fff2cf"/><stop offset=".5" stop-color="#ebba97"/><stop offset="1" stop-color="#fbe4bb" stop-opacity="0"/></linearGradient>
+            </defs>
+            <g class="bird-tail">
+              <path d="M155 186Q92 244 8 276Q111 267 185 206" fill="url(#bird-tail)" stroke="#fff4d6" stroke-opacity=".8" stroke-width="3"/>
+              <path d="M169 198Q127 280 36 306Q153 284 199 212" fill="url(#bird-tail)" stroke="#fce3bd" stroke-opacity=".8" stroke-width="3"/>
+              <path d="M161 197Q88 264 3 255" fill="none" stroke="#ffe2aa" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+            </g>
+            <path d="M185 116Q161 116 145 131Q127 152 136 181Q155 221 208 216Q247 211 272 180Q284 160 276 138Q247 107 212 117Z" fill="url(#bird-body)" stroke="#fff3d0" stroke-width="5"/>
+            <g class="bird-wing">
+              <path d="M203 147Q165 153 142 181Q153 211 191 215Q222 214 253 174Q223 179 203 147Z" fill="url(#bird-wing)" stroke="#fff9df" stroke-width="4"/>
+              <path d="M168 185Q194 190 237 181" stroke="#fff2cc" stroke-opacity=".7" stroke-width="4" fill="none"/>
+              <path d="M169 193Q191 200 222 195" stroke="#dbab9b" stroke-opacity=".55" stroke-width="3" fill="none"/>
+            </g>
+            <path d="M255 143Q278 92 298 85Q335 82 345 118Q345 143 320 156Q291 170 263 161" fill="url(#bird-body)" stroke="#fff5db" stroke-width="5"/>
+            <path d="M289 92Q298 63 313 74Q310 89 303 99" stroke="#ffe5b9" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M316 128L362 136L320 146" fill="#f5b780" stroke="#ffe8b3" stroke-width="3"/>
+            <circle class="bird-eye" cx="318" cy="119" r="5" fill="#65455b"/>
+            <circle cx="320" cy="117" r="1.5" fill="#fff8e8"/>
+            <path d="M220 210L226 247M242 202L252 246" stroke="#f6cb91" stroke-width="5" stroke-linecap="round"/>
+            <path d="M225 244l-15 8m16-8l10 9m16-8l-14 9m14-9l11 7" stroke="#f6cb91" stroke-width="4" stroke-linecap="round"/>
+            <g class="bird-sparkle" fill="#fff7cf"><path d="M270 50L276 70L296 76L276 81L270 101L264 81L246 76L264 70Z"/><circle cx="212" cy="59" r="3"/><circle cx="349" cy="46" r="2"/></g>
+          </svg>
+          <span class="arrival-bird-spark">✦</span>
+        </button>
+        <p class="arrival-bird-hint" id="arrivalBirdHint">Touch the little bird<br>to reveal the first memory</p>
+      </div>
       <div class="world-copy arrival-copy">
         <p class="eyebrow">AN INVITATION INTO WONDER</p>
         <h1 id="arrivalTitle">Every beautiful journey<br>begins with a <em>little light.</em></h1>
-        <p class="lead">For Thandu — a world waiting to come alive.</p>
-        <button class="cta" data-next="sanctuary"><span>Enter the journey</span><span class="cta-icon">✧</span></button>
+        <p class="lead">For Thandu — a world of little moments, wonderful memories and bright days still to come.</p>
       </div>
-      <p class="ambient-hint">Touch the stars. Watch the world respond.</p>
+      <div class="arrival-actions">
+        <button class="cta" id="arrivalPrimary" data-next="sanctuary"><span id="arrivalPrimaryLabel">Reveal the surprise</span><span class="cta-icon" aria-hidden="true">✧</span></button>
+        <span class="arrival-actions-caption" id="arrivalActionCaption">A little touch opens a world of memories.</span>
+      </div>
+      <div class="arrival-live-status sr-only" role="status" aria-live="polite" id="arrivalLiveStatus"></div>
     </section>
 
     <section class="world world-sanctuary sanctuary-v2" id="sanctuary" aria-labelledby="sanctuaryTitle" inert>
