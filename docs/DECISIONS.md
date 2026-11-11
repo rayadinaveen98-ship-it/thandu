@@ -16,6 +16,9 @@
 | D-012 | Use one travelling light as a visual continuity object across the three worlds | Proposed in Scene Plan V1 | Provides meaningful cinematic transitions instead of disconnected pages |
 | D-013 | Use short guided journey, then free-exploration keepsake | Proposed in Scene Plan V1 | Preserves emotional pacing and optional photo access |
 
+| D-014 | Artistic crops, reframing, masks and non-facial compositing are allowed; source faces must remain faithfully unchanged | **Locked — owner instruction, 2026-11-11** | Creative presentation is flexible, but facial appearance and originals remain protected; see [Identity Preservation](IDENTITY_PRESERVATION.md) |
+
 ## Changelog
+- 2026-11-11: Owner approved face-safe cropping and non-facial compositing; Midnight Letter V0.5 connected as fifth scene.
 - 2026-11-11: Scene Plan V1 drafted with public scene interface and private photo-to-scene mapping; still awaiting approval.
 - 2026-11-11: Architecture foundation prepared for public repository. Privacy and content safeguards established. Photographs received, duplicate verified, private media manifest and Scene Plan V1 prepared; identity-preservation requirement locked.
