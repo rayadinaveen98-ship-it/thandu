@@ -1,0 +1,34 @@
+# Dependencies / builds
+node_modules/
+dist/
+build/
+coverage/
+.vite/
+.cache/
+*.log
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local/private content. NEVER commit recipient photographs or private copies.
+private-assets/
+private/
+personal-photos/
+photos-originals/
+photo-intake/
+contact-sheets/
+local-media/
+media-private/
+draft-letters/
+*.heic
+
+# Typical temporary / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
