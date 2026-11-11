@@ -10,9 +10,11 @@
   <link rel="stylesheet" href="/assets/sanctuary-v2.css">
   <link rel="stylesheet" href="/assets/journey-v3.css">
   <link rel="stylesheet" href="/assets/celebration.css">
+  <link rel="stylesheet" href="/assets/midnight-letter.css">
   <script src="/assets/app.js" defer></script>
   <script src="/assets/sanctuary-v2.js" defer></script>
   <script src="/assets/celebration.js" defer></script>
+  <script src="/assets/midnight-letter.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#journey">Skip to experience</a>
@@ -143,6 +145,49 @@
       <p class="ambient-hint">Tap each discovery. Watch the courtyard respond.</p>
     </section>
 
+
+    <section class="world world-letter" id="letter" aria-labelledby="letterTitle" inert>
+      <div class="letter-night" aria-hidden="true"><div class="letter-moon"></div></div>
+      <div class="letter-architecture" aria-hidden="true"></div>
+      <div class="letter-orbits" aria-hidden="true">
+        <span class="letter-orbit one"></span><span class="letter-orbit two"></span><span class="letter-orbit three"></span>
+      </div>
+      <div class="letter-floor" aria-hidden="true"></div>
+      <div class="world-copy letter-title">
+        <p class="eyebrow">CHAPTER IV · THE QUIET LETTER</p>
+        <h2 id="letterTitle">Some things are best<br><em>said softly.</em></h2>
+        <p class="lead">Beyond all the light and laughter, there is one little letter.</p>
+      </div>
+      <div class="letter-stage">
+        <div class="letter-halo" aria-hidden="true"></div>
+        <button type="button" class="letter-envelope" id="letterSeal" aria-label="Open the sealed letter">
+          <span class="envelope-back"></span>
+          <span class="envelope-shadow"></span>
+          <span class="envelope-fold"></span>
+          <span class="envelope-flap"></span>
+          <span class="envelope-seal" aria-hidden="true">✧</span>
+          <span class="seal-label" aria-hidden="true">OPEN THE LETTER</span>
+        </button>
+      </div>
+      <p class="letter-note">A LITTLE MESSAGE, HELD UNDER THE STARS</p>
+      <div class="letter-reveal" id="letterReveal" role="dialog" aria-modal="true" aria-labelledby="letterPaperTitle" hidden>
+        <article class="letter-paper" id="letterPaper" tabindex="-1">
+          <div class="letter-emblem" aria-hidden="true">✧</div>
+          <p class="letter-caption">A letter for Thandu</p>
+          <h3 id="letterPaperTitle">For the beautiful chapters <em>still ahead.</em></h3>
+          <p>Life keeps opening new doors. May the days ahead bring you peace, discoveries, laughter and all the good things you hope for.</p>
+          <p>Some journeys deserve to be celebrated simply because they are yours.</p>
+          <p class="letter-signature">With warm wishes ✦</p>
+          <p class="preview-disclaimer">Preview wording only · Your final personal letter will be added after approval.</p>
+          <div class="letter-actions">
+            <button type="button" id="letterClose">Fold the letter</button>
+            <button type="button" id="letterReadAgain">Read from the beginning</button>
+          </div>
+        </article>
+      </div>
+      <p class="ambient-hint">Touch the seal to unfold a quiet message.</p>
+    </section>
+
     <div class="lower-nav" aria-label="Journey controls">
       <button id="prev" class="nav-arrow" aria-label="Previous chapter">←</button>
       <div class="chapter-pills" role="tablist" aria-label="Choose chapter">
@@ -150,10 +195,11 @@
         <button class="chapter-pill" role="tab" data-to="sanctuary" aria-selected="false">02<span>Memories</span></button>
         <button class="chapter-pill" role="tab" data-to="bloom" aria-selected="false">03<span>Bloom</span></button>
         <button class="chapter-pill" role="tab" data-to="celebration" aria-selected="false">04<span>Joy</span></button>
+        <button class="chapter-pill" role="tab" data-to="letter" aria-selected="false">05<span>Letter</span></button>
       </div>
       <button id="next" class="nav-arrow" aria-label="Next chapter">→</button>
     </div>
-    <aside class="preview-note">DESIGN BUILD 0.4 <span>•</span> ORIGINAL ARTWORK ONLY <span>•</span> NO PRIVATE PHOTOGRAPHS</aside>
+    <aside class="preview-note">DESIGN BUILD 0.5 <span>•</span> ORIGINAL ARTWORK ONLY <span>•</span> NO PRIVATE PHOTOGRAPHS</aside>
     <div class="sr-only" id="sceneAnnounce" aria-live="polite"></div>
   </main>
 </body>
