@@ -1,0 +1,124 @@
+/* THANDU V0.6 — Birthday Universe
+   Live, layered SVG/CSS environment. No photos or personal letter included. */
+.world-universe{isolation:isolate;background:#0a122d;--uni-gold:#fff0bc;--uni-rose:#f1b7d1;--uni-mist:#b7adf4}
+.universe-sky{position:absolute;inset:0;background:
+radial-gradient(ellipse 46% 38% at 50% 53%,rgba(246,206,167,.25),transparent 97%),
+radial-gradient(ellipse at 50% 10%,#574e88 0,#272958 39%,#101a3b 73%,#080e2a)}
+.universe-sky:before{content:"";position:absolute;inset:0;opacity:.5;background:
+radial-gradient(circle at 8% 18%,#fff9da 0 1px,transparent 2px),
+radial-gradient(circle at 19% 44%,#fff9da 0 1px,transparent 2px),
+radial-gradient(circle at 28% 11%,#fff9da 0 1px,transparent 2px),
+radial-gradient(circle at 41% 26%,#fff9da 0 1px,transparent 2px),
+radial-gradient(circle at 57% 9%,#fff9da 0 1px,transparent 2px),
+radial-gradient(circle at 69% 23%,#fff9da 0 1px,transparent 2px),
+radial-gradient(circle at 87% 13%,#fff9da 0 1px,transparent 2px),
+radial-gradient(circle at 95% 38%,#fff9da 0 1px,transparent 2px),
+radial-gradient(circle at 13% 76%,#fff9da 0 1px,transparent 2px),
+radial-gradient(circle at 78% 63%,#fff9da 0 1px,transparent 2px);
+animation:uni-stars 8s ease-in-out infinite alternate}
+.universe-sky:after{content:"";position:absolute;inset:65% 0 0;background:linear-gradient(180deg,transparent,rgba(6,12,36,.94))}
+.universe-aura{position:absolute;z-index:2;left:50%;top:50%;width:min(100vw,970px);height:min(90vh,900px);transform:translate(-50%,-50%);border-radius:50%;
+background:radial-gradient(ellipse,#f8e8b34a 0,#e4b0d72c 27%,#9786e51c 47%,transparent 72%);filter:blur(12px);
+animation:uni-aura 7s ease-in-out infinite}
+.universe-architecture{position:absolute;z-index:4;inset:0 -2% -5%;pointer-events:none;background:url('/assets/birthday-universe.svg') center center/cover no-repeat;opacity:.73;transition:opacity 1.5s,filter 1.5s,transform 1.5s;transform:scale(1.02);filter:drop-shadow(0 10px 29px #21123f66)}
+.world-universe.universe-awake .universe-architecture{opacity:1;filter:drop-shadow(0 0 34px #f7d5a074);transform:scale(1.035)}
+.universe-horizon{position:absolute;z-index:5;bottom:-18%;left:-10%;right:-10%;height:40%;border-radius:50% 50% 0 0/25% 25% 0 0;
+border-top:2px solid #f7dea49c;box-shadow:0 -9px 43px #ffdeb84d;background:
+radial-gradient(ellipse 45% 35% at 50% 0%,#f9dbb577,transparent),
+repeating-radial-gradient(ellipse at 50% 0%,#e1c4972b 0 1px,transparent 2px 48px),
+linear-gradient(180deg,#8173a4 0,#3b456d 48%,#111731)}
+.universe-orbit-field{position:absolute;z-index:9;left:50%;top:53%;transform:translate(-50%,-50%);width:min(63vw,590px);aspect-ratio:1;pointer-events:none;transition:filter .8s}
+.universe-orbit{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,224,169,.37);box-shadow:inset 0 0 34px #ffe9b513,0 0 40px #eed1a72c;animation:uni-spin 35s linear infinite}
+.universe-orbit::before{content:"";position:absolute;left:50%;top:-4px;width:8px;height:8px;border-radius:50%;background:#fff5c5;box-shadow:0 0 16px #fff0c2,0 0 35px #ffd28c}
+.universe-orbit.one{inset:0;border-style:dashed;opacity:.6}
+.universe-orbit.two{inset:9%;border-color:#fce5b178;animation-duration:26s;animation-direction:reverse}
+.universe-orbit.three{inset:25%;border-color:#e4c8de8c;animation-duration:40s}
+.universe-orbit.four{inset:40%;border:2px solid #f9e6c7ae;animation-duration:13s}
+.universe-relic{position:absolute;z-index:11;left:var(--left);top:var(--top);transform:translate(-50%,-50%) rotate(var(--rot));width:clamp(48px,6.8vw,91px);height:clamp(48px,6.8vw,91px);border-radius:50%;display:grid;place-items:center;pointer-events:none;
+background:radial-gradient(circle at 42% 33%,#fff7e7,#ecc2ce9c 40%,#a38ec096 74%,#433e7880);border:2px solid #ffe8ba8a;box-shadow:0 0 24px #fde2b669,inset 0 0 15px #fffbdbbb;
+transition:opacity 1s,filter 1s,scale 1s;opacity:.38}
+.universe-relic span{font-size:clamp(25px,3.8vw,52px);font-family:Georgia,serif;line-height:1;color:#fff0c9;text-shadow:0 0 24px #fff4d4}
+.universe-relic.sanctuary{--left:26%;--top:52%;--rot:-13deg}
+.universe-relic.garden{--left:73%;--top:43%;--rot:19deg}
+.universe-relic.joy{--left:65%;--top:74%;--rot:-11deg}
+.world-universe.universe-awake .universe-relic{opacity:1;filter:drop-shadow(0 0 19px #ffe6ad);animation:uni-relic 5s ease-in-out infinite alternate}
+.universe-centerpiece{position:absolute;z-index:19;left:50%;top:53%;width:clamp(160px,22vw,270px);aspect-ratio:1;transform:translate(-50%,-50%);display:grid;place-items:center;pointer-events:none;transition:transform 1.1s,filter 1s}
+.universe-centerpiece:before{content:"";position:absolute;inset:-19%;border-radius:50%;background:radial-gradient(circle,#fff7d2ab,#ffdcab45 25%,#e4b4ce2e 50%,transparent 69%);filter:blur(25px);animation:uni-aura 4.5s ease-in-out infinite}
+.universe-prism{position:absolute;inset:8%;border-radius:50%;border:3px solid #fff2c8b8;box-shadow:inset 0 0 55px #ffdfb290,0 0 28px #ffedb49a,0 0 85px #e3b1c67a;background:radial-gradient(circle at 43% 33%,#fffbeccc,#eed7c7ae 29%,#bd99d4a6 67%,#534b91b3 100%);animation:uni-prism 6.5s ease-in-out infinite}
+.universe-prism:before{content:"";position:absolute;inset:13%;border:1px solid #ffe8b2aa;border-radius:50%;box-shadow:0 0 25px #ffecaa63}
+.universe-prism:after{content:"";position:absolute;inset:35%;background:#fff6dd;border-radius:50%;box-shadow:0 0 24px #ffedce,0 0 80px #fff3c9b8}
+.universe-symbol{position:relative;z-index:2;font-family:Georgia,serif;font-size:clamp(57px,8vw,101px);color:#fff7d5;line-height:1;text-shadow:0 0 21px #ffefb9,0 0 58px #ffe5ab;transition:transform 1.2s;animation:uni-symbol 6s ease-in-out infinite alternate}
+.world-universe.universe-awake .universe-centerpiece{filter:drop-shadow(0 0 45px #ffe8b5);transform:translate(-50%,-50%) scale(1.16)}
+.world-universe.universe-awake .universe-symbol{transform:rotate(90deg)}
+.universe-copy{z-index:28;top:12%;max-width:750px}
+.universe-copy .eyebrow{color:#fbe3ab}
+.universe-copy h2{font-size:clamp(36px,5.2vw,69px);color:#fff8ed;text-shadow:0 4px 25px #171536d4;line-height:1.08}
+.universe-copy h2 em{color:#ffe2b5}
+.universe-copy .lead{margin:12px auto;color:#f5e3e5eb;font-size:clamp(12px,1.15vw,15px);max-width:440px}
+.universe-start{position:absolute;z-index:31;bottom:19.5%;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:11px;border:1px solid #fff6d7;background:linear-gradient(110deg,#fff1d1,#ecc1a3);border-radius:99px;box-shadow:0 10px 39px #f3bf9e60,0 0 0 7px #ffe6b419;color:#433b61;font-weight:750;font-size:12px;letter-spacing:.025em;padding:15px 24px;min-height:48px;white-space:nowrap}
+.universe-start:hover{box-shadow:0 14px 48px #f2d19b9e,0 0 0 8px #ffe6b421}
+.universe-start[hidden],.universe-wish[hidden],.universe-replay[hidden]{display:none}
+.universe-start:focus-visible,.universe-replay button:focus-visible{outline:2px solid #fff8d7;outline-offset:4px}
+.universe-progress{position:absolute;z-index:31;bottom:17%;left:50%;transform:translateX(-50%);font-size:10px;text-align:center;letter-spacing:.17em;color:#fff2d9;background:#241e509c;border:1px solid #ffe3ba66;border-radius:30px;padding:12px 23px;white-space:nowrap;box-shadow:0 0 26px #f6d1a34f}
+.universe-progress[hidden]{display:none}
+.universe-wish{position:absolute;z-index:32;left:50%;top:47%;transform:translate(-50%,-50%);width:min(86vw,670px);text-align:center;padding:32px clamp(15px,4vw,40px);
+background:radial-gradient(ellipse at 50% 10%,#66527ed9,#2b2659eb 68%);border:1px solid #ffe8b5bd;border-radius:34px;box-shadow:0 0 75px #ffe2ae7a,0 28px 90px #090b2980;backdrop-filter:blur(22px)}
+.universe-wish .wish-emblem{font-size:27px;color:#ffe3a6;letter-spacing:.3em;text-shadow:0 0 25px #ffe1af}
+.universe-wish h3{font-family:Georgia,serif;font-size:clamp(35px,6vw,72px);font-weight:400;line-height:1.04;letter-spacing:-.025em;margin:10px auto 18px;color:#fff8ec;text-shadow:0 4px 30px #16113a}
+.universe-wish h3 em{display:block;color:#ffe2b4;font-weight:400}
+.universe-wish p{font-family:Georgia,serif;font-size:clamp(15px,1.6vw,18px);line-height:1.7;color:#fdf1e4;margin:12px auto;max-width:480px}
+.universe-wish .wish-foot{font-family:ui-sans-serif,system-ui,sans-serif;letter-spacing:.15em;font-size:10px;color:#f9dca8;text-transform:uppercase;margin-top:23px}
+.universe-replay{position:absolute;z-index:37;left:50%;bottom:15.4%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:10px;width:min(95%,650px)}
+.universe-replay button{border:1px solid #ffefccad;border-radius:99px;background:#242047cc;color:#ffead1;padding:12px 16px;min-height:44px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 9px 33px #0f102f8c;backdrop-filter:blur(10px)}
+.universe-replay button:first-child{background:linear-gradient(110deg,#fff3d2,#e7bd98);color:#403657;border-color:#fff3d2}
+.universe-replay button:hover{filter:brightness(1.17)}
+.universe-dust{position:absolute;z-index:30;left:var(--x);top:var(--y);width:var(--sz);height:var(--sz);border-radius:50%;background:radial-gradient(circle,#fffdfa,#f5cbb7 63%,transparent 78%);box-shadow:0 0 19px #ffe4b5;pointer-events:none;animation:uni-burst var(--duration) ease-out both}
+.universe-dust.petal{border-radius:90% 8% 87% 12%;background:linear-gradient(135deg,#ffe1eb,#e5a4c5);box-shadow:0 0 16px #e6b3d3}
+@keyframes uni-stars{0%{opacity:.45;transform:translateY(0)}100%{opacity:.95;transform:translateY(5px)}}
+@keyframes uni-aura{0%,100%{opacity:.66;scale:.95}50%{opacity:1;scale:1.06}}
+@keyframes uni-prism{0%,100%{rotate:-2deg;filter:brightness(.9)}50%{rotate:5deg;filter:brightness(1.2)}}
+@keyframes uni-symbol{from{translate:0 -6px}to{translate:0 9px}}
+@keyframes uni-relic{from{translate:0 -6px}to{translate:0 9px}}
+@keyframes uni-spin{from{rotate:0}to{rotate:360deg}}
+@keyframes uni-burst{0%{opacity:0;transform:translate(-50%,-50%) scale(.5) rotate(0)}12%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.8) rotate(130deg)}}
+@media(max-width:720px){
+ .universe-architecture{background-size:auto 102%;inset:5% -36% -4%;opacity:.66}
+ .universe-copy{top:15%}
+ .universe-copy h2{font-size:clamp(34px,8.1vw,47px)}
+ .universe-copy .lead{font-size:12px;line-height:1.58;max-width:305px}
+ .universe-orbit-field{width:clamp(360px,103vw,500px);top:52%}
+ .universe-centerpiece{top:52%;width:clamp(166px,42vw,240px)}
+ .universe-relic{width:65px;height:65px}
+ .universe-relic span{font-size:31px}
+ .universe-relic.sanctuary{--left:22%;--top:43%}
+ .universe-relic.garden{--left:79%;--top:39%}
+ .universe-relic.joy{--left:69%;--top:70%}
+ .universe-start{bottom:22%;min-height:44px;padding:13px 18px;font-size:11px}
+ .universe-progress{bottom:20.5%;font-size:9px}
+ .universe-wish{top:48%;padding:27px 18px}
+ .universe-wish h3{font-size:clamp(38px,10vw,52px)}
+ .universe-wish p{font-size:15px}
+ .universe-replay{bottom:17%;gap:6px;width:96%}
+ .universe-replay button{padding:11px 8px;font-size:10px;flex:1;white-space:normal;line-height:1.25}
+}
+@media(max-width:390px){
+ .universe-copy{top:17%}
+ .universe-copy h2{font-size:32px}
+ .universe-copy .lead{font-size:11px;margin-top:11px}
+ .universe-start{bottom:21.5%;font-size:10px}
+ .universe-wish{top:47%;padding:23px 15px}
+ .universe-wish h3{font-size:37px}
+ .universe-wish p{font-size:14px}
+ .universe-replay{bottom:17.3%}
+ .universe-replay button{font-size:9px}
+}
+body.motion-off .world-universe *,body.motion-off .world-universe *::before,body.motion-off .world-universe *::after{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.world-universe *, .world-universe *::before, .world-universe *::after{animation:none!important;transition:none!important}}
+/* Make six chapters usable at phone width without squeezing touch targets. */
+@media(max-width:720px){
+ .lower-nav{width:min(96vw,540px);gap:6px;justify-content:center}
+ .chapter-pills{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;max-width:calc(100% - 88px);min-width:0;scroll-snap-type:x proximity}
+ .chapter-pills::-webkit-scrollbar{display:none}
+ .chapter-pill{flex:0 0 57px;min-width:57px;scroll-snap-align:center}
+ .lower-nav .nav-arrow{flex:0 0 40px;min-width:40px;width:40px;height:40px}
+}
