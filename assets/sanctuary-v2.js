@@ -41,12 +41,16 @@ function showMemory(index){
   status.textContent='ALL FIVE MEMORIES FOUND · CONTINUE TO BLOOM';
  }
  modal.hidden=false;
+ document.body.classList.add('memory-dialog-open');
+ document.querySelector('.lower-nav')?.setAttribute('inert','');
  close.focus({preventScroll:true});
 }
 portals.forEach((button,index)=>button.addEventListener('click',()=>showMemory(index)));
 function dismiss(){
  if(modal.hidden)return;
  modal.hidden=true;
+ document.body.classList.remove('memory-dialog-open');
+ document.querySelector('.lower-nav')?.removeAttribute('inert');
  if(activeOrigin&&area.classList.contains('current'))activeOrigin.focus({preventScroll:true});
 }
 close.addEventListener('click',dismiss);
