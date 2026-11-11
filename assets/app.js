@@ -21,6 +21,12 @@
   let last = 0;
   let blooms = new Set();
   let animationActive = false;
+  let frameRequested = false;
+  function scheduleFrame() {
+    if (!motionEnabled || document.hidden || frameRequested) return;
+    frameRequested = true;
+    requestAnimationFrame(frame);
+  }
 
   const traveler = document.createElement('div');
   traveler.className = 'traveling-light';
@@ -73,6 +79,7 @@
   }
 
   function frame(time) {
+    frameRequested = false;
     animationActive = true;
     const frameDelta = Math.min(2.2, (time - last) / 16.667 || 1);
     last = time;
@@ -102,7 +109,7 @@
         ctx.fill();
       }
     }
-    if (motionEnabled && !document.hidden) requestAnimationFrame(frame);
+    if (motionEnabled && !document.hidden) scheduleFrame();
     else animationActive = false;
   }
 
@@ -280,7 +287,7 @@
     motionToggle.setAttribute('aria-label', enabled ? 'Reduce motion' : 'Enable motion');
     motionToggle.title = enabled ? 'Reduce motion' : 'Enable motion';
     if (!enabled) particles = [];
-    if (enabled && !animationActive) requestAnimationFrame(frame);
+    if (enabled) scheduleFrame();
   };
   motionToggle.addEventListener('click', () => setMotion(!motionEnabled));
   setMotion(motionEnabled);
@@ -303,12 +310,12 @@
 
   window.addEventListener('resize', measure, { passive: true });
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden && motionEnabled && !animationActive) requestAnimationFrame(frame);
+    if (!document.hidden && motionEnabled) scheduleFrame();
   });
   reducedPreference.addEventListener?.('change', event => {
     if (event.matches) setMotion(false);
   });
   measure();
   applyScene(0, false);
-  if (motionEnabled && !animationActive) requestAnimationFrame(frame);
+  scheduleFrame();
 })();
