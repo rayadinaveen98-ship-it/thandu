@@ -125,3 +125,9 @@ body.gallery-open .topbar,body.gallery-open .lower-nav{pointer-events:none}
 }
 body.motion-off .world-constellation *,body.motion-off .world-constellation *::before,body.motion-off .world-constellation *::after{animation:none!important;transition:none!important}
 @media(prefers-reduced-motion:reduce){.world-constellation *, .world-constellation *::before,.world-constellation *::after{animation:none!important;transition:none!important}}
+
+/* The gallery must visually sit above the existing fixed navigation, grain and particles. */
+body.gallery-open .topbar,body.gallery-open #particleCanvas,body.gallery-open .grain{visibility:hidden}
+body.gallery-open .world{pointer-events:none}
+#galleryFileInput[hidden]{display:none!important}
+.gallery-choose:focus-visible{outline:2px solid #fff7d8;outline-offset:4px}
