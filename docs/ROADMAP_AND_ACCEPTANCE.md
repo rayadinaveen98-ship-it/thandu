@@ -3,9 +3,9 @@
 | Phase | Deliverable | Status |
 | --- | --- | --- |
 | 0. Concept exploration | Three immersive visual approaches | Completed (standalone visual prototypes) |
-| 1. Architecture & repository foundation | Public, documentation-only project foundation | In progress |
-| 2. Photo audit | Private inventory and proposed life-stage map | Awaiting photo batches |
-| 3. Narrative / storyboard | Real chronological content, scene order, approved personal copy | Not started |
+| 1. Architecture & repository foundation | Public, documentation-only project foundation | Completed |
+| 2. Photo audit | Private inventory, duplicate verification, draft editorial mapping | Private draft complete; approvals outstanding |
+| 3. Narrative / storyboard | [Scene Plan V1](SCENE_PLAN_V1.md), private photo-by-scene plan, approved personal copy | Draft plan complete; awaiting storyboard/copy approval |
 | 4. Look development | Approved original scene keyframes and touch-motion tests | Not started |
 | 5. Application implementation | Scene engine, responsive interaction, navigation, audio opt-in | Not started |
 | 6. Photo/content integration | Approved derivatives, captions, letter, finale | Not started |
@@ -29,4 +29,4 @@ Accounts, social sharing, monetization, tracking, public uploads, AI voice cloni
 
 ## Open decisions
 
-Final title, whether the three worlds become one unified story, chapter order, approved photographs/copy, art direction after photo audit, audio choice, and recipient delivery/privacy model.
+Final title, exact hero and childhood chronology, approved photographs/copy and letter, the source video decision, scene look-development sign-off, audio choice, and recipient delivery/privacy model.
