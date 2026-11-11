@@ -75,4 +75,10 @@ test('new visual scene explicitly supports motion reduction', () => {
   assert.match(load('assets/birthday-universe.css'), /prefers-reduced-motion/);
   assert.match(universe, /Escape|reset|replay/i);
   assert.match(html, /data-next="letter"/);
+  assert.match(html, /id="letterContinue" data-next="universe"/);
+  assert.match(app, /toCelebration'\)\.addEventListener/);
+  assert.match(universe, /phase-stillness/);
+  assert.match(universe, /phase-bloom/);
+  assert.match(universe, /phase-joy/);
+  assert.match(universe, /window\.thanduUniverse/);
 });
