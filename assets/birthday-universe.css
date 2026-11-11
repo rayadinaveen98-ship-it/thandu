@@ -122,3 +122,15 @@ body.motion-off .world-universe *,body.motion-off .world-universe *::before,body
  .chapter-pill{flex:0 0 57px;min-width:57px;scroll-snap-align:center}
  .lower-nav .nav-arrow{flex:0 0 40px;min-width:40px;width:40px;height:40px}
 }
+
+/* Three motifs reveal in sequence; no hidden clickable scenery. */
+.world-universe:not(.universe-awake) .universe-relic{opacity:.10;scale:.8}
+.world-universe.phase-stillness .universe-relic.sanctuary{opacity:1;scale:1;filter:drop-shadow(0 0 24px #ffe8ba)}
+.world-universe.phase-bloom .universe-relic.garden{opacity:1;scale:1;filter:drop-shadow(0 0 24px #ffd1df)}
+.world-universe.phase-joy .universe-relic.joy{opacity:1;scale:1;filter:drop-shadow(0 0 24px #ffe6a9)}
+.world-universe.phase-bloom .universe-architecture{opacity:.87}
+.world-universe.phase-joy .universe-orbit-field{filter:drop-shadow(0 0 25px #fff0c7)}
+/* Hide the title once the final message is visible to keep text hierarchy clear. */
+.world-universe.universe-awake .universe-copy{opacity:0;pointer-events:none;transition:opacity .55s}
+.world-universe.universe-awake .universe-centerpiece{opacity:.4}
+.world-universe.universe-awake .universe-replay{z-index:41}
