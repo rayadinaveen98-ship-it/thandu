@@ -5,7 +5,7 @@
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-  const order = ['arrival', 'sanctuary', 'bloom'];
+  const order = ['arrival', 'sanctuary', 'bloom', 'celebration'];
   const sceneHost = $('#journey');
   const canvas = $('#particleCanvas');
   const ctx = canvas?.getContext('2d', { alpha: true });
@@ -72,7 +72,7 @@
         lifetime: 40 + Math.random() * 56,
         opacity: .36 + Math.random() * .58,
         radius: 0.7 + Math.random() * 2.5,
-        color: style === 'bloom' ? '255,191,199' : style === 'mist' ? '255,247,229' : '255,222,151'
+        color: style === 'bloom' ? '255,191,199' : style === 'joy' ? '255,215,177' : style === 'mist' ? '255,247,229' : '255,222,151'
       });
     }
     if (particles.length > 320) particles.splice(0, particles.length - 320);
@@ -93,7 +93,7 @@
           lifetime: 110 + Math.random() * 110,
           opacity: .1 + Math.random() * .3,
           radius: .35 + Math.random() * 1.35,
-          color: current === 2 ? '255,210,193' : '255,239,195'
+          color: current === 2 ? '255,210,193' : current === 3 ? '255,220,198' : '255,239,195'
         });
       }
       particles = particles.filter(particle => particle.lifetime > 0);
@@ -154,7 +154,7 @@
     reward.id = 'gardenReward';
     reward.className = 'garden-reward';
     reward.hidden = true;
-    reward.innerHTML = '<span>✧ THE GARDEN IS AWAKE ✧</span><button type="button" id="replayGarden">Bloom again</button>';
+    reward.innerHTML = '<span>✧ THE GARDEN IS AWAKE ✧</span><button type="button" id="replayGarden">Bloom again</button><button type="button" id="toCelebration" data-next="celebration">Continue →</button>';
     flowerField.parentElement.appendChild(reward);
     $('#replayGarden').addEventListener('click', () => {
       blooms.clear();
@@ -188,9 +188,10 @@
     $('#prev').disabled = current === 0;
     $('#next').disabled = current === order.length - 1;
     if (announce) $('#sceneAnnounce').textContent = 'Now visiting ' +
-      (scene === 'arrival' ? 'The Arrival' : scene === 'sanctuary' ? 'Little Beginnings' : 'A World in Bloom');
+      (scene === 'arrival' ? 'The Arrival' : scene === 'sanctuary' ? 'Little Beginnings' : scene === 'bloom' ? 'A World in Bloom' : 'The Joy She Brings');
     document.body.classList.toggle('in-sanctuary', scene === 'sanctuary');
     document.body.classList.toggle('in-bloom', scene === 'bloom');
+    document.body.classList.toggle('in-celebration', scene === 'celebration');
   }
 
   // The travelling star never serves as a hidden navigation mechanism:
@@ -236,7 +237,7 @@
       applyScene(target);
       traveler.style.left = endX + 'px';
       traveler.style.top = endY + 'px';
-      emit(endX, endY, 68, target === 2 ? 'bloom' : 'light');
+      emit(endX, endY, 68, target === 2 ? 'bloom' : target === 3 ? 'joy' : 'light');
     }, 460);
     animation.onfinish = () => {
       clearTimeout(swap);
@@ -299,7 +300,7 @@
 
   sceneHost.addEventListener('pointerdown', event => {
     if (event.target.closest('button,[role="dialog"]')) return;
-    emit(event.clientX, event.clientY, 27, current === 2 ? 'bloom' : 'light');
+    emit(event.clientX, event.clientY, 27, current === 2 ? 'bloom' : current === 3 ? 'joy' : 'light');
     if (!motionEnabled) return;
     pointerGlow.style.left = event.clientX + 'px';
     pointerGlow.style.top = event.clientY + 'px';
