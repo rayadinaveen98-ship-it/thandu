@@ -1,39 +1,49 @@
-# THANDU Rule 001 — Facial Identity Preservation
+# THANDU Rule 001 — Face Integrity & Creative Composition
 
-**Status: LOCKED — direct instruction from the project owner, 2026-11-11.**
+**LOCKED — owner instructions, 2026-11-11 (updated).**
 
-The photographs and videos are entrusted personal materials. **Never deform, reconstruct, alter, retouch, or animate anyone's face without explicit, specific approval from the owner.** This applies to the recipient, children, and any other pictured person, and applies to previews, scene keyframes, production artwork, generated images, and delivered files.
+**Never change the appearance or identity of anyone's face in the recipient's photographs or video without a new, explicit permission.** This applies to Manasa/Thandu, children, and all other pictured people, including public demos, previews, animations, the delivered app, and generated derivatives.
 
-## Absolutely prohibited without specific approval
+## Creative freedom now approved
 
-- Face morphing, face swaps, face or eye shape modifications, digital makeup, smoothing, skin texture replacement, expression or smile changes, de-aging / age progression.
-- Synthetic speaking, blinking, gaze shifts, facial movement, AI-generated portrait recreation, video face animation, generative expansion or reconstruction of faces, beauty filters.
-- AI restoration or upscaling that invents or changes facial details.
-- Distorting the image's aspect ratio; cinematic warps or displacement touching faces.
-- Unapproved crops that cut, cover, or obscure a face, or color grading, filters, or relighting that alter how the face itself appears.
-- Claims that synthetic shots depict her actual history.
+The owner has explicitly allowed us to **crop, reframe, mask, reshape the non-facial portions of, and creatively composite images as needed** for the cinematic experience, provided the face itself remains faithful to the source. This includes:
+- Reframing a photo for different screen sizes, cropping unused surroundings, changing the presentation border, or using oval/portal/flower-shaped masks.
+- Separating an original photo from its surroundings for dimensional layouts, provided the facial region is not changed or re-synthesized.
+- Adjusting **non-facial** scenery, clothing edges or empty background regions to fit the visual scene, with local touch-ups where needed.
+- Moving and uniformly scaling a faithful photographic portrait **without stretching facial proportions**.
+- Building 2.5D parallax, new backgrounds, atmospherics, particle systems, environmental lighting, and animated scenic props around unmodified faces.
+- Selecting alternate non-facial creative crops for phone, tablet and desktop, with face-safe focal points.
 
-## Safe creative direction
+This is broad composition approval, **not blanket permission for generative face modification**.
 
-- Keep source photographs and video untouched; work on independent **background and foreground scene layers**.
-- Build responsive light, particles, flower growth, architecture, sky, camera movement, sound, transitions, and interface independently of the photograph.
-- Display source imagery at its original aspect ratio, without stretching. Translation and uniform render-time scaling only; avoid cropping faces or covering them with overlays.
-- A scene may frame a photo inside a dimensional environment, provided it does **not** change facial appearance.
-- Any photo optimization that changes pixels, any reframe affecting a face, or any proposed correction **requires preview and permission first**. Metadata-only removal may be part of an approved export workflow but does not justify pixel changes.
+## Not permitted without specific additional approval
 
-## Approval gate (must be recorded before exception)
+- Face swap, regeneration, synthetic reconstruction, facial retouching, skin smoothing or beautification, altered eye/nose/mouth shape, changed smile/expression, de-aging, artificial blink or speech/gaze.
+- AI restoration/upscaling that invents facial detail.
+- Local mesh warping, perspective stretch, filters or relighting that materially alter the face itself.
+- A crop or mask that cuts through, hides or replaces the face. Keep eyes and entire face recognizable and unobstructed.
+- Replacing real photographs with AI-generated lookalikes and presenting them as the original.
+- Applying edits to the only existing source original. Keep the true originals archived unmodified.
 
-1. Show original asset and exact proposed modified result side-by-side.
-2. Specify the operation, scope, exact images, and why it is needed.
-3. Obtain the owner's explicit approval **for that operation**.
-4. Preserve the original, provide an undo path, and check the final render.
-5. If uncertain, do not apply the edit. Approval for one image or operation does not generalize to others.
+## Working rules
 
-## Quality acceptance
+1. Preserve each source image/video in its exact original form.
+2. Make changes only to a working derivative and record its source asset ID.
+3. Define a protected face area; avoid destructive transforms or retouch inside it. When a full-image effect would include the face, either exempt the facial region or do not apply it.
+4. Crops, clipping masks, and adjustments outside the facial region are allowed to achieve the agreed design without further routine approval; preview hero compositions during normal art review.
+5. If a proposed effect unavoidably changes facial appearance, stop and request explicit permission **for that specific operation**.
+6. Never infer biographical facts from a photo; no fabricated dates or events.
 
-- Original images remain unmodified, and are never committed to this public repository.
-- No face receives generative processing or facial animation.
-- Photo aspect ratios preserved across desktop and mobile.
-- No interface layer obscures eyes / faces.
-- No personal photos, drafts, thumbnails, contact sheets, or videos appear in public commits, issues, deployment logs, or releases without an explicit publication decision.
-- This rule takes precedence over animation style, visual spectacle, convenience, and performance optimization.
+## Publishing is a separate decision
+
+The repository is public. Do **not** commit the user's childhood photos, personal portraits, source contact sheets, video, private image derivatives, private messages, or media manifests to it. Permission to artistically crop does **not** mean permission for public distribution. Final photos must be delivered in an explicitly approved access-controlled or private package.
+
+## Acceptance checks
+
+- Original sources remain untouched and private.
+- Faces are neither altered nor cut off or obstructed in final compositions.
+- Reframed/cropped versions look intentional across phones and desktop.
+- Non-face artistic treatment follows the approved chapter direction.
+- Personal media is not publicly deployed without explicit publication consent and a verified access policy.
+
+**Hierarchy:** Face fidelity and personal media privacy take precedence over visual effects, speed, or convenience.
