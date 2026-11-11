@@ -1,0 +1,82 @@
+/* THANDU / Midnight Letter V0.5 — independent vector architecture and live letter. */
+.world-letter{isolation:isolate;background:radial-gradient(ellipse at 50% 45%,#43436e 0%,#1c2149 53%,#090d27 100%);--letter-gold:#ffdf9e;--letter-paper:#f8ebd5}
+.letter-night{position:absolute;inset:0;background:radial-gradient(ellipse 39% 30% at 50% 57%,rgba(237,193,146,.30),transparent 95%),radial-gradient(ellipse at 76% 14%,#7b66935c,transparent 46%),linear-gradient(160deg,#161936,#1e2452 47%,#0d142f)}
+.letter-night:before{content:"";position:absolute;inset:0;background-image:
+radial-gradient(circle at 6% 13%,#fff1d3 0 1px,transparent 2px),
+radial-gradient(circle at 23% 28%,#fff1d3 0 1.5px,transparent 3px),
+radial-gradient(circle at 43% 9%,#fff1d3 0 1.5px,transparent 3px),
+radial-gradient(circle at 70% 17%,#fff1d3 0 1px,transparent 2px),
+radial-gradient(circle at 90% 39%,#fff1d3 0 1.5px,transparent 3px),
+radial-gradient(circle at 85% 70%,#fff1d3 0 1px,transparent 2px),
+radial-gradient(circle at 13% 62%,#fff1d3 0 1px,transparent 2px),
+radial-gradient(circle at 56% 29%,#fff1d3 0 1px,transparent 2px);
+animation:letter-stars 8s ease-in-out infinite alternate;opacity:.62}
+.letter-night:after{content:"";position:absolute;inset:57% 0 0;background:linear-gradient(transparent,#080e29d8 100%);z-index:2}
+.letter-moon{position:absolute;right:17%;top:17%;width:clamp(85px,11vw,145px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff9ee,#d2c6dc 65%,#a58eae);box-shadow:0 0 44px #e1bfd694,0 0 115px #ffe8d540;opacity:.8}
+.letter-architecture{position:absolute;inset:3% -4% -4%;background:url('/assets/midnight-observatory.svg') center/cover no-repeat;z-index:4;filter:drop-shadow(0 18px 27px #0c0d2b88);opacity:.84;transform:scale(1.045);animation:letter-architecture-breathe 11s ease-in-out infinite alternate;pointer-events:none}
+.letter-orbits{position:absolute;left:50%;top:52%;width:clamp(350px,54vw,710px);height:clamp(350px,54vw,710px);transform:translate(-50%,-50%);pointer-events:none;z-index:11}
+.letter-orbit{position:absolute;inset:10%;border-radius:50%;border:1px solid rgba(252,213,159,.27);box-shadow:inset 0 0 18px #f9d5a81a,0 0 26px #f5cd9130;animation:letter-spin 36s linear infinite}
+.letter-orbit.one{inset:0%;border:2px solid #e7c58c49;border-style:dashed}
+.letter-orbit.two{inset:13%;border:1px solid #ffe8b57d;animation-duration:21s;animation-direction:reverse}
+.letter-orbit.three{inset:30%;border-color:#ffdda469;animation-duration:48s}
+.letter-orbit:before{content:"";position:absolute;top:6%;left:21%;width:8px;height:8px;background:#ffefb7;border-radius:50%;box-shadow:0 0 20px #ffebbe,0 0 50px #e2b08b}
+.letter-floor{position:absolute;inset:auto -13% -19%;height:37%;z-index:7;border-radius:50% 50% 0 0/26% 26% 0 0;border-top:2px solid rgba(247,212,155,.65);background:radial-gradient(ellipse 32% 18% at 50% 0%,#ecd0a75c,transparent),repeating-radial-gradient(ellipse at 50% 0%,#e6bf8530 0 2px,transparent 3px 43px),linear-gradient(#4d4869,#1b2144 52%,#0a112c);box-shadow:0 -15px 53px #f2c9992a}
+.letter-title{top:12%;z-index:27}.letter-title h2{font-size:clamp(36px,4.9vw,64px);text-shadow:0 5px 30px #080c27}.letter-title h2 em{color:#fce5ba}.letter-title .eyebrow{color:#f7d399}.letter-title .lead{margin-top:13px;color:#f4e8e4}
+.letter-stage{position:absolute;left:50%;top:56%;width:clamp(275px,34vw,440px);height:clamp(206px,23vw,310px);transform:translate(-50%,-50%);z-index:29;display:grid;place-items:center;perspective:1100px}
+.letter-halo{position:absolute;inset:-22%;background:radial-gradient(ellipse,#fff3d37a 0,#fbd49d2e 38%,transparent 70%);filter:blur(25px);animation:letter-halo 5.8s ease-in-out infinite;pointer-events:none}
+.letter-envelope{position:relative;width:100%;height:100%;display:block;padding:0;border:0;background:transparent;border-radius:13px;transform:rotate(-2deg);filter:drop-shadow(0 22px 26px #07091caa);transition:transform .55s ease,filter .5s;cursor:pointer}
+.letter-envelope:hover{transform:translateY(-7px) rotate(0deg);filter:drop-shadow(0 25px 42px #f7d9ab5c)}
+.letter-envelope:focus-visible{outline:3px solid #fff1c0;outline-offset:7px}
+.letter-envelope .envelope-back{position:absolute;inset:12% 9% 10%;border-radius:9px;background:linear-gradient(145deg,#fff8e7,#e7c8b5 63%,#c58f9f);border:2px solid #fff0d4;box-shadow:inset 0 0 30px #e7bda39c,0 0 25px #ffdfaa58}
+.letter-envelope .envelope-fold{position:absolute;z-index:3;inset:13% 9% 11%;border-radius:7px;background:linear-gradient(138deg,#f5e4cf,#d9adc0 80%);clip-path:polygon(0 0,50% 51%,100% 0,100% 100%,0 100%);border-bottom:2px solid #f5e3c8}
+.letter-envelope .envelope-shadow{position:absolute;z-index:2;inset:12% 9% 10%;background:linear-gradient(105deg,#c9a8a0,#fff5e4 46%,#c3a0ae);clip-path:polygon(0 0,50% 53%,100% 0)}
+.letter-envelope .envelope-flap{position:absolute;z-index:4;left:9%;right:9%;top:12%;height:58%;background:linear-gradient(#fff8e8,#ead6c1 65%,#d9afae);clip-path:polygon(0 0,100% 0,50% 94%);transform-origin:top center;transition:transform .9s cubic-bezier(.2,.75,.2,1);backface-visibility:hidden;filter:drop-shadow(0 2px 4px #8660729a)}
+.letter-envelope .envelope-seal{position:absolute;z-index:6;left:50%;top:62%;width:clamp(58px,7vw,85px);height:clamp(58px,7vw,85px);transform:translate(-50%,-50%);display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f4d98e,#be8b69 58%,#8a505d 100%);border:4px double #ffe8b6;box-shadow:0 0 0 5px #e1b48755,0 0 23px #ffde9b99,inset 0 0 13px #fff3cc88;font-family:Georgia,serif;font-size:32px;color:#fff3cb;text-shadow:0 2px 7px #844a60}
+.letter-envelope .seal-label{position:absolute;z-index:7;left:0;right:0;bottom:-11%;color:#fff3d2;font-size:10px;font-weight:750;letter-spacing:.16em;text-align:center;text-shadow:0 3px 13px #0e0b2e}
+.world-letter.letter-open .letter-envelope .envelope-flap{transform:rotateX(165deg)}
+.world-letter.letter-open .letter-envelope .envelope-seal{opacity:0;transition:opacity .3s}
+.letter-note{position:absolute;z-index:34;bottom:19%;left:50%;transform:translateX(-50%);font-size:10px;color:#f7e6cb;letter-spacing:.13em;text-shadow:0 2px 15px #0e0e30;text-align:center;white-space:nowrap}
+.letter-reveal{position:absolute;z-index:55;inset:0;display:grid;place-items:center;padding:83px 20px 121px;background:rgba(8,11,33,.85);backdrop-filter:blur(22px);overflow-y:auto;overscroll-behavior:contain}
+.letter-reveal[hidden]{display:none}
+.letter-paper{position:relative;width:min(100%,570px);max-height:min(70dvh,660px);overflow-y:auto;background:
+radial-gradient(ellipse at 50% 0,#fffdf0,#f2e2c9 80%);border:2px solid #f5d9a4;border-radius:8px 8px 28px 28px;box-shadow:0 25px 75px #030415b3,0 0 70px #ffdda466,inset 0 0 22px #deb99676;padding:clamp(24px,5vw,52px);color:#49394c;text-align:center}
+.letter-paper:before{content:"";position:absolute;inset:12px;border:1px solid #b793775d;border-radius:4px 4px 20px 20px;pointer-events:none}
+.letter-paper .letter-emblem{font-family:Georgia,serif;font-size:42px;color:#af807c;line-height:1}
+.letter-paper .letter-caption{font-size:10px;letter-spacing:.22em;color:#846478;text-transform:uppercase;font-weight:800;margin:8px auto 14px}
+.letter-paper h3{font-family:Georgia,serif;font-size:clamp(28px,4vw,44px);font-weight:400;margin:9px auto 19px;line-height:1.17;letter-spacing:-.025em}
+.letter-paper h3 em{color:#96687c;font-weight:400}
+.letter-paper p{font-family:Georgia,serif;font-size:clamp(15px,1.5vw,17px);line-height:1.8;margin:13px auto;max-width:410px}
+.letter-paper .preview-disclaimer{font:600 10px/1.6 ui-sans-serif,system-ui,sans-serif;letter-spacing:.04em;color:#8f6c74;margin-top:20px}
+.letter-paper .letter-signature{font-family:Georgia,serif;font-style:italic;font-size:24px;color:#855b7a;margin:21px auto}
+.letter-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.letter-actions button{font:650 12px/1.2 ui-sans-serif,system-ui,sans-serif;border:1px solid #a57b70;border-radius:99px;color:#5d425d;background:transparent;min-height:44px;padding:10px 18px}
+.letter-actions button:first-child{background:#5d4362;border-color:#5d4362;color:#fff5e4}
+.letter-actions button:hover{filter:brightness(.94)}
+.letter-actions button:focus-visible{outline:2px solid #6c4176;outline-offset:3px}
+@keyframes letter-stars{from{opacity:.4;transform:translateY(0)}to{opacity:.93;transform:translateY(8px)}}
+@keyframes letter-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes letter-architecture-breathe{from{transform:scale(1.035) translateY(3px)}to{transform:scale(1.06) translateY(-4px)}}
+@keyframes letter-halo{0%,100%{opacity:.68;transform:scale(.95)}50%{opacity:1;transform:scale(1.05)}}
+@media(max-width:720px){
+ .letter-title{top:14%}.letter-title h2{font-size:clamp(32px,8vw,45px)}.letter-title .lead{max-width:295px;font-size:12px;line-height:1.55}
+ .letter-architecture{inset:5% -45% -5%;background-size:auto 105%;opacity:.74}
+ .letter-moon{right:6%;top:13%;width:87px}
+ .letter-orbits{top:54%;width:clamp(355px,105vw,475px);height:clamp(355px,105vw,475px)}
+ .letter-stage{top:54%;width:min(77vw,360px);height:clamp(190px,50vw,260px)}
+ .letter-envelope .envelope-seal{font-size:24px;width:62px;height:62px}
+ .letter-note{bottom:20%;font-size:9px}
+ .letter-reveal{padding:85px 12px 115px}
+ .letter-paper{padding:25px 22px;max-height:72dvh}
+ .letter-paper h3{font-size:30px}
+ .letter-paper p{font-size:15px}
+}
+@media(max-width:390px){
+ .letter-title{top:16%}.letter-title h2{font-size:32px}.letter-title .lead{margin-top:11px;font-size:11px}
+ .letter-stage{top:54%;width:76vw;height:47vw;min-height:172px}
+ .letter-note{bottom:22%;font-size:8px}
+ .letter-paper{max-height:71dvh;padding:19px 18px}
+ .letter-paper h3{font-size:28px}
+ .letter-paper p{font-size:14px}
+}
+body.motion-off .world-letter *,body.motion-off .world-letter *::before,body.motion-off .world-letter *::after{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.world-letter *,.world-letter *::before,.world-letter *::after{animation:none!important;transition:none!important}}
