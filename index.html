@@ -9,8 +9,10 @@
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/sanctuary-v2.css">
   <link rel="stylesheet" href="/assets/journey-v3.css">
+  <link rel="stylesheet" href="/assets/celebration.css">
   <script src="/assets/app.js" defer></script>
   <script src="/assets/sanctuary-v2.js" defer></script>
+  <script src="/assets/celebration.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#journey">Skip to experience</a>
@@ -93,16 +95,65 @@
       <p class="ambient-hint">Five small blooms. One beautiful world.</p>
     </section>
 
+
+    <section class="world world-celebration" id="celebration" aria-labelledby="celebrationTitle" inert>
+      <div class="celebration-sky" aria-hidden="true"><div class="celebration-sun"></div></div>
+      <div class="celebration-backdrop" aria-hidden="true"></div>
+      <div class="joy-starfield" aria-hidden="true"></div>
+      <div class="joy-chandelier" aria-hidden="true"></div>
+      <div class="joy-garland" id="joyGarland" aria-hidden="true"></div>
+      <div class="celebration-floor" aria-hidden="true"></div>
+      <div class="joy-floral-arch" aria-hidden="true"></div>
+      <div class="world-copy celebration-copy">
+        <p class="eyebrow">CHAPTER III · THE JOY SHE BRINGS</p>
+        <h2 id="celebrationTitle">A little joy can<br><em>light up a world.</em></h2>
+        <p class="lead">Discover three little surprises and watch the courtyard come alive.</p>
+      </div>
+      <div class="joy-centerpiece" aria-hidden="true">
+        <div class="joy-plinth"></div>
+        <div class="joy-cake-bottom"></div>
+        <div class="joy-cake-gold"></div>
+        <div class="joy-cake-top"></div>
+        <div class="joy-candle"><span class="joy-flame"></span></div>
+      </div>
+      <div class="joy-actions" role="group" aria-label="Three interactive celebration discoveries">
+        <button type="button" class="joy-action" data-joy="lights" aria-pressed="false">
+          <span class="joy-icon" aria-hidden="true">✧</span>
+          <span class="joy-title">Lanterns</span>
+          <span class="joy-sub">Bring the glow</span>
+        </button>
+        <button type="button" class="joy-action" data-joy="flowers" aria-pressed="false">
+          <span class="joy-icon" aria-hidden="true">❀</span>
+          <span class="joy-title">Petals</span>
+          <span class="joy-sub">Wake the bloom</span>
+        </button>
+        <button type="button" class="joy-action" data-joy="stars" aria-pressed="false">
+          <span class="joy-icon" aria-hidden="true">✦</span>
+          <span class="joy-title">Starlight</span>
+          <span class="joy-sub">Fill the sky</span>
+        </button>
+      </div>
+      <p class="joy-status" id="joyStatus" aria-live="polite">0 OF 3 SURPRISES DISCOVERED</p>
+      <button class="joy-finale-trigger" id="joyRelease" type="button" hidden>Release the birthday starlight ✦</button>
+      <div class="joy-final-message" id="joyFinalMessage" role="status" hidden>
+        <strong>The world feels brighter.</strong>
+        <p>A little celebration for Thandu — and the many beautiful days still ahead.</p>
+        <button type="button" id="joyReplay">Experience the celebration again</button>
+      </div>
+      <p class="ambient-hint">Tap each discovery. Watch the courtyard respond.</p>
+    </section>
+
     <div class="lower-nav" aria-label="Journey controls">
       <button id="prev" class="nav-arrow" aria-label="Previous chapter">←</button>
       <div class="chapter-pills" role="tablist" aria-label="Choose chapter">
         <button class="chapter-pill active" role="tab" data-to="arrival" aria-selected="true">01<span>Arrival</span></button>
         <button class="chapter-pill" role="tab" data-to="sanctuary" aria-selected="false">02<span>Memories</span></button>
         <button class="chapter-pill" role="tab" data-to="bloom" aria-selected="false">03<span>Bloom</span></button>
+        <button class="chapter-pill" role="tab" data-to="celebration" aria-selected="false">04<span>Joy</span></button>
       </div>
       <button id="next" class="nav-arrow" aria-label="Next chapter">→</button>
     </div>
-    <aside class="preview-note">DESIGN BUILD 0.1 <span>•</span> ORIGINAL ARTWORK ONLY <span>•</span> NO PRIVATE PHOTOGRAPHS</aside>
+    <aside class="preview-note">DESIGN BUILD 0.4 <span>•</span> ORIGINAL ARTWORK ONLY <span>•</span> NO PRIVATE PHOTOGRAPHS</aside>
     <div class="sr-only" id="sceneAnnounce" aria-live="polite"></div>
   </main>
 </body>
