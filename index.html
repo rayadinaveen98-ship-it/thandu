@@ -13,11 +13,14 @@
   <link rel="stylesheet" href="/assets/midnight-letter.css">
   <link rel="stylesheet" href="/assets/birthday-universe.css">
   <link rel="stylesheet" href="/assets/memory-constellation.css">
+  <link rel="stylesheet" href="/assets/photo-worlds.css">
+  <script src="/assets/photo-story-data.js" defer></script>
   <script src="/assets/app.js" defer></script>
   <script src="/assets/sanctuary-v2.js" defer></script>
   <script src="/assets/celebration.js" defer></script>
   <script src="/assets/midnight-letter.js" defer></script>
   <script src="/assets/birthday-universe.js" defer></script>
+  <script src="/assets/photo-story-scenes.js" defer></script>
   <script src="/assets/memory-constellation.js" defer></script>
 </head>
 <body>
@@ -27,7 +30,7 @@
   <header class="topbar">
     <div class="brand"><span class="brand-mark">✧</span><span>THANDU</span><span class="brand-divider"></span><small>THE LIGHT JOURNEY</small></div>
     <div class="header-actions">
-      <span class="dev-pill"><span class="dev-dot"></span> LIVE DESIGN PREVIEW</span>
+
       <button id="motionToggle" class="icon-button" title="Toggle ambient animation" aria-label="Reduce motion" aria-pressed="false">◎</button>
     </div>
   </header>
@@ -37,6 +40,14 @@
       <div class="sky sky-night"><div class="celestial halo-one"></div><div class="celestial halo-two"></div><div class="moon"></div></div>
       <div class="columns" aria-hidden="true"><span class="column col-one"></span><span class="column col-two"></span><span class="column col-three"></span><span class="column col-four"></span></div>
       <div class="portal-area" aria-hidden="true"><div class="portal-aura"></div><div class="portal"><div class="portal-inner"></div><div class="portal-ray"></div></div><div class="portal-sigil">✦</div></div>
+      <div class="arrival-photo-stage">
+        <div class="arrival-photo-glow" aria-hidden="true"></div>
+        <div class="arrival-photo-crown" aria-hidden="true">✧</div>
+        <button type="button" id="arrivalHeroOpen" aria-label="Open Thandu's welcome photograph">
+          <img id="arrivalHeroPhoto" src="/media/scene-50.jpg" alt="Thandu — a real photograph welcoming you into her birthday journey" fetchpriority="high" decoding="async" />
+        </button>
+        <span class="arrival-photo-inscription">THE FIRST LIGHT</span>
+      </div>
       <div class="reflective-water" aria-hidden="true"></div>
       <div class="pathway" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="world-copy arrival-copy">
@@ -87,12 +98,30 @@
       <p class="ambient-hint">Tap a glowing memory. Touch the scenery to create light.</p>
     </section>
 
+    <section class="world world-growing" id="growing" aria-labelledby="growingTitle" inert>
+      <div class="growing-sky" aria-hidden="true"></div>
+      <div class="growing-architecture" aria-hidden="true"><span class="growing-arch main"></span><span class="growing-arch side left"></span><span class="growing-arch side right"></span><span class="growing-path"></span></div>
+      <div class="growing-lanterns" aria-label="Discover a memory by choosing a glowing lantern">
+        <button type="button" data-growing-memory="1" aria-label="See growing-years memory one" aria-pressed="true">✧<span>01</span></button>
+        <button type="button" data-growing-memory="2" aria-label="See growing-years memory two" aria-pressed="false">✦<span>02</span></button>
+        <button type="button" data-growing-memory="3" aria-label="See growing-years memory three" aria-pressed="false">✧<span>03</span></button>
+        <button type="button" data-growing-memory="4" aria-label="See growing-years memory four" aria-pressed="false">✦<span>04</span></button>
+        <button type="button" data-growing-memory="5" aria-label="See growing-years memory five" aria-pressed="false">✧<span>05</span></button>
+      </div>
+      <div class="world-copy growing-copy">
+        <p class="eyebrow">CHAPTER II · GROWING YEARS</p>
+        <h2 id="growingTitle">A world to discover.<br><em>A life unfolding.</em></h2>
+        <p class="lead">Every passing season leaves its own little story.</p>
+      </div>
+      <p class="ambient-hint">Touch a lantern. Discover the memories.</p>
+    </section>
+
     <section class="world world-bloom" id="bloom" aria-labelledby="bloomTitle" inert>
       <div class="sky sky-garden"><div class="garden-sun"></div><div class="garden-mist"></div></div>
       <div class="garden-landscape" aria-hidden="true"><span class="hill hill-1"></span><span class="hill hill-2"></span><span class="hill hill-3"></span></div>
       <div class="flower-vine vine-left" aria-hidden="true"></div><div class="flower-vine vine-right" aria-hidden="true"></div>
       <div class="world-copy bloom-copy">
-        <p class="eyebrow">CHAPTER II · A WORLD IN BLOOM</p>
+        <p class="eyebrow">CHAPTER III · A WORLD IN BLOOM</p>
         <h2 id="bloomTitle">Some people make<br>the world <em>blossom.</em></h2>
         <p class="lead">Touch each flower and fill the garden with light.</p>
       </div>
@@ -111,7 +140,7 @@
       <div class="celebration-floor" aria-hidden="true"></div>
       <div class="joy-floral-arch" aria-hidden="true"></div>
       <div class="world-copy celebration-copy">
-        <p class="eyebrow">CHAPTER III · THE JOY SHE BRINGS</p>
+        <p class="eyebrow">CHAPTER IV · THE JOY SHE BRINGS</p>
         <h2 id="celebrationTitle">A little joy can<br><em>light up a world.</em></h2>
         <p class="lead">Discover three little surprises and watch the courtyard come alive.</p>
       </div>
@@ -159,7 +188,7 @@
       </div>
       <div class="letter-floor" aria-hidden="true"></div>
       <div class="world-copy letter-title">
-        <p class="eyebrow">CHAPTER IV · THE QUIET LETTER</p>
+        <p class="eyebrow">CHAPTER V · THE QUIET LETTER</p>
         <h2 id="letterTitle">Some things are best<br><em>said softly.</em></h2>
         <p class="lead">Beyond all the light and laughter, there is one little letter.</p>
       </div>
@@ -210,7 +239,7 @@
       <div class="universe-relic joy" aria-hidden="true"><span>✦</span></div>
       <div class="universe-horizon" aria-hidden="true"></div>
       <div class="world-copy universe-copy" id="universeIntro">
-        <p class="eyebrow">CHAPTER V · A UNIVERSE OF LIGHT</p>
+        <p class="eyebrow">CHAPTER VI · A UNIVERSE OF LIGHT</p>
         <h2 id="universeTitle">Every little light<br>was leading <em>here.</em></h2>
         <p class="lead">Stillness, wonder and joy. One more moment to bring them all together.</p>
       </div>
@@ -256,7 +285,7 @@
         <button type="button" class="constellation-node" data-cluster="growing" style="--cx:82%;--cy:25%" aria-pressed="false"><span class="node-symbol" aria-hidden="true">☼</span><span>Growing Years</span></button>
         <button type="button" class="constellation-node" data-cluster="bloom" style="--cx:84%;--cy:74%" aria-pressed="false"><span class="node-symbol" aria-hidden="true">❀</span><span>In Bloom</span></button>
         <button type="button" class="constellation-node" data-cluster="joy" style="--cx:18%;--cy:74%" aria-pressed="false"><span class="node-symbol" aria-hidden="true">✦</span><span>Joyful Moments</span></button>
-        <button type="button" class="constellation-node" data-cluster="favourite" style="--cx:50%;--cy:79%" aria-pressed="false"><span class="node-symbol" aria-hidden="true">♡</span><span>Favourites</span></button>
+        <button type="button" class="constellation-node" data-cluster="portraits" style="--cx:50%;--cy:79%" aria-pressed="false"><span class="node-symbol" aria-hidden="true">♡</span><span>Portraits</span></button>
       </div>
       <div class="constellation-actions">
         <button type="button" id="galleryOpen" class="constellation-cta"><span aria-hidden="true">✦</span> Explore the memories</button>
@@ -280,7 +309,7 @@
             <input id="galleryFileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden aria-describedby="galleryPrivacy" />
             <button type="button" id="galleryClear" class="gallery-clear" disabled>Clear selected photos</button>
           </div>
-          <p id="galleryPrivacy" class="gallery-privacy"><span aria-hidden="true">◈</span> Private preview: selected photos stay in this browser tab only. Nothing is uploaded or saved by THANDU. Closing or refreshing clears them.</p>
+          <p id="galleryPrivacy" class="gallery-privacy"><span aria-hidden="true">✧</span> Every photograph is part of Thandu’s birthday journey, shared with warm wishes.</p>
           <p id="galleryFeedback" class="gallery-privacy" aria-live="polite" hidden></p>
         </div>
         <div class="gallery-filter-row">
@@ -290,7 +319,7 @@
             <button type="button" data-gallery-filter="growing" aria-pressed="false">Growing</button>
             <button type="button" data-gallery-filter="bloom" aria-pressed="false">Bloom</button>
             <button type="button" data-gallery-filter="joy" aria-pressed="false">Joy</button>
-            <button type="button" data-gallery-filter="favourite" aria-pressed="false">Favourites</button>
+            <button type="button" data-gallery-filter="portraits" aria-pressed="false">Portraits</button>
             <button type="button" data-gallery-filter="unassigned" aria-pressed="false">Unsorted</button>
           </div>
           <p id="galleryCount" aria-live="polite">0 photos in this preview</p>
@@ -323,7 +352,7 @@
               <option value="growing">Growing Years</option>
               <option value="bloom">In Bloom</option>
               <option value="joy">Joyful Moments</option>
-              <option value="favourite">Favourites</option>
+              <option value="portraits">Portraits</option>
             </select>
           </label>
           <button type="button" id="galleryPhotoNext">Next →</button>
@@ -337,15 +366,16 @@
       <div class="chapter-pills" role="tablist" aria-label="Choose chapter">
         <button class="chapter-pill active" role="tab" data-to="arrival" aria-selected="true">01<span>Arrival</span></button>
         <button class="chapter-pill" role="tab" data-to="sanctuary" aria-selected="false">02<span>Memories</span></button>
-        <button class="chapter-pill" role="tab" data-to="bloom" aria-selected="false">03<span>Bloom</span></button>
-        <button class="chapter-pill" role="tab" data-to="celebration" aria-selected="false">04<span>Joy</span></button>
-        <button class="chapter-pill" role="tab" data-to="letter" aria-selected="false">05<span>Letter</span></button>
-        <button class="chapter-pill" role="tab" data-to="universe" aria-selected="false">06<span>Finale</span></button>
-        <button class="chapter-pill" role="tab" data-to="constellation" aria-selected="false">07<span>Keepsake</span></button>
+        <button class="chapter-pill" role="tab" data-to="growing" aria-selected="false">03<span>Growing</span></button>
+        <button class="chapter-pill" role="tab" data-to="bloom" aria-selected="false">04<span>Bloom</span></button>
+        <button class="chapter-pill" role="tab" data-to="celebration" aria-selected="false">05<span>Joy</span></button>
+        <button class="chapter-pill" role="tab" data-to="letter" aria-selected="false">06<span>Letter</span></button>
+        <button class="chapter-pill" role="tab" data-to="universe" aria-selected="false">07<span>Finale</span></button>
+        <button class="chapter-pill" role="tab" data-to="constellation" aria-selected="false">08<span>Keepsake</span></button>
       </div>
       <button id="next" class="nav-arrow" aria-label="Next chapter">→</button>
     </div>
-    <aside class="preview-note">DESIGN BUILD 0.7 <span>•</span> ORIGINAL ARTWORK ONLY <span>•</span> NO PRIVATE PHOTOGRAPHS</aside>
+
     <div class="sr-only" id="sceneAnnounce" aria-live="polite"></div>
   </main>
 </body>
