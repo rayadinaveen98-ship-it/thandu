@@ -58,7 +58,7 @@ test('public preview embeds no private recipient photographs or videos', () => {
     assert.doesNotMatch(source, /data:image\/jpeg;base64|\.heic\b|\.jpe?g\b|\.mp4\b/i);
   }
   assert.match(load('.gitignore'), /private-assets\//);
-  assert.match(load('docs/IDENTITY_PRESERVATION.md'), /Never deform|Never.*alter/i);
+  assert.match(load('docs/IDENTITY_PRESERVATION.md'), /Never change the appearance|Never deform|Never.*alter/i);
 });
 
 test('new visual scene explicitly supports motion reduction', () => {
