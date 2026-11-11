@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" fill="none" aria-hidden="true">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFF1C9" stop-opacity=".83"/><stop offset=".35" stop-color="#EAB67F" stop-opacity=".85"/><stop offset="1" stop-color="#9B5C68" stop-opacity=".75"/></linearGradient>
+  <linearGradient id="stone"><stop stop-color="#DAA999"/><stop offset=".4" stop-color="#926584"/><stop offset="1" stop-color="#30294E"/></linearGradient>
+  <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#B7BF9B"/><stop offset=".54" stop-color="#4D8A78"/><stop offset="1" stop-color="#265D67"/></linearGradient>
+  <radialGradient id="bloom"><stop stop-color="#FFF2DD"/><stop offset=".4" stop-color="#F5CBD2"/><stop offset="1" stop-color="#AF6688"/></radialGradient>
+  <g id="floret">
+    <ellipse rx="12" ry="24" cy="-17" fill="url(#bloom)"/>
+    <ellipse rx="12" ry="24" cy="-17" fill="url(#bloom)" transform="rotate(72)"/>
+    <ellipse rx="12" ry="24" cy="-17" fill="url(#bloom)" transform="rotate(144)"/>
+    <ellipse rx="12" ry="24" cy="-17" fill="url(#bloom)" transform="rotate(216)"/>
+    <ellipse rx="12" ry="24" cy="-17" fill="url(#bloom)" transform="rotate(288)"/>
+    <circle r="8" fill="#FBE4AB"/>
+  </g>
+  <g id="leafpair" fill="url(#leaf)">
+    <path d="M0 0Q-67-15-62-79Q-20-71 0 0Z"/>
+    <path d="M0 0Q67-18 59-78Q16-65 0 0Z"/>
+  </g>
+  <g id="pavilion-column">
+    <rect width="46" height="815" x="-23" y="125" rx="6" fill="url(#stone)" stroke="url(#g)" stroke-width="5"/>
+    <rect width="80" height="28" x="-40" y="99" rx="7" fill="#987389" stroke="#EBC88E" stroke-width="4"/>
+    <rect width="91" height="20" x="-45" y="913" rx="6" fill="#987389" stroke="#F8DAB2" stroke-width="3"/>
+    <path d="M-9 143V894" stroke="#FFEAD0" stroke-opacity=".35" stroke-width="4"/>
+    <path d="M11 143V894" stroke="#352C55" stroke-opacity=".65" stroke-width="5"/>
+  </g>
+  <g id="botanic">
+    <path d="M-40 920Q-45 560 155 185" stroke="#40776B" stroke-width="15" stroke-linecap="round"/>
+    <path d="M-40 920Q-45 560 155 185" stroke="#D1CB99" stroke-width="4" stroke-linecap="round" opacity=".65"/>
+    <use href="#leafpair" transform="translate(-17 840) rotate(19) scale(.9)"/>
+    <use href="#leafpair" transform="translate(3 720) rotate(-15) scale(1.25)"/>
+    <use href="#leafpair" transform="translate(36 605) rotate(25) scale(.9)"/>
+    <use href="#leafpair" transform="translate(75 495) rotate(-28) scale(1.06)"/>
+    <use href="#leafpair" transform="translate(108 382) rotate(29) scale(.9)"/>
+    <use href="#leafpair" transform="translate(131 283) rotate(-18) scale(.85)"/>
+    <use href="#floret" transform="translate(32 612) scale(1.28)"/>
+    <use href="#floret" transform="translate(128 381) scale(.89)"/>
+    <use href="#floret" transform="translate(157 190) scale(.6)"/>
+  </g>
+</defs>
+<g opacity=".91">
+  <path d="M294 950V425Q302 216 537 190H1063Q1300 216 1306 425V950" stroke="#FFEBD0" stroke-opacity=".17" stroke-width="150"/>
+  <path d="M292 950V425Q306 217 537 192H1063Q1299 217 1308 425V950" stroke="url(#g)" stroke-width="20"/>
+  <path d="M326 950V435Q334 259 537 230H1063Q1266 259 1274 435V950" stroke="#FFF5DB" stroke-opacity=".4" stroke-width="4"/>
+  <path d="M388 950V463Q405 298 562 287H1039Q1197 298 1213 463V950" stroke="#FFEBD1" stroke-opacity=".2" stroke-width="6"/>
+  <use href="#pavilion-column" transform="translate(264 -10)"/>
+  <use href="#pavilion-column" transform="translate(1337 -10)"/>
+  <path d="M207 131Q800 6 1394 131" stroke="url(#g)" stroke-width="27" stroke-linecap="round"/>
+  <path d="M218 145Q800 31 1384 145" stroke="#FFF2D1" stroke-opacity=".62" stroke-width="3"/>
+  <path d="M541 205Q801 139 1059 205" stroke="#FFF8E5" stroke-opacity=".32" stroke-width="3"/>
+</g>
+<path d="M184 260Q475 335 807 254Q1110 183 1414 263" stroke="#F8E9C9" stroke-width="2" stroke-opacity=".6"/>
+<path d="M217 315Q484 378 800 318Q1091 260 1386 312" stroke="#FBE5BD" stroke-width="2" stroke-opacity=".4"/>
+<g opacity=".65">
+  <use href="#botanic" transform="translate(0 135)"/>
+  <use href="#botanic" transform="translate(1600 135) scale(-1 1)"/>
+  <use href="#botanic" transform="translate(125 420) scale(.63)"/>
+  <use href="#botanic" transform="translate(1475 420) scale(-.63 .63)"/>
+</g>
+<path d="M100 940Q800 820 1500 940" stroke="#FFF0D6" stroke-opacity=".29" stroke-width="3"/>
+<g fill="#FFECD2" opacity=".65">
+  <circle cx="421" cy="199" r="2.3"/><circle cx="530" cy="187" r="3.8"/><circle cx="681" cy="169" r="2.6"/><circle cx="798" cy="156" r="3.5"/><circle cx="927" cy="165" r="2.2"/><circle cx="1060" cy="188" r="3.1"/><circle cx="1195" cy="213" r="2.4"/>
+</g>
+</svg>
