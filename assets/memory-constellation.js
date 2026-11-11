@@ -1,6 +1,6 @@
-/* THANDU V0.7 — Device-only Memory Constellation.
- * File input -> local blob URLs only. NO upload, fetch, storage or analytics.
- * Photos are never altered, recompressed, face-processed or persisted.
+/* THANDU V0.9 — Public, curated memory constellation.
+ * 47 authentic photo presentation copies are served by the main THANDU domain.
+ * No personal uploads, visitor accounts, tracking, or face processing.
  */
 (() => {
   'use strict';
@@ -32,12 +32,12 @@
     growing: 'Growing Years',
     bloom: 'In Bloom',
     joy: 'Joyful Moments',
-    favourite: 'Favourites'
+    portraits: 'Portraits'
   });
   const allowedTypes = new Set(['image/jpeg','image/png','image/webp']);
   const MAX_PHOTOS = 60;
   const MAX_BYTES = 30 * 1024 * 1024;
-  let photos = [];
+  let photos = (window.THANDU_MEDIA?.photos || []).map(photo => ({id:photo.id,uri:photo.src,group:photo.group}));
   let filter = 'all';
   let current = 0;
   let lastGalleryOpener = null;
@@ -91,7 +91,7 @@
     if (dialog.open) closeViewer();
     image.removeAttribute('src');
     grid.replaceChildren();
-    photos.forEach(photo => URL.revokeObjectURL(photo.uri));
+    photos.forEach(photo => { if (photo.uri.startsWith('blob:')) URL.revokeObjectURL(photo.uri); });
     photos = [];
     input.value = '';
     clear.disabled = true;
@@ -101,7 +101,7 @@
     const visible = photos.filter(p => filter === 'all' || p.group === filter);
     grid.replaceChildren();
     const allCount = photos.length;
-    count.textContent = visible.length + ' shown · ' + allCount + (allCount === 1 ? ' photo' : ' photos') + ' selected';
+    count.textContent = visible.length + ' shown · ' + allCount + (allCount === 1 ? ' memory' : ' memories') + ' in Thandu’s constellation';
     clear.disabled = photos.length === 0;
     empty.hidden = visible.length > 0;
     const heading = empty.querySelector('h3');
