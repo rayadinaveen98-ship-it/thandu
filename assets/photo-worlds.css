@@ -1,0 +1,173 @@
+/* THANDU Unified Public V0.9 — authentic photos embedded into living worlds.
+   Never modify photographed pixels, facial geometry, or source originals.
+ */
+.story-art-matte{position:absolute;inset:-4%;z-index:2;pointer-events:none;background-size:cover;background-position:center;
+  opacity:.24;filter:saturate(1.07);mask-image:linear-gradient(90deg,transparent 0,#0009 18%,#000b 75%,transparent 100%)}
+#arrival .story-art-matte{opacity:.18}
+#sanctuary .story-art-matte{opacity:.12}
+#bloom .story-art-matte{opacity:.15}
+#celebration .story-art-matte{opacity:.17}
+#letter .story-art-matte{opacity:.16}
+#universe .story-art-matte{opacity:.16}
+
+/* First frame is a real photo, not a later gallery or loaded placeholder. */
+.arrival-photo-stage{position:absolute;left:50%;top:59%;transform:translate(-50%,-50%);z-index:22;width:clamp(160px,19vw,238px);
+ height:clamp(220px,32vh,342px);padding:11px 10px 30px;border-radius:48% 48% 22px 22px/18% 18% 22px 22px;
+ background:linear-gradient(150deg,#ffe8b9c4,#d3a88dd9 18%,#3f355eab 48%,#ceb09bca 96%);border:2px solid #fff0c2;
+ box-shadow:0 0 0 7px #fee2ac38,inset 0 0 30px #fff2cb60,0 22px 55px #080c2c9c,0 0 68px #ffe1a490;
+ backdrop-filter:blur(10px);display:flex;align-items:stretch}
+.arrival-photo-stage:before{content:"";position:absolute;inset:5px;border:1px solid #ffe7b96e;border-radius:inherit;pointer-events:none}
+.arrival-photo-glow{position:absolute;z-index:-1;inset:-25%;background:radial-gradient(ellipse,#ffebbf85,#f4cbaa26 44%,transparent 73%);filter:blur(21px);pointer-events:none;animation:arrival-glow 7s ease-in-out infinite alternate}
+.arrival-photo-crown{position:absolute;top:-27px;left:50%;transform:translateX(-50%);color:#fff2cb;font-size:35px;text-shadow:0 0 20px #ffe4a2}
+#arrivalHeroOpen{display:grid;place-items:center;flex:1;width:100%;padding:4px;border:1px solid #fff1d3b9;border-radius:44% 44% 9px 9px/16% 16% 9px 9px;
+ overflow:hidden;background:linear-gradient(150deg,#6c5974,#1c2440);box-shadow:inset 0 0 26px #fff1ce4b;cursor:zoom-in}
+#arrivalHeroOpen img{display:block;width:100%;height:100%;object-fit:contain;filter:none;transform:none}
+.arrival-photo-inscription{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-size:9px;font-weight:800;letter-spacing:.18em;color:#fff1ca;text-shadow:0 2px 6px #342540}
+#arrival .portal-sigil{opacity:.32}
+#arrival .guiding-light{left:75%!important;top:61%!important}
+#arrival .guiding-caption{font-size:9px}
+#arrival .arrival-copy{top:15.5%}
+#arrival .arrival-copy .lead{max-width:550px}
+
+/* Reusable original-photo frame within the living environmental scenes. */
+.story-photo-stage{position:absolute;z-index:24;left:var(--photo-x,72%);top:var(--photo-y,56%);transform:translate(-50%,-50%);
+ width:var(--photo-width,clamp(155px,18vw,230px));height:var(--photo-height,clamp(210px,29vh,315px));
+ padding:9px 9px 39px;border:2px solid #fff0c6c9;border-radius:47% 47% 21px 21px/18% 18% 21px 21px;
+ background:linear-gradient(150deg,#fbe4c9c7,#bc93b1bc 28%,#322b5fa6 67%,#f0d5bdcb 100%);
+ box-shadow:0 0 0 7px #f8dfb326,0 0 43px #f6d7b475,0 17px 46px #13152da6,inset 0 0 24px #ffe9ce7a;
+ backdrop-filter:blur(9px);display:flex;align-items:stretch}
+.story-photo-stage:before{content:"";position:absolute;inset:5px;border:1px solid #fff3d185;border-radius:inherit;pointer-events:none}
+.story-photo-halo{position:absolute;inset:-25%;z-index:-1;pointer-events:none;
+ background:radial-gradient(ellipse,#fff2d97a,#f1bfd13a 43%,transparent 70%);filter:blur(24px);animation:arrival-glow 7s ease-in-out infinite alternate}
+.story-frame-crown{position:absolute;left:50%;top:-29px;transform:translateX(-50%);font-size:37px;color:#ffe9b3;text-shadow:0 0 24px #ffe3a7}
+.story-photo-open{position:relative;flex:1;width:100%;display:grid;place-items:center;padding:3px;margin:0;cursor:zoom-in;
+ border:1px solid #ffedca;border-radius:43% 43% 8px 8px/17% 17% 8px 8px;background:linear-gradient(150deg,#4c436c,#13182f);overflow:hidden}
+.story-photo-open img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:none!important;transform:none!important}
+.story-zoom{position:absolute;right:5px;bottom:4px;width:25px;height:25px;display:grid;place-items:center;border-radius:50%;background:#181d38ce;color:#fff1cb;font-size:13px}
+.story-photo-caption{position:absolute;bottom:8px;left:12px;right:12px;display:flex;justify-content:space-between;align-items:center;gap:7px;color:#fff1d9;font-size:9px;letter-spacing:.035em}
+.story-caption-text{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.story-caption-number{font-family:Georgia,serif;color:#ffe5b6;font-size:10px;white-space:nowrap}
+.story-frame-actions{position:absolute;left:50%;bottom:-25px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:10px}
+.story-frame-actions button{width:36px;height:36px;border:1px solid #f6deb8;border-radius:50%;background:#2e2a4cdc;color:#fff5dd;font-size:16px;box-shadow:0 7px 20px #11152d7a;backdrop-filter:blur(10px)}
+.story-frame-actions button:hover:not(:disabled){background:#6b5475}
+.story-frame-actions button:disabled{opacity:.45;cursor:default}
+.frame-dots{font-family:Georgia,serif;color:#ffe7ba;font-size:14px;line-height:1}
+.story-photo-open:focus-visible,#arrivalHeroOpen:focus-visible{outline:2px solid #fff9dd;outline-offset:6px}
+#bloom .story-photo-stage{--photo-x:27%;--photo-y:52%;--photo-width:clamp(140px,17vw,215px);--photo-height:clamp(205px,26vh,300px)}
+#celebration .story-photo-stage{--photo-x:23%;--photo-y:55%;--photo-width:clamp(137px,16vw,215px);--photo-height:clamp(190px,26vh,300px)}
+#letter .story-photo-stage{--photo-x:20%;--photo-y:55%;--photo-width:clamp(139px,17vw,225px);--photo-height:clamp(200px,29vh,318px)}
+#universe .story-photo-stage{--photo-x:77%;--photo-y:55%;--photo-width:clamp(135px,16vw,200px);--photo-height:clamp(197px,27vh,295px)}
+#universe.universe-awake .story-photo-stage{z-index:25;opacity:.68;filter:drop-shadow(0 0 35px #ffe9c9)}
+#universe.universe-awake .universe-wish{z-index:40}
+
+/* Real photographs are the core of Little Beginnings' five interactive orbs. */
+#sanctuary .memory-orb:has(.orb-real-photo){justify-content:flex-start;gap:4px;padding:8px 6px 16px}
+#sanctuary .orb-real-photo{display:block;max-width:90%;width:auto;height:65%;min-height:0;object-fit:contain;border-radius:40% 40% 9px 9px/24% 24% 9px 9px;border:1px solid #fff9e2b8;background:#7565874a;box-shadow:0 0 14px #fff6df87;filter:none}
+#sanctuary .orb-engraving{display:none}
+#sanctuary .orb-name{color:#4c3b57;font-size:9px;line-height:1.1;max-width:98%;text-shadow:0 1px 7px #fff1e7}
+#sanctuary .orb-number{bottom:3px;font-size:8px}
+#sanctuary .memory-stage img{display:block;max-width:100%;max-height:100%;object-fit:contain;filter:none;transform:none}
+#sanctuary .memory-stage .memory-stage-hint{display:none}
+#sanctuary .memory-reveal .memory-stage{min-height:240px}
+
+/* Growing Years — one real-photo hero, five accessible lanterns. */
+.world-growing{background:#171c43;isolation:isolate}
+.growing-sky{position:absolute;inset:0;background:radial-gradient(ellipse 43% 35% at 50% 40%,#ffe5c69c,transparent 85%),radial-gradient(ellipse at 49% 0,#d1a5b5,#716889 44%,#283c67 76%,#111c3c)}
+.growing-sky:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 12% 12%,#fffcdf 0 1px,transparent 2px),radial-gradient(circle at 30% 28%,#fffcdf 0 1px,transparent 2px),radial-gradient(circle at 67% 18%,#fffcdf 0 1px,transparent 2px),radial-gradient(circle at 93% 32%,#fffcdf 0 1px,transparent 2px);opacity:.7}
+.growing-architecture{position:absolute;inset:0;z-index:4;pointer-events:none}
+.growing-arch{position:absolute;left:50%;top:28%;height:77%;width:min(55vw,610px);border:12px double #ffe2b794;transform:translateX(-50%);border-radius:50% 50% 0 0/37% 37% 0 0;box-shadow:0 0 55px #ffdbbf57,inset 0 0 55px #ffedb633;background:linear-gradient(90deg,#ffe8bf12,transparent 18%,transparent 83%,#ffe6b61a)}
+.growing-arch.side{width:min(25vw,290px);height:65%;top:36%;border-width:6px;opacity:.48}
+.growing-arch.left{left:6%}.growing-arch.right{left:94%}
+.growing-path{position:absolute;bottom:-8%;left:-10%;width:120%;height:28%;border-radius:50% 50% 0 0/35% 35% 0 0;background:linear-gradient(#8a6d83,#29304d 70%,#13182e);border-top:2px solid #ffe8be8c;box-shadow:0 -12px 34px #ffe3b03d}
+.growing-copy{top:14%;z-index:28}.growing-copy h2{font-size:clamp(34px,4.9vw,66px);color:#fff4e3}.growing-copy h2 em{color:#ffe0be}
+.growing-copy .lead{color:#fcebd3d9;margin:11px auto;font-size:14px}
+#growing .story-photo-stage{--photo-x:50%;--photo-y:55%;--photo-width:clamp(164px,19vw,245px);--photo-height:clamp(215px,31vh,350px)}
+.growing-lanterns{position:absolute;z-index:29;left:50%;top:60%;width:min(86vw,730px);height:min(43vh,360px);transform:translate(-50%,-50%);pointer-events:none}
+.growing-lanterns button{position:absolute;left:var(--left);top:var(--top);transform:translate(-50%,-50%);pointer-events:auto;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;
+ width:clamp(47px,7vw,80px);height:clamp(61px,9vw,100px);border:1px solid #ffedbbae;border-radius:45% 45% 18% 18%/32% 32% 18% 18%;background:radial-gradient(ellipse at 42% 33%,#fff6cdba,#c18eafcc 65%,#6c6682dc);font-family:Georgia,serif;color:#fff8db;font-size:21px;box-shadow:0 0 20px #ffe0b855;transition:box-shadow .35s,scale .35s}
+.growing-lanterns button span{font:700 10px ui-sans-serif,system-ui,sans-serif;color:#4f3b60}
+.growing-lanterns button:nth-child(1){--left:11%;--top:22%}.growing-lanterns button:nth-child(2){--left:88%;--top:20%}
+.growing-lanterns button:nth-child(3){--left:10%;--top:68%}.growing-lanterns button:nth-child(4){--left:90%;--top:66%}
+.growing-lanterns button:nth-child(5){--left:49%;--top:96%}
+.growing-lanterns button.lit,.growing-lanterns button:hover{scale:1.1;box-shadow:0 0 43px #ffeabb,0 0 75px #f9d5a49c}
+.growing-lanterns button:focus-visible{outline:2px solid #fff6c9;outline-offset:4px}
+
+/* Genuine portrait clusters on the keepsake itself as well as inside its gallery. */
+#constellation .constellation-real-thumb{display:block;width:46px;height:49px;max-width:95%;object-fit:contain;border-radius:12px;background:#211d45;border:1px solid #fce4b8aa;box-shadow:0 0 15px #fbe8be77}
+#constellation .constellation-node:has(.constellation-real-thumb){gap:4px;min-height:98px}
+#constellation .constellation-node .node-symbol{display:none}
+
+/* Public recipient gallery: no file upload or editable-memory controls required. */
+.gallery-local-import{display:none!important}
+#galleryFileInput,#galleryChoose,#galleryClear{display:none!important}
+.gallery-viewer-actions label{display:none!important}
+.gallery-filters [data-gallery-filter="unassigned"]{display:none!important}
+.gallery-tools{gap:4px}
+#galleryPrivacy{font-size:11px;color:#f6e3cfcc}
+.gallery-tile-image img{width:100%;height:100%;object-fit:contain;filter:none;transform:none}
+.gallery-photo-stage img{max-width:100%;max-height:100%;object-fit:contain!important;filter:none!important;transform:none!important}
+.gallery-empty{display:none}
+.gallery-grid{padding-bottom:24px}
+
+/* Full-screen native photo inspector used by all guided chapters. */
+.story-photo-viewer{position:fixed;z-index:200;width:min(94vw,940px);max-width:94vw;max-height:94dvh;padding:15px;border:1px solid #ffe9bf;background:radial-gradient(ellipse at 50% 0,#6b5479,#202447 60%,#0b1230);color:#fff2db;border-radius:25px;box-shadow:0 27px 110px #05061de8}
+.story-photo-viewer::backdrop{background:#05071bea;backdrop-filter:blur(18px)}
+.photo-viewer-panel{display:flex;flex-direction:column;gap:13px}
+.photo-viewer-head,.photo-viewer-controls{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.photo-viewer-head span{font-family:Georgia,serif;font-size:20px;color:#fff2dc}
+.photo-viewer-head button,.photo-viewer-controls button{min-height:44px;min-width:44px;border:1px solid #ffe7bb9c;border-radius:99px;color:#fff3dc;background:#ffffff14;padding:8px 13px}
+.photo-viewer-controls span{font-size:11px;letter-spacing:.12em;color:#ffe1ad}
+.photo-viewer-controls button:disabled{opacity:.35}
+.photo-viewer-image-wrap{height:min(70dvh,690px);min-height:220px;display:grid;place-items:center;border:1px solid #ffdfb76b;border-radius:17px;overflow:hidden;background:#111735}
+.photo-viewer-image-wrap img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:none!important;transform:none!important}
+@keyframes arrival-glow{0%,100%{opacity:.67;scale:.94}50%{opacity:1;scale:1.04}}
+
+@media(max-width:720px){
+ #arrival .arrival-copy{top:13%}
+ #arrival .arrival-copy h1{font-size:clamp(31px,7.9vw,43px);line-height:1.1}
+ #arrival .arrival-copy .eyebrow{font-size:8px;margin-bottom:8px}
+ #arrival .arrival-copy .lead{font-size:11px;max-width:320px;margin:9px auto}
+ .arrival-photo-stage{top:54%;width:clamp(150px,41vw,203px);height:clamp(223px,33vh,285px)}
+ #arrival .guiding-light{left:81%!important;top:60%!important;scale:.67}
+ #arrival .guiding-caption{display:none}
+ #arrival .portal-sigil{opacity:.1}
+ .story-photo-stage{width:var(--photo-width,clamp(118px,35vw,169px));height:var(--photo-height,clamp(162px,27vh,237px));padding:7px 7px 29px}
+ .story-photo-caption{font-size:8px;bottom:5px;left:8px;right:8px}
+ .story-frame-actions{bottom:-22px}
+ .story-frame-actions button{width:32px;height:32px}
+ #growing .story-photo-stage{--photo-x:51%;--photo-y:56%;--photo-width:clamp(149px,42vw,206px);--photo-height:clamp(215px,32vh,285px)}
+ .growing-copy{top:16%}.growing-copy h2{font-size:clamp(32px,8vw,43px)}.growing-copy .lead{font-size:11px}
+ .growing-arch.main{width:85vw;top:36%;height:65%;border-width:7px}
+ .growing-lanterns{width:91vw;height:34vh;top:57%;min-height:245px}
+ .growing-lanterns button{width:48px;height:61px;font-size:18px}
+ .growing-lanterns button:nth-child(1){--left:9%;--top:23%}.growing-lanterns button:nth-child(2){--left:91%;--top:23%}
+ .growing-lanterns button:nth-child(3){--left:9%;--top:72%}.growing-lanterns button:nth-child(4){--left:91%;--top:72%}
+ .growing-lanterns button:nth-child(5){--left:51%;--top:107%}
+ #sanctuary .orb-real-photo{height:59%}
+ #sanctuary .orb-name{font-size:7px}
+ #bloom .story-photo-stage{--photo-x:25%;--photo-y:53%;--photo-width:clamp(112px,29vw,150px);--photo-height:clamp(156px,24vh,218px)}
+ #bloom .flower-field{top:70%}
+ #celebration .story-photo-stage{--photo-x:25%;--photo-y:53%;--photo-width:clamp(114px,30vw,151px);--photo-height:clamp(162px,24vh,210px)}
+ #celebration .joy-centerpiece{left:68%;top:55%;width:150px;height:155px}
+ #letter .story-photo-stage{--photo-x:21%;--photo-y:55%;--photo-width:clamp(110px,29vw,144px);--photo-height:clamp(165px,24vh,210px)}
+ #letter .letter-stage{left:69%;width:min(61vw,260px);height:200px}
+ #universe .story-photo-stage{--photo-x:79%;--photo-y:56%;--photo-width:clamp(105px,28vw,137px);--photo-height:clamp(154px,24vh,206px)}
+ #universe .universe-centerpiece{left:42%;width:clamp(135px,33vw,195px)}
+ #constellation .constellation-real-thumb{width:35px;height:38px}
+ #constellation .constellation-node:has(.constellation-real-thumb){min-height:83px}
+ .photo-viewer-image-wrap{height:min(63dvh,530px)}
+}
+@media(max-width:390px){
+ #arrival .arrival-copy{top:13%}.arrival-photo-stage{top:53%;width:144px;height:220px}
+ #arrival .guiding-light{left:82%!important;top:58%!important}
+ .growing-copy{top:17%}.growing-copy h2{font-size:31px}
+ #growing .story-photo-stage{--photo-width:145px;--photo-height:204px}
+ #bloom .story-photo-stage{--photo-x:25%;--photo-y:52%;--photo-width:106px;--photo-height:149px}
+ #celebration .story-photo-stage{--photo-width:108px;--photo-height:148px}
+ #letter .story-photo-stage{--photo-x:20%;--photo-width:103px;--photo-height:158px}
+ #letter .letter-stage{left:70%;width:224px;height:170px}
+ #universe .story-photo-stage{--photo-width:102px;--photo-height:145px}
+ .photo-viewer-head span{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){.story-photo-halo,.arrival-photo-glow{animation:none!important}}
+body.motion-off .story-photo-halo,body.motion-off .arrival-photo-glow{animation:none!important}
