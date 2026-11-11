@@ -68,10 +68,10 @@
       return;
     }
     if (event.key !== 'Tab') return;
-    // Only these two controls are tabbable inside the letter preview.
+    // Trap focus among Close, Read Again and Continue in the letter preview.
     // Constrain focus even when an inert-compatible fallback browser is used.
     const first = closeButton;
-    const last = restartButton;
+    const last = document.getElementById('letterContinue') || restartButton;
     if (event.shiftKey && document.activeElement !== last) {
       event.preventDefault();
       last.focus({ preventScroll: true });
