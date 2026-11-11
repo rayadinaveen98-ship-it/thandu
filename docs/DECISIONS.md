@@ -22,7 +22,13 @@
 
 | D-016 | Gallery accepts only explicit local photo selection; never uploads or persists image bytes on public Vercel | Implemented for V0.7 preview | Validates face-faithful presentation without publishing private childhood photos. Recipient delivery policy still needs approval |
 
+| D-017 | **Single public recipient experience at https://thandu.vercel.app**; no separate private journey/link/login, photographs included in the real site | **Locked — owner 2026-11-11; supersedes D-008 private delivery preference** | Owner explicitly approved public display of the photos and asked to merge V0.7 effects and V0.8 content. See [unified V0.9 plan](UNIFIED_PUBLIC_V09_PLAN.md) |
+| D-018 | **Real recipient photo visible from first scene**, then photos in all suitable chapters; gallery holds the approved 47 | **Locked — owner 2026-11-11** | The experience must be personal throughout, not an artwork-only preview plus empty gallery |
+| D-019 | Keep raw originals unmodified and out of public Git history; publish metadata-stripped public display copies through one app's media delivery | **Locked workflow** | Public display approval does not require uploading raw originals or location metadata; review other people's/children's images before publication |
+| D-020 | V0.9 uses one eight-scene unified frontend and merges the strongest parts of V0.7 public engine and V0.8 private narrative | **Locked direction** | No duplicate frontends, no new product features, no blank photo stages |
+
 ## Changelog
+- 2026-11-11: **Latest decision** — owner approved a single **public** THANDU V0.9 photo-led website. D-017 through D-020 supersede incompatible earlier private-only requirements; prior V0.7 and V0.8 work is retained for merging.
 - 2026-11-11: Memory Constellation V0.7 preview uses session-only client-side photo selection and manual thematic grouping.
 - 2026-11-11: Birthday Universe V0.6 connected as sixth public-safe chapter; detailed QA and private photo release outstanding.
 - 2026-11-11: Owner approved face-safe cropping and non-facial compositing; Midnight Letter V0.5 connected as fifth scene.
