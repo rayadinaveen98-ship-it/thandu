@@ -5,7 +5,7 @@
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-  const order = ['arrival', 'sanctuary', 'bloom', 'celebration'];
+  const order = ['arrival', 'sanctuary', 'bloom', 'celebration', 'letter'];
   const sceneHost = $('#journey');
   const canvas = $('#particleCanvas');
   const ctx = canvas?.getContext('2d', { alpha: true });
@@ -188,10 +188,11 @@
     $('#prev').disabled = current === 0;
     $('#next').disabled = current === order.length - 1;
     if (announce) $('#sceneAnnounce').textContent = 'Now visiting ' +
-      (scene === 'arrival' ? 'The Arrival' : scene === 'sanctuary' ? 'Little Beginnings' : scene === 'bloom' ? 'A World in Bloom' : 'The Joy She Brings');
+      (scene === 'arrival' ? 'The Arrival' : scene === 'sanctuary' ? 'Little Beginnings' : scene === 'bloom' ? 'A World in Bloom' : scene === 'celebration' ? 'The Joy She Brings' : 'The Quiet Letter');
     document.body.classList.toggle('in-sanctuary', scene === 'sanctuary');
     document.body.classList.toggle('in-bloom', scene === 'bloom');
     document.body.classList.toggle('in-celebration', scene === 'celebration');
+    document.body.classList.toggle('in-letter', scene === 'letter');
   }
 
   // The travelling star never serves as a hidden navigation mechanism:
@@ -203,6 +204,7 @@
     if (openMemory && !openMemory.hidden) {
       $('#memoryClose')?.click();
     }
+    if (!$('#letterReveal')?.hidden) window.thanduLetter?.close({ restoreFocus: false });
     if (!motionEnabled) {
       applyScene(target);
       return;
@@ -210,9 +212,9 @@
     transitioning = true;
     sceneHost.dataset.transitioning = 'true';
     const startX = width * .5;
-    const startY = current === 0 ? height * .59 : current === 1 ? height * .56 : height * .64;
+    const startY = current === 0 ? height * .59 : current === 1 ? height * .56 : current === 4 ? height * .53 : height * .64;
     const endX = width * .5;
-    const endY = target === 0 ? height * .59 : target === 1 ? height * .53 : height * .60;
+    const endY = target === 0 ? height * .59 : target === 1 ? height * .53 : target === 4 ? height * .53 : height * .60;
     traveler.style.left = startX + 'px';
     traveler.style.top = startY + 'px';
     traveler.classList.add('visible');
