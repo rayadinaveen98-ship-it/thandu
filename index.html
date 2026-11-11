@@ -12,11 +12,13 @@
   <link rel="stylesheet" href="/assets/celebration.css">
   <link rel="stylesheet" href="/assets/midnight-letter.css">
   <link rel="stylesheet" href="/assets/birthday-universe.css">
+  <link rel="stylesheet" href="/assets/memory-constellation.css">
   <script src="/assets/app.js" defer></script>
   <script src="/assets/sanctuary-v2.js" defer></script>
   <script src="/assets/celebration.js" defer></script>
   <script src="/assets/midnight-letter.js" defer></script>
   <script src="/assets/birthday-universe.js" defer></script>
+  <script src="/assets/memory-constellation.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#journey">Skip to experience</a>
@@ -232,9 +234,102 @@
         <button type="button" id="universeAgain">Watch the magic again</button>
         <button type="button" data-next="letter">Read the letter</button>
         <button type="button" data-next="arrival">Start from the beginning</button>
+        <button type="button" data-next="constellation">Explore her memories</button>
       </div>
       <p class="ambient-hint">One last touch, one beautiful beginning.</p>
     </section>
+
+
+    <section class="world world-constellation" id="constellation" aria-labelledby="constellationTitle" inert>
+      <div class="memory-sky" aria-hidden="true"><div class="memory-moon"></div><div class="memory-nebula"></div></div>
+      <div class="memory-orbit-scene" aria-hidden="true">
+        <span class="memory-orbit-ring outer"></span><span class="memory-orbit-ring inner"></span>
+        <span class="memory-heart-light">✧</span>
+      </div>
+      <div class="world-copy constellation-copy">
+        <p class="eyebrow">THE KEEPSAKE · AFTER THE JOURNEY</p>
+        <h2 id="constellationTitle">Every memory, <em>a little star.</em></h2>
+        <p class="lead">Explore the constellation, then return to your favourite moments whenever you like.</p>
+      </div>
+      <div class="constellation-navigation" aria-label="Memory themes">
+        <button type="button" class="constellation-node" data-cluster="childhood" style="--cx:19%;--cy:27%" aria-pressed="false"><span class="node-symbol" aria-hidden="true">✧</span><span>Little Beginnings</span></button>
+        <button type="button" class="constellation-node" data-cluster="growing" style="--cx:82%;--cy:25%" aria-pressed="false"><span class="node-symbol" aria-hidden="true">☼</span><span>Growing Years</span></button>
+        <button type="button" class="constellation-node" data-cluster="bloom" style="--cx:84%;--cy:74%" aria-pressed="false"><span class="node-symbol" aria-hidden="true">❀</span><span>In Bloom</span></button>
+        <button type="button" class="constellation-node" data-cluster="joy" style="--cx:18%;--cy:74%" aria-pressed="false"><span class="node-symbol" aria-hidden="true">✦</span><span>Joyful Moments</span></button>
+        <button type="button" class="constellation-node" data-cluster="favourite" style="--cx:50%;--cy:79%" aria-pressed="false"><span class="node-symbol" aria-hidden="true">♡</span><span>Favourites</span></button>
+      </div>
+      <div class="constellation-actions">
+        <button type="button" id="galleryOpen" class="constellation-cta"><span aria-hidden="true">✦</span> Explore the memories</button>
+        <button type="button" class="constellation-text-link" data-next="universe">Return to the birthday sky</button>
+      </div>
+      <p class="ambient-hint">Five constellations. A lifetime of little moments.</p>
+    </section>
+
+    <div id="galleryDrawer" class="gallery-drawer" role="dialog" aria-modal="true" aria-labelledby="galleryDrawerTitle" hidden>
+      <div class="gallery-shell">
+        <div class="gallery-top">
+          <div>
+            <p class="eyebrow">THANDU · THE KEEPSAKE</p>
+            <h2 id="galleryDrawerTitle">The Memory <em>Constellation.</em></h2>
+          </div>
+          <button type="button" id="galleryClose" class="gallery-close" aria-label="Close memory constellation">✕</button>
+        </div>
+        <div class="gallery-tools">
+          <div class="gallery-local-import">
+            <label for="galleryFileInput" class="gallery-choose"><span aria-hidden="true">✧</span> Choose photos from this device</label>
+            <input id="galleryFileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple aria-describedby="galleryPrivacy" />
+            <button type="button" id="galleryClear" class="gallery-clear" disabled>Clear selected photos</button>
+          </div>
+          <p id="galleryPrivacy" class="gallery-privacy"><span aria-hidden="true">◈</span> Private preview: selected photos stay in this browser tab only. Nothing is uploaded or saved by THANDU. Closing or refreshing clears them.</p>
+        </div>
+        <div class="gallery-filter-row">
+          <div class="gallery-filters" aria-label="Filter photographs by theme">
+            <button type="button" data-gallery-filter="all" class="selected" aria-pressed="true">All memories</button>
+            <button type="button" data-gallery-filter="childhood" aria-pressed="false">Beginnings</button>
+            <button type="button" data-gallery-filter="growing" aria-pressed="false">Growing</button>
+            <button type="button" data-gallery-filter="bloom" aria-pressed="false">Bloom</button>
+            <button type="button" data-gallery-filter="joy" aria-pressed="false">Joy</button>
+            <button type="button" data-gallery-filter="favourite" aria-pressed="false">Favourites</button>
+            <button type="button" data-gallery-filter="unassigned" aria-pressed="false">Unsorted</button>
+          </div>
+          <p id="galleryCount" aria-live="polite">0 photos in this preview</p>
+        </div>
+        <div id="galleryGrid" class="gallery-grid" aria-label="Selected memory photographs"></div>
+        <div class="gallery-empty" id="galleryEmpty">
+          <div class="gallery-empty-art" aria-hidden="true">✧ <span>❀</span> ✦</div>
+          <h3>The constellation is waiting.</h3>
+          <p>Choose photographs from your device to preview them here. You can arrange them into memory themes without changing the original images.</p>
+          <p class="gallery-empty-sub">The public site contains only artwork. No personal photos are included.</p>
+        </div>
+      </div>
+    </div>
+
+    <dialog id="galleryViewer" class="gallery-viewer" aria-labelledby="galleryViewerTitle">
+      <div class="gallery-viewer-inner">
+        <div class="gallery-viewer-head">
+          <p id="galleryViewerTitle">Memory <span id="galleryViewerIndex">01</span></p>
+          <button type="button" id="galleryViewerClose" aria-label="Close photo viewer">✕</button>
+        </div>
+        <div class="gallery-photo-stage">
+          <img id="galleryViewerImage" alt="Selected original photograph, displayed without alteration" />
+        </div>
+        <div class="gallery-viewer-actions">
+          <button type="button" id="galleryPhotoPrevious">← Previous</button>
+          <label for="galleryGroupSelect">Memory theme
+            <select id="galleryGroupSelect">
+              <option value="unassigned">Unsorted</option>
+              <option value="childhood">Little Beginnings</option>
+              <option value="growing">Growing Years</option>
+              <option value="bloom">In Bloom</option>
+              <option value="joy">Joyful Moments</option>
+              <option value="favourite">Favourites</option>
+            </select>
+          </label>
+          <button type="button" id="galleryPhotoNext">Next →</button>
+        </div>
+        <p class="gallery-photo-note">Unaltered original image · Frame and atmosphere are separate from the photograph</p>
+      </div>
+    </dialog>
 
     <div class="lower-nav" aria-label="Journey controls">
       <button id="prev" class="nav-arrow" aria-label="Previous chapter">←</button>
@@ -245,10 +340,11 @@
         <button class="chapter-pill" role="tab" data-to="celebration" aria-selected="false">04<span>Joy</span></button>
         <button class="chapter-pill" role="tab" data-to="letter" aria-selected="false">05<span>Letter</span></button>
         <button class="chapter-pill" role="tab" data-to="universe" aria-selected="false">06<span>Finale</span></button>
+        <button class="chapter-pill" role="tab" data-to="constellation" aria-selected="false">07<span>Keepsake</span></button>
       </div>
       <button id="next" class="nav-arrow" aria-label="Next chapter">→</button>
     </div>
-    <aside class="preview-note">DESIGN BUILD 0.6 <span>•</span> ORIGINAL ARTWORK ONLY <span>•</span> NO PRIVATE PHOTOGRAPHS</aside>
+    <aside class="preview-note">DESIGN BUILD 0.7 <span>•</span> ORIGINAL ARTWORK ONLY <span>•</span> NO PRIVATE PHOTOGRAPHS</aside>
     <div class="sr-only" id="sceneAnnounce" aria-live="polite"></div>
   </main>
 </body>
