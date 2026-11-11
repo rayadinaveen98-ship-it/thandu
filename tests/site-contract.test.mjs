@@ -18,8 +18,10 @@ test('eight connected cinematic chapters match main navigation and photo manifes
  assert.deepEqual(scenes,expected);assert.deepEqual(tabs,expected);assert.deepEqual(order,expected);
  assert.deepEqual(Array.from(story.scenes,s=>s.id),expected);
 });
-test('a real photographed welcome is visible in initial HTML',()=>{
+test('a real opening photograph is preloaded but stays veiled until bird interaction',()=>{
  assert.match(html,/id="arrivalHeroPhoto" src="\/media\/scene-50\.jpg"/);
+ assert.match(html,/id="arrivalPhotoStage" aria-hidden="true" inert/);
+ assert.match(html,/id="arrivalBird" aria-label=/);
  assert.match(html,/fetchpriority="high"/);
  assert.equal(story.scenes[0].photoIds[0],46);
  assert.equal(story.photos.find(p=>p.id===46).src,'/media/scene-50.jpg');
