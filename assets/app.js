@@ -156,6 +156,9 @@
     reward.hidden = true;
     reward.innerHTML = '<span>✧ THE GARDEN IS AWAKE ✧</span><button type="button" id="replayGarden">Bloom again</button><button type="button" id="toCelebration" data-next="celebration">Continue →</button>';
     flowerField.parentElement.appendChild(reward);
+    // This button is created at runtime, so it needs an explicit handler.
+    // The generic [data-next] wiring below only sees static HTML at startup.
+    $('#toCelebration').addEventListener('click', () => navigate(order.indexOf('celebration')));
     $('#replayGarden').addEventListener('click', () => {
       blooms.clear();
       $$('.flower', flowerField).forEach(button => {
