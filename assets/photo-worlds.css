@@ -171,3 +171,20 @@
 }
 @media(prefers-reduced-motion:reduce){.story-photo-halo,.arrival-photo-glow{animation:none!important}}
 body.motion-off .story-photo-halo,body.motion-off .arrival-photo-glow{animation:none!important}
+
+/* The original hero photograph remains in the final birthday wish, not just before it. */
+#universe .universe-wish .wish-photo{display:grid;place-items:center;margin:0 auto 8px;width:clamp(80px,8.6vw,110px);height:clamp(100px,13vh,127px);
+ padding:5px;border:1px solid #fff3c9;border-radius:40% 40% 15px 15px/19% 19% 15px 15px;background:linear-gradient(140deg,#eac9c4,#554868);
+ box-shadow:0 0 0 5px #ffeab42c,0 0 27px #ffe8bd7b}
+#universe .universe-wish .wish-photo img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:none;transform:none}
+@media(max-width:720px){
+ #universe .universe-wish{top:45%;padding:18px 12px}
+ #universe .universe-wish .wish-photo{width:68px;height:78px;margin-bottom:7px}
+ #universe .universe-wish h3{font-size:clamp(30px,8.5vw,44px);margin:7px auto}
+ #universe .universe-wish p{font-size:12px;line-height:1.45;margin:7px auto}
+ #universe .universe-wish .wish-foot{margin-top:8px;font-size:8px}
+}
+@media(max-width:390px){
+ #universe .universe-wish{top:44.5%}
+ #universe .universe-wish h3{font-size:32px}
+}
