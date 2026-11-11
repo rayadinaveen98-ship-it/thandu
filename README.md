@@ -38,3 +38,9 @@ Public repository visibility does not determine the privacy of the eventual birt
 ## Next step
 
 Review photographs privately in batches; map each approved image to a scene; then lock the editorial sequence, visuals, and distribution policy before implementing the app.
+
+## Non-negotiable: THANDU Rule 001
+
+**Never alter, deform, reconstruct, retouch, or animate the face of anyone pictured without the owner's explicit approval for the exact operation.** Preserve photographic appearance and originals. See [Facial Identity Preservation](docs/IDENTITY_PRESERVATION.md).
+
+See also [Provisional storyboard structure](docs/STORYBOARD_STRUCTURE.md). The private photo review does not belong in public GitHub.
