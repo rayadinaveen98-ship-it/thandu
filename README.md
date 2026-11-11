@@ -46,3 +46,7 @@ Review photographs privately in batches; map each approved image to a scene; the
 **Never alter, deform, reconstruct, retouch, or animate the face of anyone pictured without the owner's explicit approval for the exact operation.** Preserve photographic appearance and originals. See [Facial Identity Preservation](docs/IDENTITY_PRESERVATION.md).
 
 See also [Provisional storyboard structure](docs/STORYBOARD_STRUCTURE.md). The private photo review does not belong in public GitHub.
+
+## Live development preview
+
+The initial **artwork-only** web foundation is live at **https://thandu.vercel.app**. It is connected to Vercel project `thandu` under `navin7` and deploys new reviewed changes from GitHub `main`. This is a design/development preview, **not the finished private birthday gift**. No recipient photos or private letters may be added to the public build. See [Deployment & Privacy Workflow](docs/DEPLOYMENT.md).
