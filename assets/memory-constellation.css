@@ -1,0 +1,127 @@
+/* THANDU V0.7 — Memory Constellation. Photos remain device-local and their pixels are not modified. */
+.world-constellation{isolation:isolate;background:#0b1231}
+.memory-sky{position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 52% 54%,#5d4774a3,transparent 75%),radial-gradient(ellipse at 48% 0,#352b67,#161b43 55%,#080e29)}
+.memory-sky:before{content:"";position:absolute;inset:0;opacity:.7;background-image:
+radial-gradient(circle at 6% 25%,#fff5d8 0 1px,transparent 2px),radial-gradient(circle at 11% 63%,#fff5d8 0 1.5px,transparent 3px),
+radial-gradient(circle at 21% 12%,#fff5d8 0 1px,transparent 2px),radial-gradient(circle at 36% 21%,#fff5d8 0 1px,transparent 2px),
+radial-gradient(circle at 47% 8%,#fff5d8 0 1px,transparent 2px),radial-gradient(circle at 62% 18%,#fff5d8 0 1px,transparent 2px),
+radial-gradient(circle at 78% 14%,#fff5d8 0 1.5px,transparent 3px),radial-gradient(circle at 88% 32%,#fff5d8 0 1px,transparent 2px),
+radial-gradient(circle at 95% 69%,#fff5d8 0 1px,transparent 2px),radial-gradient(circle at 67% 81%,#fff5d8 0 1px,transparent 2px);
+animation:constellation-twinkle 8s ease-in-out infinite alternate}
+.memory-sky:after{content:"";position:absolute;inset:65% 0 0;background:linear-gradient(transparent,#070e2cdb)}
+.memory-moon{position:absolute;right:11%;top:14%;width:clamp(93px,11vw,165px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 34% 28%,#fff6e4,#d6cce4 61%,#887dac);box-shadow:0 0 70px #f0d9cb70,0 0 140px #e5c1d840;opacity:.8}
+.memory-nebula{position:absolute;left:50%;top:54%;width:70vw;height:75vh;transform:translate(-50%,-50%);background:radial-gradient(ellipse,#f7d7c856 0,#c5a4d52e 30%,transparent 70%);filter:blur(40px);animation:constellation-twinkle 10s ease-in-out infinite alternate}
+.memory-orbit-scene{position:absolute;left:50%;top:57%;width:min(64vw,730px);height:min(64vw,730px);transform:translate(-50%,-50%);z-index:6;pointer-events:none}
+.memory-orbit-ring{position:absolute;border-radius:50%;inset:2%;border:1px solid #f5d9b682;box-shadow:inset 0 0 40px #f4cbab22,0 0 60px #e2bda52d;animation:constellation-spin 35s linear infinite}
+.memory-orbit-ring:before{content:"";position:absolute;top:8%;left:20%;width:10px;height:10px;background:#fff5d5;border-radius:50%;box-shadow:0 0 22px #fff1ce}
+.memory-orbit-ring.outer{border-style:dashed;inset:0;opacity:.7;animation-duration:57s}
+.memory-orbit-ring.inner{inset:22%;border-color:#fbeac6a1;animation-duration:27s;animation-direction:reverse}
+.memory-heart-light{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:Georgia,serif;color:#fff5d3;text-shadow:0 0 24px #ffe8a8,0 0 76px #f4c2bc;font-size:clamp(110px,14vw,215px);line-height:1;animation:constellation-pulse 6s ease-in-out infinite}
+.constellation-copy{z-index:26;top:12%}
+.constellation-copy h2{font-size:clamp(34px,5vw,65px);color:#fff7e8}
+.constellation-copy .lead{font-size:clamp(12px,1.2vw,15px);color:#f9e8e4d9;margin:12px auto;max-width:510px}
+.constellation-navigation{position:absolute;z-index:30;left:50%;top:55%;width:min(70vw,750px);height:min(48vh,470px);transform:translate(-50%,-50%)}
+.constellation-node{position:absolute;left:var(--cx);top:var(--cy);width:clamp(105px,12vw,157px);min-height:79px;transform:translate(-50%,-50%);padding:10px 12px;color:#fff2db;border:1px solid #ffe8b3aa;border-radius:24px;background:radial-gradient(ellipse at 35% 20%,#e5bbaa65,#524577d7 67%,#1a224bd9);box-shadow:0 0 0 5px #f5dfb517,0 8px 30px #030b2e77,0 0 34px #e8c5a657;backdrop-filter:blur(12px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;line-height:1.3;letter-spacing:.03em;text-align:center;transition:scale .3s,filter .3s,border-color .3s;animation:constellation-node-float 5.5s ease-in-out infinite alternate}
+.constellation-node:nth-child(2){animation-delay:-1s}.constellation-node:nth-child(3){animation-delay:-2.2s}.constellation-node:nth-child(4){animation-delay:-3.1s}.constellation-node:nth-child(5){animation-delay:-3.8s}
+.constellation-node .node-symbol{font-family:Georgia,serif;font-size:32px;color:#ffe5b7;text-shadow:0 0 18px #ffe0af;line-height:1.1}
+.constellation-node:hover,.constellation-node:focus-visible{scale:1.06;filter:brightness(1.18);border-color:#fff9e2}
+.constellation-node:focus-visible{outline:2px solid #fff1cd;outline-offset:7px}
+.constellation-actions{position:absolute;z-index:33;bottom:17.6%;left:50%;transform:translateX(-50%);display:flex;align-items:center;flex-direction:column;gap:13px}
+.constellation-cta{display:flex;align-items:center;justify-content:center;gap:12px;min-width:240px;min-height:49px;border:1px solid #fff5d8;border-radius:99px;background:linear-gradient(105deg,#fff2d1,#ebbda8);color:#40324f;padding:13px 25px;font-size:12px;font-weight:800;white-space:nowrap;box-shadow:0 7px 30px #ffe0ae57}
+.constellation-cta:hover{filter:brightness(1.06)}
+.constellation-text-link{border:0;background:transparent;color:#ffead2;font-size:11px;letter-spacing:.07em;border-bottom:1px solid #ffe0a67c;padding:5px}
+@keyframes constellation-twinkle{0%{opacity:.38}100%{opacity:1}}
+@keyframes constellation-spin{from{rotate:0}to{rotate:360deg}}
+@keyframes constellation-pulse{0%,100%{opacity:.72;scale:.94}50%{opacity:1;scale:1.10}}
+@keyframes constellation-node-float{from{translate:0 6px}to{translate:0 -8px}}
+/* Keep the gallery a distinct interactive layer, independent of the scene art. */
+.gallery-drawer{position:fixed;inset:0;z-index:120;background:#080d25f0;backdrop-filter:blur(28px);overflow:hidden;padding:clamp(9px,2vw,28px);overscroll-behavior:contain}
+.gallery-drawer[hidden]{display:none}
+.gallery-shell{position:relative;height:100%;width:min(100%,1180px);margin:auto;border:1px solid #e7c9965b;border-radius:clamp(20px,3vw,34px);background:
+radial-gradient(ellipse 57% 52% at 49% 0,#6c507264,transparent 95%),
+linear-gradient(145deg,#202345,#101b39 57%,#0c152d);
+box-shadow:0 25px 85px #020518bb,0 0 60px #eec88a19;overflow-y:auto;overscroll-behavior:contain;padding:clamp(16px,3vw,32px);display:flex;flex-direction:column;gap:16px}
+.gallery-shell:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;background-image:radial-gradient(circle at 9% 14%,#fff5d4 0 1px,transparent 2px),radial-gradient(circle at 54% 28%,#fff5d4 0 1px,transparent 2px),radial-gradient(circle at 88% 9%,#fff5d4 0 1px,transparent 2px)}
+.gallery-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.gallery-top h2{font-size:clamp(27px,4vw,47px);line-height:1.2;color:#fff4e4}.gallery-top h2 em{color:#f8d8a8}
+.gallery-top .eyebrow{color:#f6d39b;margin:0 0 7px}
+.gallery-close,.gallery-viewer-head button{flex:0 0 42px;width:42px;height:42px;border:1px solid #f0d5aa66;border-radius:50%;color:#fff2df;background:#ffffff0e;font-size:18px}
+.gallery-close:hover,.gallery-viewer-head button:hover{background:#ffffff23}
+.gallery-tools{position:relative;z-index:2;display:flex;flex-direction:column;gap:11px}
+.gallery-local-import{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.gallery-choose{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;border-radius:99px;padding:11px 20px;border:1px solid #fff1cd;background:linear-gradient(120deg,#fff2d4,#efc4af);color:#423852;font-size:12px;font-weight:750;cursor:pointer}
+.gallery-choose:hover{filter:brightness(1.04)}.gallery-choose:focus-within{outline:2px solid #fce4aa;outline-offset:3px}
+#galleryFileInput{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.gallery-clear{border:1px solid #ffe3b667;border-radius:99px;color:#ffe5bf;background:#ffffff0a;padding:11px 17px;min-height:44px;font-size:11px}
+.gallery-clear:disabled{opacity:.4;cursor:default}
+.gallery-privacy{margin:0;color:#e0d5d5c9;font-size:11px;line-height:1.6;max-width:780px}
+.gallery-privacy span{color:#f7daa4;padding-right:5px}
+.gallery-filter-row{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.gallery-filters{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.gallery-filters button{min-height:34px;padding:8px 12px;border:1px solid #d4b89a42;border-radius:99px;background:#ffffff0a;color:#f5e9e5ba;font-size:10px;font-weight:650;letter-spacing:.025em}
+.gallery-filters button.selected,.gallery-filters button:hover{border-color:#fff1bc;background:#e1bba02d;color:#fff7e2}
+#galleryCount{margin:0;font-size:11px;color:#f2d9be}
+.gallery-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:13px;padding:10px 0 22px}
+.gallery-tile{position:relative;padding:7px 7px 11px;text-align:left;border:1px solid #ecd9b35c;border-radius:17px;background:linear-gradient(155deg,#71607e66,#25294f98);color:#fff1d9;cursor:pointer;min-width:0;min-height:153px;box-shadow:0 9px 18px #090e2b55;transition:transform .2s,border-color .2s}
+.gallery-tile:hover{transform:translateY(-3px);border-color:#fff1c0}
+.gallery-tile:focus-visible{outline:2px solid #fff1c0;outline-offset:4px}
+.gallery-tile-image{display:grid;place-items:center;height:125px;overflow:hidden;border-radius:10px;background:#121833;box-shadow:inset 0 0 25px #dfc09a25}
+.gallery-tile-image img{width:100%;height:100%;object-fit:contain;display:block}
+.gallery-tile-title{display:block;font-size:10px;color:#fff0d4;font-weight:650;letter-spacing:.05em;margin:8px 5px 1px}
+.gallery-tile-group{display:block;font-size:9px;color:#e1cabaab;margin:0 5px;min-height:12px}
+.gallery-empty{position:relative;z-index:2;flex:1;min-height:210px;padding:24px 15px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px dashed #edd0a559;border-radius:22px;background:radial-gradient(ellipse at 50% 20%,#a0809370,#21264c73 80%)}
+.gallery-empty[hidden]{display:none}
+.gallery-empty-art{color:#fff3d9;font-size:44px;letter-spacing:.28em;text-shadow:0 0 27px #ffdaac;line-height:1.4}
+.gallery-empty-art span{font-size:65px;color:#f6b9d0}.gallery-empty h3{font-family:Georgia,serif;font-size:clamp(25px,3vw,36px);font-weight:400;margin:7px 0;color:#fff3db}
+.gallery-empty p{margin:5px auto;max-width:465px;color:#ece0e0c8;font-size:12px;line-height:1.7}
+.gallery-empty .gallery-empty-sub{font-size:10px;color:#edcfaaaf;margin-top:14px}
+.gallery-viewer{z-index:140;border:1px solid #fce1af;background:radial-gradient(ellipse at 50% 0,#595074,#161c3a 66%,#0a112d);border-radius:24px;color:#fff3db;box-shadow:0 20px 100px #000c,0 0 75px #ebc89b2a;padding:clamp(12px,2.5vw,26px);max-width:min(96vw,920px);max-height:min(93dvh,1000px);width:100%;overflow:auto}
+.gallery-viewer::backdrop{background:#04071bdc;backdrop-filter:blur(15px)}
+.gallery-viewer-inner{display:flex;flex-direction:column;align-items:stretch;gap:14px;min-width:0}
+.gallery-viewer-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.gallery-viewer-head p{font-family:Georgia,serif;font-size:20px;margin:0}.gallery-viewer-head span{color:#f5d4a4}
+.gallery-photo-stage{height:min(59dvh,610px);min-height:195px;display:grid;place-items:center;border:1px solid #f3d8b37a;border-radius:16px;overflow:hidden;background:radial-gradient(ellipse at 50% 35%,#7b66846b,#252344 65%,#101830);box-shadow:inset 0 0 35px #ecc49b1f}
+.gallery-photo-stage img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;transform:none;filter:none}
+.gallery-viewer-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.gallery-viewer-actions button{min-height:44px;border:1px solid #ffead095;border-radius:99px;padding:11px 16px;color:#ffeccd;background:#ffffff16;font-size:11px;white-space:nowrap}
+.gallery-viewer-actions button:disabled{opacity:.4}
+.gallery-viewer-actions label{color:#f6dcc4;font-size:11px;display:flex;align-items:center;gap:9px}
+.gallery-viewer-actions select{min-height:42px;border:1px solid #ebd2b39b;border-radius:12px;background:#282443;color:#fff3dc;padding:8px 9px;max-width:180px;font-size:11px}
+.gallery-photo-note{text-align:center;color:#d8c7c1bf;font-size:10px;line-height:1.6;margin:0}
+body.gallery-open .topbar,body.gallery-open .lower-nav{pointer-events:none}
+@media(max-width:720px){
+ .constellation-copy{top:15.5%}.constellation-copy h2{font-size:clamp(32px,8vw,45px)}.constellation-copy .lead{max-width:290px;font-size:12px;line-height:1.6}
+ .memory-orbit-scene{width:97vw;height:97vw;top:55%}
+ .memory-heart-light{font-size:125px}
+ .constellation-navigation{width:95vw;height:37vh;top:54%;min-height:250px}
+ .constellation-node{width:clamp(88px,25vw,118px);min-height:68px;padding:7px 8px;border-radius:19px;font-size:9px}
+ .constellation-node .node-symbol{font-size:26px}
+ .constellation-node[data-cluster="childhood"]{--cx:19%;--cy:25%}
+ .constellation-node[data-cluster="growing"]{--cx:81%;--cy:25%}
+ .constellation-node[data-cluster="bloom"]{--cx:82%;--cy:74%}
+ .constellation-node[data-cluster="joy"]{--cx:19%;--cy:74%}
+ .constellation-node[data-cluster="favourite"]{--cx:50%;--cy:83%}
+ .constellation-actions{bottom:18.5%;gap:7px}
+ .constellation-cta{padding:12px 17px;min-width:225px;min-height:44px;font-size:11px}
+ .constellation-text-link{font-size:10px}
+ .gallery-shell{padding:17px 13px;gap:12px;border-radius:19px}
+ .gallery-top h2{font-size:31px}.gallery-top .eyebrow{font-size:9px}
+ .gallery-filter-row{display:block}.gallery-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+ .gallery-filters button{flex-shrink:0}.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .gallery-tile-image{height:133px}
+ .gallery-privacy{font-size:10px}
+ .gallery-viewer{max-width:97vw;padding:11px;border-radius:18px;max-height:94dvh}
+ .gallery-photo-stage{height:min(54dvh,500px)}
+ .gallery-viewer-actions{gap:7px}
+ .gallery-viewer-actions label{order:-1;flex-basis:100%;justify-content:center}
+ .gallery-viewer-actions button{flex:1}
+}
+@media(max-width:390px){
+ .constellation-copy{top:17.3%}.constellation-copy h2{font-size:31px}
+ .constellation-node{width:83px;min-height:63px;font-size:8px}
+ .constellation-node .node-symbol{font-size:23px}
+ .constellation-actions{bottom:19.5%}
+ .gallery-viewer-head p{font-size:18px}
+}
+body.motion-off .world-constellation *,body.motion-off .world-constellation *::before,body.motion-off .world-constellation *::after{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.world-constellation *, .world-constellation *::before,.world-constellation *::after{animation:none!important;transition:none!important}}
