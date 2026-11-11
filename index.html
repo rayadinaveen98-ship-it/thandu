@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080b21">
+  <meta name="description" content="THANDU — A journey through light. Work-in-progress interactive art preview.">
+  <title>THANDU — A Journey Through Light</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#journey">Skip to experience</a>
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">✧</span><span>THANDU</span><span class="brand-divider"></span><small>THE LIGHT JOURNEY</small></div>
+    <div class="header-actions">
+      <span class="dev-pill"><span class="dev-dot"></span> LIVE DESIGN PREVIEW</span>
+      <button id="motionToggle" class="icon-button" title="Toggle ambient animation" aria-label="Reduce motion" aria-pressed="false">◎</button>
+    </div>
+  </header>
+
+  <main id="journey" class="journey" data-scene="arrival">
+    <section class="world world-arrival current" id="arrival" aria-labelledby="arrivalTitle">
+      <div class="sky sky-night"><div class="celestial halo-one"></div><div class="celestial halo-two"></div><div class="moon"></div></div>
+      <div class="columns" aria-hidden="true"><span class="column col-one"></span><span class="column col-two"></span><span class="column col-three"></span><span class="column col-four"></span></div>
+      <div class="portal-area" aria-hidden="true"><div class="portal-aura"></div><div class="portal"><div class="portal-inner"></div><div class="portal-ray"></div></div><div class="portal-sigil">✦</div></div>
+      <div class="reflective-water" aria-hidden="true"></div>
+      <div class="pathway" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="world-copy arrival-copy">
+        <p class="eyebrow">AN INVITATION INTO WONDER</p>
+        <h1 id="arrivalTitle">Every beautiful journey<br>begins with a <em>little light.</em></h1>
+        <p class="lead">For Thandu — a world waiting to come alive.</p>
+        <button class="cta" data-next="sanctuary"><span>Enter the journey</span><span class="cta-icon">✧</span></button>
+      </div>
+      <p class="ambient-hint">Touch the stars. Watch the world respond.</p>
+    </section>
+
+    <section class="world world-sanctuary" id="sanctuary" aria-labelledby="sanctuaryTitle" inert>
+      <div class="sky sky-mist"><div class="sanctuary-glow"></div></div>
+      <div class="sanctuary-architecture" aria-hidden="true"><span class="sanct-arch a1"></span><span class="sanct-arch a2"></span><span class="sanct-arch a3"></span></div>
+      <div class="lantern-group" aria-hidden="true"><span class="lantern l1"></span><span class="lantern l2"></span><span class="lantern l3"></span><span class="lantern l4"></span></div>
+      <div class="world-copy sanctuary-copy">
+        <p class="eyebrow">CHAPTER I · LITTLE BEGINNINGS</p>
+        <h2 id="sanctuaryTitle">A sanctuary of<br><em>little memories.</em></h2>
+        <p class="lead">Every glowing window holds a moment worth keeping.</p>
+      </div>
+      <div class="memory-constellation" aria-label="Interactive memory preview">
+        <button class="memory-orb" data-memory="1" aria-label="Open memory portal one"><span>01</span></button>
+        <button class="memory-orb" data-memory="2" aria-label="Open memory portal two"><span>02</span></button>
+        <button class="memory-orb large" data-memory="3" aria-label="Open memory portal three"><span>03</span></button>
+        <button class="memory-orb" data-memory="4" aria-label="Open memory portal four"><span>04</span></button>
+        <button class="memory-orb" data-memory="5" aria-label="Open memory portal five"><span>05</span></button>
+      </div>
+      <div id="memoryReveal" class="memory-reveal" aria-live="polite" hidden>
+        <div class="memory-reveal-inner"><span class="memory-star">✦</span><span id="memoryTitle">MEMORY 01</span><p>Her real photograph will appear here only in an approved private build. The original remains untouched.</p><button id="memoryClose" class="text-button">Close memory</button></div>
+      </div>
+      <p class="ambient-hint">Tap a light to discover a memory portal.</p>
+    </section>
+
+    <section class="world world-bloom" id="bloom" aria-labelledby="bloomTitle" inert>
+      <div class="sky sky-garden"><div class="garden-sun"></div><div class="garden-mist"></div></div>
+      <div class="garden-landscape" aria-hidden="true"><span class="hill hill-1"></span><span class="hill hill-2"></span><span class="hill hill-3"></span></div>
+      <div class="flower-vine vine-left" aria-hidden="true"></div><div class="flower-vine vine-right" aria-hidden="true"></div>
+      <div class="world-copy bloom-copy">
+        <p class="eyebrow">CHAPTER II · A WORLD IN BLOOM</p>
+        <h2 id="bloomTitle">Some people make<br>the world <em>blossom.</em></h2>
+        <p class="lead">Touch each flower and fill the garden with light.</p>
+      </div>
+      <div id="flowerField" class="flower-field" aria-label="Five interactive flowers"></div>
+      <div class="bloom-progress" aria-live="polite"><span class="progress-label">THE GARDEN IS AWAKENING</span><span id="bloomCounter">0 / 5 flowers</span><div class="progress-track"><span id="progressFill"></span></div></div>
+      <p class="ambient-hint">Five small blooms. One beautiful world.</p>
+    </section>
+
+    <div class="lower-nav" aria-label="Journey controls">
+      <button id="prev" class="nav-arrow" aria-label="Previous chapter">←</button>
+      <div class="chapter-pills" role="tablist" aria-label="Choose chapter">
+        <button class="chapter-pill active" role="tab" data-to="arrival" aria-selected="true">01<span>Arrival</span></button>
+        <button class="chapter-pill" role="tab" data-to="sanctuary" aria-selected="false">02<span>Memories</span></button>
+        <button class="chapter-pill" role="tab" data-to="bloom" aria-selected="false">03<span>Bloom</span></button>
+      </div>
+      <button id="next" class="nav-arrow" aria-label="Next chapter">→</button>
+    </div>
+    <aside class="preview-note">DESIGN BUILD 0.1 <span>•</span> ORIGINAL ARTWORK ONLY <span>•</span> NO PRIVATE PHOTOGRAPHS</aside>
+    <div class="sr-only" id="sceneAnnounce" aria-live="polite"></div>
+  </main>
+</body>
+</html>
