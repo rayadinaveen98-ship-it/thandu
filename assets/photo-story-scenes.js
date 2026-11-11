@@ -91,7 +91,8 @@
       caption:frame.querySelector('.story-caption-text'),counter:frame.querySelector('.story-caption-number'),
       prev:frame.querySelector('.frame-prev'),next:frame.querySelector('.frame-next')
     };
-    state.image.loading=scene.id==='arrival'?'eager':'lazy';
+    // The selected hero of each world is small enough to load eagerly; gallery thumbnails stay lazy.
+    state.image.loading='eager';
     state.image.fetchPriority=scene.id==='arrival'?'high':'auto';
     state.image.addEventListener('error',()=>{state.image.alt='This photograph is temporarily unavailable'});
     states.set(scene.id,state);
