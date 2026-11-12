@@ -1,6 +1,6 @@
 # THANDU — Android Checkpoint 1 (five chapters)
 
-**Android build automation is staged; the APK has NOT yet been compiled.** This branch is separate from `main` and changes nothing in the public website or owner's approved web screens.
+**Android build completed successfully on 2026-11-12.** This branch is separate from `main` and changes nothing in the public website or owner's approved web screens.
 
 ## Source provenance
 
@@ -10,7 +10,20 @@ The full working Android project and identical, fully embedded web experience ar
 
 **What is in the APK source:** Welcome V4, First Light, Memories, Growing Years, A World in Bloom and The Joy She Brings V1. It is a five-chapter testing checkpoint with the welcome, not the final eight-chapter gift.
 
-## Build flow (one user upload)
+## Successful Android build — 2026-11-12
+
+- Source archive uploaded and committed on branch `android-checkpoint-1` at commit `2a3fe3e007a19a9466684d355490021679faccbb`.
+- First GitHub Actions build failed during Android SDK initialization because a third-party setup action tried to install removed package `tools`.
+- Corrected workflow commit: `b76c7752d0bd7c05a847bc5b6889d04771e05c63`. Uses the runner's preinstalled SDK and installs Android API 35.
+- **Successful workflow run:** https://github.com/rayadinaveen98-ship-it/thandu/actions/runs/43140024347
+- **Verified artifact:** `THANDU-Five-Chapters-Android-APK` (artifact ID `13909770065`).
+- **Installable debug APK:** `THANDU-Five-Chapters-Review.apk`, 5,563,657 bytes.
+- SHA-256 of APK: `c28cce1c5d38e9a1d174b2795a650cabd14bdab6beb90307aff282e9168aee28`.
+- Embedded HTML SHA-256: `40166a234e0143c777a5db6ade16788879d3879ce8688fd971f1b4186fdee97c` — **exact match to approved offline source**.
+- GitHub build confirmed dex, manifest, local HTML, APK archive validity and debug signature. Downloaded artifact independently inspected and CRC passed.
+- **Actual installation and live on-device animation/performance QA remain pending.** This is a debug build, not a production-signed release.
+
+## Reproducing the build (one user upload)
 
 1. Download **`THANDU_APK_Source.zip`** from the current ChatGPT response.
 2. Open [this branch on GitHub](https://github.com/rayadinaveen98-ship-it/thandu/tree/android-checkpoint-1), click **Add file → Upload files**, and upload that ZIP **at the root of this branch** without changing its filename. Confirm the branch selector says `android-checkpoint-1` and commit directly to that branch. **The repo is public: uploading will make the embedded photographs publicly downloadable in the ZIP and retain them in Git history.** Do not upload if this is unacceptable.
