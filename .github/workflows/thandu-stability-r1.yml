@@ -1,0 +1,107 @@
+name: THANDU Android — Stability R1
+
+on:
+  push:
+    branches: [android-stability-r1]
+    paths:
+      - 'THANDU_Five_Chapters_Stability_R1_Source.zip'
+      - '.github/workflows/thandu-stability-r1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-verified-stability-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out isolated stability branch
+        uses: actions/checkout@v4
+
+      - name: Verify exact repaired five-chapter project
+        shell: bash
+        run: |
+          set -euo pipefail
+          ZIP=THANDU_Five_Chapters_Stability_R1_Source.zip
+          test -s "$ZIP" || { echo "::error::Upload the repaired source ZIP to this branch root"; exit 1; }
+          unzip -tq "$ZIP"
+          mkdir -p "$RUNNER_TEMP/thandu-stability"
+          unzip -q "$ZIP" -d "$RUNNER_TEMP/thandu-stability"
+          cd "$RUNNER_TEMP/thandu-stability"
+          python3 - <<'PY'
+          import hashlib, json, pathlib, re
+          p=pathlib.Path('.')
+          manifest=json.loads((p/'STABILITY_BUILD_MANIFEST.json').read_text())
+          html=(p/'app/src/main/assets/index.html').read_bytes()
+          assert hashlib.sha256(html).hexdigest()==manifest['output_sha256'],'Wrong HTML build'
+          assert len(html)<400000,'Oversized unoptimized HTML'
+          assert b'data:image/' not in html,'Images still bundled as inline base64'
+          assert b'THANDU_STABILITY' in html,'Missing single-route controller'
+          assert b'no-motion' in html,'Missing motion fallback'
+          media=p/'app/src/main/assets/media'
+          assert len(list(media.iterdir()))==manifest['unique_media_files']==27
+          for name,entry in manifest['media_integrity'].items():
+            data=(media/name).read_bytes()
+            assert len(data)==entry['bytes'] and hashlib.sha256(data).hexdigest()==entry['sha256'],name
+          java=(p/'app/src/main/java/studio/thandu/birthday/MainActivity.java').read_text()
+          assert 'shouldInterceptRequest' in java and 'THANDU_APP_BACK' in java
+          assert 'ByteArrayOutputStream' not in java
+          assert 'versionCode 2' in (p/'app/build.gradle').read_text()
+          print('PASS: unchanged photo bytes, optimized local media, unified chapter lifecycle, native Back, streamed loader')
+          PY
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install required Android SDK
+        shell: bash
+        run: |
+          set -euo pipefail
+          export ANDROID_HOME="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          export ANDROID_SDK_ROOT="$ANDROID_HOME"
+          echo "ANDROID_HOME=$ANDROID_HOME" >> "$GITHUB_ENV"
+          if command -v sdkmanager >/dev/null 2>&1; then
+            SDKMGR=$(command -v sdkmanager)
+          else
+            SDKMGR=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | sort -V | tail -n 1)
+          fi
+          test -n "$SDKMGR"
+          yes | "$SDKMGR" --sdk_root="$ANDROID_HOME" --licenses >/dev/null || true
+          "$SDKMGR" --sdk_root="$ANDROID_HOME" --install 'platforms;android-35' 'build-tools;35.0.0'
+
+      - name: Set up Gradle 8.9
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Build repaired Android APK
+        working-directory: ${{ runner.temp }}/thandu-stability
+        run: gradle --no-daemon --stacktrace :app:assembleDebug
+
+      - name: Verify APK archive, original media, and signature
+        shell: bash
+        run: |
+          set -euo pipefail
+          APK="$RUNNER_TEMP/thandu-stability/app/build/outputs/apk/debug/app-debug.apk"
+          test -s "$APK"
+          unzip -tq "$APK"
+          unzip -Z1 "$APK" | grep -qx 'AndroidManifest.xml'
+          unzip -Z1 "$APK" | grep -qx 'classes.dex'
+          unzip -Z1 "$APK" | grep -qx 'assets/index.html'
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
+          cp "$APK" "$GITHUB_WORKSPACE/THANDU-Stability-R1-Five-Chapters.apk"
+          sha256sum "$GITHUB_WORKSPACE/THANDU-Stability-R1-Five-Chapters.apk" > "$GITHUB_WORKSPACE/THANDU-Stability-R1-Five-Chapters.apk.sha256"
+
+      - name: Upload installable stability APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: THANDU-Stability-R1-Installable-APK
+          path: |
+            THANDU-Stability-R1-Five-Chapters.apk
+            THANDU-Stability-R1-Five-Chapters.apk.sha256
+          retention-days: 7
+          if-no-files-found: error
