@@ -5,6 +5,7 @@ on:
     branches: [android-checkpoint-1]
     paths:
       - THANDU_APK_Source.zip
+      - .github/workflows/thandu-android-checkpoint.yml
   workflow_dispatch:
 
 permissions:
@@ -38,11 +39,25 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Install Android platform and build tools
-        run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+        shell: bash
+        run: |
+          # GitHub's Ubuntu runner already includes the Android command-line SDK.
+          # Do not run android-actions/setup-android@v3: its legacy "tools"
+          # package has been removed from the Android SDK repository.
+          export ANDROID_HOME="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          export ANDROID_SDK_ROOT="$ANDROID_HOME"
+          echo "ANDROID_HOME=$ANDROID_HOME" >> "$GITHUB_ENV"
+          echo "$ANDROID_HOME/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
+          if ! command -v sdkmanager >/dev/null 2>&1; then
+            SDKMGR=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | sort -V | tail -n 1)
+            test -n "$SDKMGR" || { echo "::error::sdkmanager missing on runner"; exit 1; }
+          else
+            SDKMGR=$(command -v sdkmanager)
+          fi
+          echo "Using SDK manager: $SDKMGR"
+          yes | "$SDKMGR" --sdk_root="$ANDROID_HOME" --licenses >/dev/null || true
+          "$SDKMGR" --sdk_root="$ANDROID_HOME" --install 'platforms;android-35' 'build-tools;35.0.0'
 
       - name: Set up Gradle 8.9
         uses: gradle/actions/setup-gradle@v4
